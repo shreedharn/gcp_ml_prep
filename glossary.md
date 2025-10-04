@@ -4,7 +4,7 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## Table of Contents
 
-- [A](#a) | [B](#b) | [C](#c) | [D](#d) | [F](#f) | [I](#i) | [K](#k) | [M](#m) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [V](#v)
+- [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w)
 
 ---
 
@@ -57,6 +57,13 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Automated retraining of models based on triggers or schedules |
 | **Components** | Data monitoring, training pipeline, deployment automation |
 
+### Convergence
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | The point during training where model performance stops improving significantly |
+| **Use Case** | Determining when to stop training to avoid wasted compute resources |
+
 ---
 
 ## D
@@ -85,7 +92,39 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ---
 
+## E
+
+### Epoch
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | One complete pass through the entire training dataset |
+| **Use Case** | Measuring training progress and controlling training duration |
+
+---
+
 ## F
+
+### False Negative (FN)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Actual positive case incorrectly predicted as negative |
+| **Use Case** | Critical in medical diagnosis and fraud detection where missing positives is costly |
+
+### False Positive (FP)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Actual negative case incorrectly predicted as positive |
+| **Use Case** | Important in spam detection where false alarms reduce user trust |
+
+### Feature
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | An individual measurable property or characteristic used as input to a model |
+| **Use Case** | Building predictive models from structured data |
 
 ### Feature Store
 
@@ -94,6 +133,35 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Centralized repository for storing, serving, and managing ML features |
 | **AWS Equivalent** | SageMaker Feature Store |
 | **Components** | Online store (real-time), Offline store (training) |
+
+---
+
+## G
+
+### Generalization
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | A model's ability to perform well on new, unseen data |
+| **Use Case** | Core objective of machine learning; preventing overfitting |
+
+### Gradient Descent
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Optimization algorithm that iteratively adjusts weights to minimize loss |
+| **Use Case** | Training neural networks and other ML models |
+
+---
+
+## H
+
+### Hyperparameter
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Configuration value set before training that controls the learning process (e.g., learning rate) |
+| **Use Case** | Tuning model performance through systematic optimization |
 
 ---
 
@@ -106,6 +174,13 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Access control service for GCP resources |
 | **AWS Equivalent** | AWS IAM |
 | **Key Roles** | aiplatform.user, aiplatform.admin, bigquery.dataViewer |
+
+### Iteration
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | One update of model weights, typically after processing one batch |
+| **Use Case** | Tracking training progress within an epoch |
 
 ---
 
@@ -126,6 +201,24 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Service for creating and managing cryptographic keys |
 | **AWS Equivalent** | AWS KMS |
 | **Use Case** | Encryption key management, CMEK implementation |
+
+---
+
+## L
+
+### Lambda (λ)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Regularization strength parameter; higher values increase penalty on model complexity |
+| **Use Case** | Controlling the tradeoff between fitting training data and model simplicity |
+
+### Loss Function
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Mathematical function that quantifies the difference between predictions and actual values |
+| **Use Case** | Guiding model optimization during training |
 
 ---
 
@@ -157,7 +250,36 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ---
 
+## N
+
+### Noise
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Random variations or errors in data that don't represent true patterns |
+| **Use Case** | Understanding data quality and the limits of model accuracy |
+
+---
+
+## O
+
+### Overfitting
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Model performs well on training data but poorly on new data due to memorization |
+| **Use Case** | Identifying when model complexity needs to be reduced or regularization applied |
+
+---
+
 ## P
+
+### Parameter
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Internal variable learned by the model from data (e.g., weights, biases) |
+| **Use Case** | Understanding model capacity and complexity |
 
 ### Pub/Sub
 
@@ -204,6 +326,13 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Technique for handling imbalanced datasets by generating synthetic examples |
 | **Use Case** | Improving minority class representation |
 
+### Sparsity
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Having many zero values; L1 regularization creates sparse weight matrices |
+| **Use Case** | Feature selection and model interpretability |
+
 ---
 
 ## T
@@ -246,6 +375,31 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **AWS Equivalent** | AWS Trainium/Inferentia (similar concept) |
 | **Best For** | Large-scale training, matrix operations, TensorFlow models |
 
+### True Negative (TN)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Actual negative case correctly predicted as negative |
+| **Use Case** | Calculating accuracy, specificity, and other classification metrics |
+
+### True Positive (TP)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Actual positive case correctly predicted as positive |
+| **Use Case** | Calculating precision, recall, and other classification metrics |
+
+---
+
+## U
+
+### Underfitting
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Model is too simple to capture data patterns, performing poorly on all data |
+| **Use Case** | Identifying when model complexity needs to be increased |
+
 ---
 
 ## V
@@ -273,6 +427,17 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Security perimeter for GCP resources to prevent data exfiltration |
 | **AWS Equivalent** | VPC Endpoints, PrivateLink |
 | **Use Case** | Data security, compliance requirements |
+
+---
+
+## W
+
+### Weight
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Learned parameter that determines the importance of a feature in making predictions |
+| **Use Case** | Understanding model decisions and feature importance |
 
 ---
 
