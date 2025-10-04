@@ -49,7 +49,7 @@ extra:
     generic: true
 extra_css:
   - styles.css
-docs_dir: .
+docs_dir: docs
 nav:
   - Home: README.md
   - Study Guide:
@@ -62,5 +62,6 @@ nav:
     - "Common Scenarios": scenarios.md
     - "Hands-On Labs": labs.md
     - "Glossary": glossary.md
+  - License: LICENSE.md
 
 
