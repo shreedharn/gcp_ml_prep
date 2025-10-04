@@ -43,18 +43,18 @@ API Gateway / Application Load Balancer
 
 **Key Differences:**
 
-- GCP: Cloud Run offers automatic scaling with zero-to-scale capability
-- AWS: Lambda for serverless or ECS for containerized workloads
-- GCP: Memorystore for Redis is fully managed
-- AWS: ElastiCache requires more configuration but offers more control
-- Both: Support traffic splitting and A/B testing at the endpoint level
+| Aspect | GCP | AWS |
+|--------|-----|-----|
+| **API Layer** | Cloud Run offers automatic scaling with zero-to-scale capability | Lambda for serverless or ECS for containerized workloads |
+| **Cache** | Memorystore for Redis is fully managed | ElastiCache requires more configuration but offers more control |
+| **Testing** | Support traffic splitting and A/B testing at the endpoint level | Support traffic splitting and A/B testing at the endpoint level |
 
 **When to Use This Pattern:**
 
-✅ Latency requirements <100ms
-✅ High request volume with repeated queries
-✅ Need global availability
-✅ Variable traffic patterns
+- Latency requirements <100ms
+- High request volume with repeated queries
+- Need global availability
+- Variable traffic patterns
 
 ## 3.2 Batch Prediction Pipeline
 
@@ -88,20 +88,20 @@ Redshift/Athena (Final Results)
 
 **Key Differences:**
 
-- GCP: BigQuery provides unified data warehouse and prediction input/output
-- AWS: Separate services for storage (S3), querying (Athena/Redshift), and batch inference
-- GCP: Dataflow offers unified batch and stream processing
-- AWS: Glue for batch ETL, separate from streaming (Kinesis)
-- GCP: Cloud Scheduler is dedicated service; AWS uses EventBridge/CloudWatch Events
+| Aspect | GCP | AWS |
+|--------|-----|-----|
+| **Data Storage** | BigQuery provides unified data warehouse and prediction input/output | Separate services for storage (S3), querying (Athena/Redshift), and batch inference |
+| **Processing** | Dataflow offers unified batch and stream processing | Glue for batch ETL, separate from streaming (Kinesis) |
+| **Scheduling** | Cloud Scheduler is dedicated service | EventBridge/CloudWatch Events |
 
 **When to Use This Pattern:**
 
 Batch prediction is suitable when:
 
-✅ Millions of predictions needed
-✅ Not time-sensitive (can take hours)
-✅ Cost optimization important
-✅ Periodic/scheduled inference
+- Millions of predictions needed
+- Not time-sensitive (can take hours)
+- Cost optimization important
+- Periodic/scheduled inference
 
 ## 3.3 Streaming ML Pipeline
 
@@ -139,23 +139,21 @@ Kinesis Data Analytics / Flink (Feature Engineering)
 
 **Key Differences:**
 
-- GCP: Pub/Sub is fully managed message queue with global availability
-- AWS: Kinesis Data Streams requires shard management
-- GCP: Dataflow provides unified SDK (Apache Beam) for batch and stream
-- AWS: Kinesis Analytics or managed Flink for stream processing
-- GCP: Feature Store integrated with Vertex AI ecosystem
-- AWS: SageMaker Feature Store with separate integration requirements
-- GCP: Single Dataflow job can write to multiple destinations
-- AWS: May need separate Lambda functions or Kinesis Firehose for multi-destination writes
+| Aspect | GCP | AWS |
+|--------|-----|-----|
+| **Messaging** | Pub/Sub is fully managed message queue with global availability | Kinesis Data Streams requires shard management |
+| **Stream Processing** | Dataflow provides unified SDK (Apache Beam) for batch and stream | Kinesis Analytics or managed Flink for stream processing |
+| **Feature Store** | Feature Store integrated with Vertex AI ecosystem | SageMaker Feature Store with separate integration requirements |
+| **Multi-Destination** | Single Dataflow job can write to multiple destinations | May need separate Lambda functions or Kinesis Firehose for multi-destination writes |
 
 **When to Use This Pattern:**
 
 Streaming ML pipelines excel when:
 
-✅ Real-time decision making required
-✅ Continuous event streams
-✅ Need for feature aggregation across time windows
-✅ Low-latency requirements (seconds, not milliseconds)
+- Real-time decision making required
+- Continuous event streams
+- Need for feature aggregation across time windows
+- Low-latency requirements (seconds, not milliseconds)
 
 ## 3.4 End-to-End AutoML Workflow
 
@@ -231,14 +229,12 @@ execution = pipeline.start()
 
 **Key Differences:**
 
-- GCP: Kubeflow Pipelines DSL with Python decorators (@dsl.pipeline)
-- AWS: SageMaker Pipelines with explicit step definitions
-- GCP: AutoML is integrated component in Vertex AI
-- AWS: SageMaker Autopilot is separate from Pipelines, requires integration
-- GCP: Vertex AI Pipelines stores artifacts in GCS automatically
-- AWS: Must explicitly define S3 paths for all artifacts
-- GCP: Built-in model registry integration
-- AWS: Requires explicit Model Registry step configuration
+| Aspect | GCP | AWS |
+|--------|-----|-----|
+| **Pipeline DSL** | Kubeflow Pipelines DSL with Python decorators (@dsl.pipeline) | SageMaker Pipelines with explicit step definitions |
+| **AutoML Integration** | AutoML is integrated component in Vertex AI | SageMaker Autopilot is separate from Pipelines, requires integration |
+| **Artifact Storage** | Vertex AI Pipelines stores artifacts in GCS automatically | Must explicitly define S3 paths for all artifacts |
+| **Model Registry** | Built-in model registry integration | Requires explicit Model Registry step configuration |
 
 ## 3.5 MLOps Pipeline (CI/CD/CT)
 
@@ -284,16 +280,13 @@ Lambda + EventBridge → Re-trigger Training
 
 **Key Differences:**
 
-- GCP: Cloud Build is unified CI/CD service with native GCP integration
-- AWS: CodePipeline + CodeBuild require more configuration
-- GCP: Artifact Registry for both containers and language packages
-- AWS: ECR for containers, CodeArtifact for packages (separate services)
-- GCP: Vertex AI provides integrated monitoring with automated triggers
-- AWS: SageMaker Model Monitor requires manual EventBridge rule configuration
-- GCP: Cloud Functions directly trigger Vertex AI Pipelines
-- AWS: Lambda triggers SageMaker Pipelines via SDK calls
-- GCP: Single Vertex AI console for entire MLOps workflow
-- AWS: Multiple consoles (CodePipeline, SageMaker, CloudWatch, Lambda)
+| Aspect | GCP | AWS |
+|--------|-----|-----|
+| **CI/CD** | Cloud Build is unified CI/CD service with native GCP integration | CodePipeline + CodeBuild require more configuration |
+| **Artifact Storage** | Artifact Registry for both containers and language packages | ECR for containers, CodeArtifact for packages (separate services) |
+| **Monitoring** | Vertex AI provides integrated monitoring with automated triggers | SageMaker Model Monitor requires manual EventBridge rule configuration |
+| **Pipeline Triggering** | Cloud Functions directly trigger Vertex AI Pipelines | Lambda triggers SageMaker Pipelines via SDK calls |
+| **Console** | Single Vertex AI console for entire MLOps workflow | Multiple consoles (CodePipeline, SageMaker, CloudWatch, Lambda) |
 
 **Continuous Training Triggers:**
 

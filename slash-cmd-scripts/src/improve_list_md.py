@@ -35,6 +35,8 @@ class IssueType(Enum):
     LIST_MISSING_BLANK_LINE_BEFORE = "List missing blank line before first item"
     BLANK_LINES_BETWEEN_LIST_ITEMS = "Blank lines between list items (should only be before list start)"
     CONSECUTIVE_BOLD_WITHOUT_SPACING = "Consecutive bold text lines without proper spacing"
+    TICK_ICON_IN_LIST = "Tick icon (✅) used instead of normal list marker"
+    EXCESSIVE_BLANK_LINES = "Excessive consecutive blank lines (more than 1)"
 
 
 @dataclass
@@ -59,6 +61,7 @@ PATTERNS = {
     'list_marker': re.compile(r'^\s*([-*+]|[0-9]+\.)\s'),
     'blank_line': re.compile(r'^\s*$'),
     'consecutive_bold_lines': re.compile(r'^\*\*[^*]+\*\*:?\s*$'),
+    'tick_icon': re.compile(r'^\s*✅\s'),
 }
 
 
@@ -179,6 +182,56 @@ class ListFormatDetector:
 
         return issues
 
+    def detect_tick_icons(self) -> List[DetectionResult]:
+        """Detect tick icons (✅) used instead of normal list markers."""
+        issues = []
+
+        for i, line in enumerate(self.lines):
+            if PATTERNS['tick_icon'].match(line):
+                issues.append(DetectionResult(
+                    line_number=i + 1,
+                    issue_type=IssueType.TICK_ICON_IN_LIST,
+                    content=f"Tick icon found: {line.strip()[:60]}...",
+                    context_lines=self._get_context_lines(i + 1)
+                ))
+
+        return issues
+
+    def detect_excessive_blank_lines(self) -> List[DetectionResult]:
+        """Detect excessive consecutive blank lines (more than 1)."""
+        issues = []
+        blank_count = 0
+        blank_start_line = -1
+
+        for i, line in enumerate(self.lines):
+            is_blank = bool(PATTERNS['blank_line'].match(line))
+
+            if is_blank:
+                if blank_count == 0:
+                    blank_start_line = i
+                blank_count += 1
+            else:
+                # End of blank sequence
+                if blank_count > 1:
+                    issues.append(DetectionResult(
+                        line_number=blank_start_line + 2,  # Report the second blank line
+                        issue_type=IssueType.EXCESSIVE_BLANK_LINES,
+                        content=f"{blank_count} consecutive blank lines (should be max 1)",
+                        context_lines=self._get_context_lines(blank_start_line + 2)
+                    ))
+                blank_count = 0
+
+        # Handle trailing blank lines
+        if blank_count > 1:
+            issues.append(DetectionResult(
+                line_number=blank_start_line + 2,
+                issue_type=IssueType.EXCESSIVE_BLANK_LINES,
+                content=f"{blank_count} consecutive blank lines at end (should be max 1)",
+                context_lines=self._get_context_lines(blank_start_line + 2)
+            ))
+
+        return issues
+
     def run_all_detectors(self) -> Dict[str, List[DetectionResult]]:
         """
         Run all detection methods and return results grouped by detector type.
@@ -192,6 +245,8 @@ class ListFormatDetector:
             (self.detect_list_missing_blank_line_before, "List missing blank line before first item"),
             (self.detect_blank_lines_between_list_items, "Blank lines between list items"),
             (self.detect_consecutive_bold_without_spacing, "Consecutive bold text without spacing"),
+            (self.detect_tick_icons, "Tick icons in lists"),
+            (self.detect_excessive_blank_lines, "Excessive blank lines"),
         ]
 
         results = {}
@@ -226,6 +281,8 @@ class ListFormatDetector:
             "List missing blank line before first item": self.detect_list_missing_blank_line_before,
             "Blank lines between list items": self.detect_blank_lines_between_list_items,
             "Consecutive bold text without spacing": self.detect_consecutive_bold_without_spacing,
+            "Tick icons in lists": self.detect_tick_icons,
+            "Excessive blank lines": self.detect_excessive_blank_lines,
         }
 
         results = {}
@@ -258,6 +315,8 @@ class ListFormatDetector:
             "List missing blank line before first item",
             "Blank lines between list items",
             "Consecutive bold text without spacing",
+            "Tick icons in lists",
+            "Excessive blank lines",
         ]
 
 
@@ -272,6 +331,8 @@ def get_detector_name_mapping() -> Dict[str, str]:
         'list_missing_blank_line_before': 'List missing blank line before first item',
         'blank_lines_between_list_items': 'Blank lines between list items',
         'consecutive_bold_without_spacing': 'Consecutive bold text without spacing',
+        'tick_icons': 'Tick icons in lists',
+        'excessive_blank_lines': 'Excessive blank lines',
     }
 
 
@@ -289,6 +350,14 @@ def print_detectors_help() -> None:
         'consecutive_bold_without_spacing': {
             'before': '**Bold text 1**\n**Bold text 2**',
             'after': '**Bold text 1**\n\n**Bold text 2**'
+        },
+        'tick_icons': {
+            'before': '✅ Item with tick icon\n✅ Another item',
+            'after': '- Item with tick icon\n- Another item'
+        },
+        'excessive_blank_lines': {
+            'before': 'Paragraph 1\n\n\n\nParagraph 2',
+            'after': 'Paragraph 1\n\nParagraph 2'
         }
     }
 
@@ -333,6 +402,18 @@ def print_specific_detector_help(detector_name: str) -> None:
             'before': '**Section 1:**\n**Section 2:**',
             'after': '**Section 1:**\n\n**Section 2:**',
             'fixes': 'Adds blank line between consecutive bold text for better readability'
+        },
+        'tick_icons': {
+            'description': 'Finds tick icons (✅) used instead of normal list markers',
+            'before': '✅ First requirement\n✅ Second requirement',
+            'after': '- First requirement\n- Second requirement',
+            'fixes': 'Replaces tick icons with standard markdown list markers for proper rendering'
+        },
+        'excessive_blank_lines': {
+            'description': 'Finds excessive consecutive blank lines (more than 1)',
+            'before': 'Paragraph 1\n\n\n\nParagraph 2',
+            'after': 'Paragraph 1\n\nParagraph 2',
+            'fixes': 'Removes excessive blank lines, keeping maximum of 1 blank line between content'
         }
     }
 
