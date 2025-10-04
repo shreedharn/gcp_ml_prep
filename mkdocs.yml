@@ -1,0 +1,66 @@
+site_name: GCP ML Engineer Certification Preparation Notes
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+  font:
+    text: Inter
+    code: JetBrains Mono
+plugins:
+  - search
+  - awesome-pages
+  - roamlinks         # keep if you use [[Wiki Links]]; safe to leave on
+markdown_extensions:
+  # core niceties
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+
+  # pymdownx goodies (lists, tabs, better emphasis)
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+          separator: "-"
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+extra:
+  arithmatex:
+    generic: true
+extra_css:
+  - styles.css
+docs_dir: .
+nav:
+  - Home: README.md
+  - Study Guide:
+    - "GCP & AWS Comparison": gcp-aws-compare.md
+    - "Technical Aspects": technical.md
+    - "Architectural Patterns": patterns.md
+    - "ML Concepts": concepts.md
+  - Reference:
+    - "Quick Reference": reference.md
+    - "Common Scenarios": scenarios.md
+    - "Hands-On Labs": labs.md
+    - "Glossary": glossary.md
+
+
