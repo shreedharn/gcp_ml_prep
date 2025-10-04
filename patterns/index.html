@@ -751,18 +751,39 @@
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    Model (deployed on ml.m5.xlarge + GPU)
 </code></pre></div></p>
 <p><strong>Key Differences:</strong></p>
-<ul>
-<li>GCP: Cloud Run offers automatic scaling with zero-to-scale capability</li>
-<li>AWS: Lambda for serverless or ECS for containerized workloads</li>
-<li>GCP: Memorystore for Redis is fully managed</li>
-<li>AWS: ElastiCache requires more configuration but offers more control</li>
-<li>Both: Support traffic splitting and A/B testing at the endpoint level</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>GCP</th>
+<th>AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API Layer</strong></td>
+<td>Cloud Run offers automatic scaling with zero-to-scale capability</td>
+<td>Lambda for serverless or ECS for containerized workloads</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>Memorystore for Redis is fully managed</td>
+<td>ElastiCache requires more configuration but offers more control</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Support traffic splitting and A/B testing at the endpoint level</td>
+<td>Support traffic splitting and A/B testing at the endpoint level</td>
+</tr>
+</tbody>
+</table>
 <p><strong>When to Use This Pattern:</strong></p>
-<p>✅ Latency requirements &lt;100ms
-✅ High request volume with repeated queries
-✅ Need global availability
-✅ Variable traffic patterns</p>
+<ul>
+<li>Latency requirements &lt;100ms</li>
+<li>High request volume with repeated queries</li>
+<li>Need global availability</li>
+<li>Variable traffic patterns</li>
+</ul>
 <h2 id="32-batch-prediction-pipeline">3.2 Batch Prediction Pipeline<a class="headerlink" href="#32-batch-prediction-pipeline" title="Permanent link">&para;</a></h2>
 <p><strong>Pattern Description</strong>: Large-scale offline inference for millions of predictions</p>
 <p><strong>GCP Implementation:</strong>
@@ -788,19 +809,40 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Redshift/Athena (Final Results)
 </code></pre></div></p>
 <p><strong>Key Differences:</strong></p>
-<ul>
-<li>GCP: BigQuery provides unified data warehouse and prediction input/output</li>
-<li>AWS: Separate services for storage (S3), querying (Athena/Redshift), and batch inference</li>
-<li>GCP: Dataflow offers unified batch and stream processing</li>
-<li>AWS: Glue for batch ETL, separate from streaming (Kinesis)</li>
-<li>GCP: Cloud Scheduler is dedicated service; AWS uses EventBridge/CloudWatch Events</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>GCP</th>
+<th>AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Storage</strong></td>
+<td>BigQuery provides unified data warehouse and prediction input/output</td>
+<td>Separate services for storage (S3), querying (Athena/Redshift), and batch inference</td>
+</tr>
+<tr>
+<td><strong>Processing</strong></td>
+<td>Dataflow offers unified batch and stream processing</td>
+<td>Glue for batch ETL, separate from streaming (Kinesis)</td>
+</tr>
+<tr>
+<td><strong>Scheduling</strong></td>
+<td>Cloud Scheduler is dedicated service</td>
+<td>EventBridge/CloudWatch Events</td>
+</tr>
+</tbody>
+</table>
 <p><strong>When to Use This Pattern:</strong></p>
 <p>Batch prediction is suitable when:</p>
-<p>✅ Millions of predictions needed
-✅ Not time-sensitive (can take hours)
-✅ Cost optimization important
-✅ Periodic/scheduled inference</p>
+<ul>
+<li>Millions of predictions needed</li>
+<li>Not time-sensitive (can take hours)</li>
+<li>Cost optimization important</li>
+<li>Periodic/scheduled inference</li>
+</ul>
 <h2 id="33-streaming-ml-pipeline">3.3 Streaming ML Pipeline<a class="headerlink" href="#33-streaming-ml-pipeline" title="Permanent link">&para;</a></h2>
 <p><strong>Pattern Description</strong>: Real-time feature engineering and prediction on streaming data</p>
 <p><strong>GCP Implementation:</strong>
@@ -830,22 +872,45 @@
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>      Lambda / Application (Actions)
 </code></pre></div></p>
 <p><strong>Key Differences:</strong></p>
-<ul>
-<li>GCP: Pub/Sub is fully managed message queue with global availability</li>
-<li>AWS: Kinesis Data Streams requires shard management</li>
-<li>GCP: Dataflow provides unified SDK (Apache Beam) for batch and stream</li>
-<li>AWS: Kinesis Analytics or managed Flink for stream processing</li>
-<li>GCP: Feature Store integrated with Vertex AI ecosystem</li>
-<li>AWS: SageMaker Feature Store with separate integration requirements</li>
-<li>GCP: Single Dataflow job can write to multiple destinations</li>
-<li>AWS: May need separate Lambda functions or Kinesis Firehose for multi-destination writes</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>GCP</th>
+<th>AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Messaging</strong></td>
+<td>Pub/Sub is fully managed message queue with global availability</td>
+<td>Kinesis Data Streams requires shard management</td>
+</tr>
+<tr>
+<td><strong>Stream Processing</strong></td>
+<td>Dataflow provides unified SDK (Apache Beam) for batch and stream</td>
+<td>Kinesis Analytics or managed Flink for stream processing</td>
+</tr>
+<tr>
+<td><strong>Feature Store</strong></td>
+<td>Feature Store integrated with Vertex AI ecosystem</td>
+<td>SageMaker Feature Store with separate integration requirements</td>
+</tr>
+<tr>
+<td><strong>Multi-Destination</strong></td>
+<td>Single Dataflow job can write to multiple destinations</td>
+<td>May need separate Lambda functions or Kinesis Firehose for multi-destination writes</td>
+</tr>
+</tbody>
+</table>
 <p><strong>When to Use This Pattern:</strong></p>
 <p>Streaming ML pipelines excel when:</p>
-<p>✅ Real-time decision making required
-✅ Continuous event streams
-✅ Need for feature aggregation across time windows
-✅ Low-latency requirements (seconds, not milliseconds)</p>
+<ul>
+<li>Real-time decision making required</li>
+<li>Continuous event streams</li>
+<li>Need for feature aggregation across time windows</li>
+<li>Low-latency requirements (seconds, not milliseconds)</li>
+</ul>
 <h2 id="34-end-to-end-automl-workflow">3.4 End-to-End AutoML Workflow<a class="headerlink" href="#34-end-to-end-automl-workflow" title="Permanent link">&para;</a></h2>
 <p><strong>Pattern Description</strong>: Automated workflow from raw data to deployed model</p>
 <p><strong>GCP Implementation (Vertex AI Pipelines):</strong>
@@ -913,16 +978,37 @@
 <a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="n">execution</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>Key Differences:</strong></p>
-<ul>
-<li>GCP: Kubeflow Pipelines DSL with Python decorators (@dsl.pipeline)</li>
-<li>AWS: SageMaker Pipelines with explicit step definitions</li>
-<li>GCP: AutoML is integrated component in Vertex AI</li>
-<li>AWS: SageMaker Autopilot is separate from Pipelines, requires integration</li>
-<li>GCP: Vertex AI Pipelines stores artifacts in GCS automatically</li>
-<li>AWS: Must explicitly define S3 paths for all artifacts</li>
-<li>GCP: Built-in model registry integration</li>
-<li>AWS: Requires explicit Model Registry step configuration</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>GCP</th>
+<th>AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pipeline DSL</strong></td>
+<td>Kubeflow Pipelines DSL with Python decorators (@dsl.pipeline)</td>
+<td>SageMaker Pipelines with explicit step definitions</td>
+</tr>
+<tr>
+<td><strong>AutoML Integration</strong></td>
+<td>AutoML is integrated component in Vertex AI</td>
+<td>SageMaker Autopilot is separate from Pipelines, requires integration</td>
+</tr>
+<tr>
+<td><strong>Artifact Storage</strong></td>
+<td>Vertex AI Pipelines stores artifacts in GCS automatically</td>
+<td>Must explicitly define S3 paths for all artifacts</td>
+</tr>
+<tr>
+<td><strong>Model Registry</strong></td>
+<td>Built-in model registry integration</td>
+<td>Requires explicit Model Registry step configuration</td>
+</tr>
+</tbody>
+</table>
 <h2 id="35-mlops-pipeline-cicdct">3.5 MLOps Pipeline (CI/CD/CT)<a class="headerlink" href="#35-mlops-pipeline-cicdct" title="Permanent link">&para;</a></h2>
 <p><strong>Pattern Description</strong>: Continuous Integration, Deployment, and Training for ML</p>
 <p><strong>GCP Complete MLOps Architecture:</strong>
@@ -960,18 +1046,42 @@
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>Lambda + EventBridge → Re-trigger Training
 </code></pre></div></p>
 <p><strong>Key Differences:</strong></p>
-<ul>
-<li>GCP: Cloud Build is unified CI/CD service with native GCP integration</li>
-<li>AWS: CodePipeline + CodeBuild require more configuration</li>
-<li>GCP: Artifact Registry for both containers and language packages</li>
-<li>AWS: ECR for containers, CodeArtifact for packages (separate services)</li>
-<li>GCP: Vertex AI provides integrated monitoring with automated triggers</li>
-<li>AWS: SageMaker Model Monitor requires manual EventBridge rule configuration</li>
-<li>GCP: Cloud Functions directly trigger Vertex AI Pipelines</li>
-<li>AWS: Lambda triggers SageMaker Pipelines via SDK calls</li>
-<li>GCP: Single Vertex AI console for entire MLOps workflow</li>
-<li>AWS: Multiple consoles (CodePipeline, SageMaker, CloudWatch, Lambda)</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>GCP</th>
+<th>AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CI/CD</strong></td>
+<td>Cloud Build is unified CI/CD service with native GCP integration</td>
+<td>CodePipeline + CodeBuild require more configuration</td>
+</tr>
+<tr>
+<td><strong>Artifact Storage</strong></td>
+<td>Artifact Registry for both containers and language packages</td>
+<td>ECR for containers, CodeArtifact for packages (separate services)</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Vertex AI provides integrated monitoring with automated triggers</td>
+<td>SageMaker Model Monitor requires manual EventBridge rule configuration</td>
+</tr>
+<tr>
+<td><strong>Pipeline Triggering</strong></td>
+<td>Cloud Functions directly trigger Vertex AI Pipelines</td>
+<td>Lambda triggers SageMaker Pipelines via SDK calls</td>
+</tr>
+<tr>
+<td><strong>Console</strong></td>
+<td>Single Vertex AI console for entire MLOps workflow</td>
+<td>Multiple consoles (CodePipeline, SageMaker, CloudWatch, Lambda)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Continuous Training Triggers:</strong></p>
 <table>
 <thead>
