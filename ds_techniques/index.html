@@ -1,0 +1,2416 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning">
+      
+      
+      
+      
+        <link rel="prev" href="../scenarios/">
+      
+      
+        <link rel="next" href="../labs/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Data Science Techniques - GCP ML Engineer Certification Preparation Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-science-techniques-quick-decision-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-header__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GCP ML Engineer Certification Preparation Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Science Techniques
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-nav__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GCP ML Engineer Certification Preparation Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Study Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Study Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp-aws-compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GCP & AWS Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Aspects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectural Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube_ml_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MLFlow vs Kubeflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-downsampling--upsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Downsampling / Upsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Downsampling / Upsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-downsample" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Downsample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-upsample" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Upsample
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-learning-rate-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Learning Rate Adjustments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Learning Rate Adjustments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-decrease-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Decrease Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-increase-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Increase Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dropout-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dropout Adjustments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Dropout Adjustments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-addincrease-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Add/Increase Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-decreaseremove-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Decrease/Remove Dropout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Data Imputation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Imputation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-meanmedian-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Mean/Median Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-forwardbackward-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Forward/Backward Fill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-predictive-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Predictive Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-create-missing-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Create Missing Indicator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dimensionality-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dimensionality Reduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dimensionality Reduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-pca-principal-component-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use PCA (Principal Component Analysis)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Feature Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-t-sne-or-umap" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use t-SNE or UMAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-addressing-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Addressing Overfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Addressing Overfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-in-order-of-ease" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions (in order of ease)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions (in order of ease)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-more-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Get More Training Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-simplify-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Simplify the Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Regularization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-increase-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Increase Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-early-stopping" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Early Stopping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-data-augmentation-imagestext" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Data Augmentation (Images/Text)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-addressing-underfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Addressing Underfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Addressing Underfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-increase-model-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Increase Model Complexity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-more-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Add More Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reduce-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reduce Regularization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-removereduce-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Remove/Reduce Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-train-longer" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Train Longer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-increase-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Increase Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-improving-recall-sensitivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Improving Recall (Sensitivity)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Improving Recall (Sensitivity)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms-of-low-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms of Low Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lower-classification-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Lower Classification Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-adjust-class-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Adjust Class Weights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-upsample-minority-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Upsample Minority Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-use-recall-oriented-metrics-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Use Recall-Oriented Metrics During Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ensemble-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ensemble Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-improving-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Improving Precision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Improving Precision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms-of-low-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms of Low Precision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-increase-classification-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Increase Classification Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-more-discriminative-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Add More Discriminative Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-ensemble-methods-with-voting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Use Ensemble Methods with Voting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-better-feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Better Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-clean-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Clean Training Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-quick-decision-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Quick Decision Flowchart
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Quick Decision Flowchart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-model-accuracy-is-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Model Accuracy is Low
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-class-imbalance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Class Imbalance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-too-many-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Too Many Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-training-is-unstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Training is Unstable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-need-higher-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Need Higher Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-need-higher-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Need Higher Precision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-downsampling--upsampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Downsampling / Upsampling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Downsampling / Upsampling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-downsample" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Downsample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-upsample" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Upsample
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-learning-rate-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Learning Rate Adjustments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Learning Rate Adjustments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-decrease-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Decrease Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-increase-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Increase Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dropout-adjustments" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dropout Adjustments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Dropout Adjustments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-addincrease-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Add/Increase Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-decreaseremove-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Decrease/Remove Dropout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Data Imputation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Imputation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-meanmedian-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Mean/Median Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-forwardbackward-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Forward/Backward Fill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-predictive-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Predictive Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-create-missing-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Create Missing Indicator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dimensionality-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Dimensionality Reduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dimensionality Reduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-pca-principal-component-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use PCA (Principal Component Analysis)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Feature Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-t-sne-or-umap" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use t-SNE or UMAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-addressing-overfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Addressing Overfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Addressing Overfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-in-order-of-ease" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions (in order of ease)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions (in order of ease)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-more-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Get More Training Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-simplify-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Simplify the Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Regularization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-increase-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Increase Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-early-stopping" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Early Stopping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-data-augmentation-imagestext" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Data Augmentation (Images/Text)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-addressing-underfitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Addressing Underfitting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Addressing Underfitting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-increase-model-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Increase Model Complexity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-more-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Add More Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reduce-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reduce Regularization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-removereduce-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Remove/Reduce Dropout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-train-longer" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Train Longer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-increase-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Increase Learning Rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-improving-recall-sensitivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Improving Recall (Sensitivity)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Improving Recall (Sensitivity)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms-of-low-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms of Low Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lower-classification-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Lower Classification Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-adjust-class-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Adjust Class Weights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-upsample-minority-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Upsample Minority Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-use-recall-oriented-metrics-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Use Recall-Oriented Metrics During Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ensemble-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ensemble Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-improving-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Improving Precision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Improving Precision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms-of-low-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms of Low Precision
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-increase-classification-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Increase Classification Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-more-discriminative-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Add More Discriminative Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-ensemble-methods-with-voting" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Use Ensemble Methods with Voting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-better-feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Better Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-clean-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Clean Training Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-quick-decision-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Quick Decision Flowchart
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Quick Decision Flowchart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-model-accuracy-is-low" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Model Accuracy is Low
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-class-imbalance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Class Imbalance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-too-many-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Too Many Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-missing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Missing Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-training-is-unstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Training is Unstable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-need-higher-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Need Higher Recall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-need-higher-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem: Need Higher Precision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-science-techniques-quick-decision-reference">Data Science Techniques: Quick Decision Reference<a class="headerlink" href="#data-science-techniques-quick-decision-reference" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document helps you quickly decide which technique to apply when facing common data science challenges. Each section includes the problem symptoms, when to use the technique, intuition behind it, and practical examples.</p>
+<hr />
+<h2 id="1-downsampling--upsampling">1. Downsampling / Upsampling<a class="headerlink" href="#1-downsampling--upsampling" title="Permanent link">&para;</a></h2>
+<p><strong>What it addresses:</strong> Class imbalance in classification problems</p>
+<h3 id="when-to-downsample">When to Downsample<a class="headerlink" href="#when-to-downsample" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>You have 95% class A, 5% class B</li>
+<li>Model predicts majority class for everything</li>
+<li>High accuracy but poor performance on minority class</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Majority class has sufficient samples even after reduction (&gt;10,000 samples)</li>
+<li>Training time is a constraint</li>
+<li>You want to balance class representation quickly</li>
+</ul>
+<p><strong>Intuition:</strong> Remove excess majority class samples so the model sees balanced examples during training.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Original: 95,000 negative reviews, 5,000 positive reviews</li>
+<li>Action: Randomly sample 5,000 negative reviews</li>
+<li>Result: 5,000 negative, 5,000 positive (balanced dataset)</li>
+</ul>
+<h3 id="when-to-upsample">When to Upsample<a class="headerlink" href="#when-to-upsample" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Minority class has very few samples (&lt;1,000)</li>
+<li>You can't afford to lose majority class information</li>
+<li>Combined with techniques like SMOTE for synthetic samples</li>
+</ul>
+<p><strong>Intuition:</strong> Create copies or synthetic versions of minority class to match majority class size.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Original: 10,000 fraud cases, 990,000 legitimate transactions</li>
+<li>Action: Use SMOTE to create synthetic fraud cases</li>
+<li>Result: 990,000 of each class</li>
+</ul>
+<hr />
+<h2 id="2-learning-rate-adjustments">2. Learning Rate Adjustments<a class="headerlink" href="#2-learning-rate-adjustments" title="Permanent link">&para;</a></h2>
+<p><strong>What it addresses:</strong> Model convergence speed and training stability</p>
+<h3 id="when-to-decrease-learning-rate">When to Decrease Learning Rate<a class="headerlink" href="#when-to-decrease-learning-rate" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Loss oscillates wildly and doesn't decrease</li>
+<li>Training loss jumps around or diverges</li>
+<li>Model parameters become NaN</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Near the end of training (use learning rate schedulers)</li>
+<li>Training is unstable</li>
+<li>You've found a good region but need fine-tuning</li>
+</ul>
+<p><strong>Intuition:</strong> Smaller steps help you settle into a minimum without overshooting.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Starting LR: 0.01 → Loss jumps between 0.5 and 2.0</li>
+<li>Reduced LR: 0.001 → Loss smoothly decreases from 0.5 to 0.3</li>
+<li>Typical values: 0.1 → 0.01 → 0.001 → 0.0001</li>
+</ul>
+<h3 id="when-to-increase-learning-rate">When to Increase Learning Rate<a class="headerlink" href="#when-to-increase-learning-rate" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Training progresses extremely slowly</li>
+<li>Loss decreases by tiny amounts each epoch</li>
+<li>Stuck in a plateau</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Early in training with a large dataset</li>
+<li>Model is underfitting</li>
+<li>Using learning rate warmup</li>
+</ul>
+<p><strong>Intuition:</strong> Bigger steps help you move faster through the parameter space.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Starting LR: 0.00001 → 1000 epochs to reach decent performance</li>
+<li>Increased LR: 0.001 → 50 epochs to reach same performance</li>
+</ul>
+<hr />
+<h2 id="3-dropout-adjustments">3. Dropout Adjustments<a class="headerlink" href="#3-dropout-adjustments" title="Permanent link">&para;</a></h2>
+<p><strong>What it addresses:</strong> Overfitting by randomly disabling neurons during training</p>
+<h3 id="when-to-addincrease-dropout">When to Add/Increase Dropout<a class="headerlink" href="#when-to-addincrease-dropout" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Training accuracy 99%, validation accuracy 75%</li>
+<li>Large gap between training and validation loss</li>
+<li>Model memorizes training data</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>You have limited training data</li>
+<li>Model is overfitting</li>
+<li>Network has many parameters</li>
+</ul>
+<p><strong>Intuition:</strong> Randomly "dropping" neurons forces the network to learn redundant representations and not rely on specific neurons.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Before: No dropout → Train acc: 98%, Val acc: 72%</li>
+<li>After: Add dropout=0.3 → Train acc: 90%, Val acc: 85%</li>
+<li>Typical dropout rates: 0.2 to 0.5</li>
+</ul>
+<h3 id="when-to-decreaseremove-dropout">When to Decrease/Remove Dropout<a class="headerlink" href="#when-to-decreaseremove-dropout" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Both training and validation accuracy are low</li>
+<li>Model is underfitting</li>
+<li>Training is very slow to converge</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>You have abundant training data</li>
+<li>Model capacity is already limited</li>
+<li>Underfitting is the problem</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Before: dropout=0.5 → Train acc: 65%, Val acc: 63%</li>
+<li>After: dropout=0.2 → Train acc: 82%, Val acc: 80%</li>
+</ul>
+<hr />
+<h2 id="4-data-imputation">4. Data Imputation<a class="headerlink" href="#4-data-imputation" title="Permanent link">&para;</a></h2>
+<p><strong>What it addresses:</strong> Missing values in your dataset</p>
+<h3 id="when-to-use-meanmedian-imputation">When to Use Mean/Median Imputation<a class="headerlink" href="#when-to-use-meanmedian-imputation" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Data is Missing Completely at Random (MCAR)</li>
+<li>&lt;5% of values are missing</li>
+<li>Feature is numerical and roughly normally distributed</li>
+<li>You need a quick, simple solution</li>
+</ul>
+<p><strong>Intuition:</strong> Replace missing values with the "typical" value for that feature.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Age column: [25, 30, NaN, 35, NaN, 28]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mean imputation: [25, 30, 31.5, 35, 31.5, 28]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Median imputation: [25, 30, 29, 35, 29, 28]
+</code></pre></div>
+<h3 id="when-to-use-forwardbackward-fill">When to Use Forward/Backward Fill<a class="headerlink" href="#when-to-use-forwardbackward-fill" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Data is time-series or sequential</li>
+<li>Missing values should inherit from nearby values</li>
+<li>Data has temporal dependencies</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Stock prices: [100, 102, NaN, NaN, 108]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Forward fill: [100, 102, 102, 102, 108]
+</code></pre></div>
+<h3 id="when-to-use-predictive-imputation">When to Use Predictive Imputation<a class="headerlink" href="#when-to-use-predictive-imputation" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>
+<blockquote>
+<p>10% of data is missing</p>
+</blockquote>
+</li>
+<li>Missing data has patterns (Missing at Random - MAR)</li>
+<li>You have computational resources</li>
+<li>Feature is important for your model</li>
+</ul>
+<p><strong>Intuition:</strong> Use other features to predict what the missing value should be.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Predict missing Age using: Gender, Income, Occupation</li>
+<li>Train a model on complete cases, predict missing cases</li>
+</ul>
+<h3 id="when-to-create-missing-indicator">When to Create Missing Indicator<a class="headerlink" href="#when-to-create-missing-indicator" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Missingness itself is informative</li>
+<li>Missing Not at Random (MNAR)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Income column: Many high earners leave it blank
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Create: income_missing = [0, 0, 1, 0, 1]
+</code></pre></div>
+<hr />
+<h2 id="5-dimensionality-reduction">5. Dimensionality Reduction<a class="headerlink" href="#5-dimensionality-reduction" title="Permanent link">&para;</a></h2>
+<p><strong>What it addresses:</strong> Too many features causing computational or statistical problems</p>
+<h3 id="when-to-use-pca-principal-component-analysis">When to Use PCA (Principal Component Analysis)<a class="headerlink" href="#when-to-use-pca-principal-component-analysis" title="Permanent link">&para;</a></h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Hundreds or thousands of features</li>
+<li>Features are highly correlated</li>
+<li>Training is extremely slow</li>
+<li>Multicollinearity in linear models</li>
+</ul>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Features are numerical and continuous</li>
+<li>You want to reduce features while preserving variance</li>
+<li>Interpretability is not critical</li>
+<li>You want to visualize high-dimensional data</li>
+</ul>
+<p><strong>Intuition:</strong> Find new axes that capture the most variance in your data, discard axes with little variance.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Original: 100 features → Model trains in 10 minutes</li>
+<li>After PCA: 20 components (capturing 95% variance) → Trains in 1 minute</li>
+<li>Use case: Image data (784 pixels) → 50 principal components</li>
+</ul>
+<h3 id="when-to-use-feature-selection">When to Use Feature Selection<a class="headerlink" href="#when-to-use-feature-selection" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>You need interpretable features</li>
+<li>Features are a mix of types (categorical, numerical)</li>
+<li>Domain knowledge is important</li>
+<li>You want to understand feature importance</li>
+</ul>
+<p><strong>Methods:</strong></p>
+<ul>
+<li>Filter methods: Correlation, chi-square (fast, pre-modeling)</li>
+<li>Wrapper methods: Recursive Feature Elimination (slow, accurate)</li>
+<li>Embedded methods: L1 regularization/Lasso (automatic)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Original: 50 features</li>
+<li>After correlation filter: Remove 15 highly correlated features → 35 features</li>
+<li>After RFE: Keep top 20 most predictive features</li>
+</ul>
+<h3 id="when-to-use-t-sne-or-umap">When to Use t-SNE or UMAP<a class="headerlink" href="#when-to-use-t-sne-or-umap" title="Permanent link">&para;</a></h3>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>You want to visualize high-dimensional data in 2D/3D</li>
+<li>Exploring cluster structure</li>
+<li>NOT for model training (only visualization)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Use case: Visualize 768-dimensional text embeddings in 2D to see topic clusters</li>
+</ul>
+<hr />
+<h2 id="6-addressing-overfitting">6. Addressing Overfitting<a class="headerlink" href="#6-addressing-overfitting" title="Permanent link">&para;</a></h2>
+<p><strong>What it is:</strong> Model performs well on training data but poorly on unseen data</p>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Training accuracy &gt;&gt; Validation accuracy (e.g., 95% vs 70%)</li>
+<li>Training loss keeps decreasing, validation loss increases</li>
+<li>Model has learned noise instead of signal</li>
+</ul>
+<h3 id="solutions-in-order-of-ease">Solutions (in order of ease)<a class="headerlink" href="#solutions-in-order-of-ease" title="Permanent link">&para;</a></h3>
+<h4 id="1-get-more-training-data">1. Get More Training Data<a class="headerlink" href="#1-get-more-training-data" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Best solution when possible</li>
+<li>Before: 1,000 samples → Overfitting</li>
+<li>After: 10,000 samples → Better generalization</li>
+</ul>
+<h4 id="2-simplify-the-model">2. Simplify the Model<a class="headerlink" href="#2-simplify-the-model" title="Permanent link">&para;</a></h4>
+<p>Reduce model complexity:</p>
+<ul>
+<li>Before: 5 hidden layers, 500 neurons each</li>
+<li>After: 2 hidden layers, 100 neurons each</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Before: Decision tree depth=20</li>
+<li>After: Decision tree depth=5</li>
+</ul>
+<h4 id="3-add-regularization">3. Add Regularization<a class="headerlink" href="#3-add-regularization" title="Permanent link">&para;</a></h4>
+<p><strong>L1 (Lasso):</strong> Pushes some weights to exactly zero</p>
+<ul>
+<li>Use when: You want feature selection</li>
+<li>Example: Ridge regression with alpha=0.1</li>
+</ul>
+<p><strong>L2 (Ridge):</strong> Penalizes large weights</p>
+<ul>
+<li>Use when: You want to keep all features but constrain them</li>
+<li>Example: Linear regression with penalty='l2', C=1.0</li>
+</ul>
+<h4 id="4-increase-dropout">4. Increase Dropout<a class="headerlink" href="#4-increase-dropout" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: dropout=0.2</li>
+<li>After: dropout=0.4</li>
+</ul>
+<h4 id="5-early-stopping">5. Early Stopping<a class="headerlink" href="#5-early-stopping" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Stop training when validation loss stops improving</li>
+<li>Monitor validation loss every epoch</li>
+<li>Stop if no improvement for 10 consecutive epochs</li>
+</ul>
+<h4 id="6-data-augmentation-imagestext">6. Data Augmentation (Images/Text)<a class="headerlink" href="#6-data-augmentation-imagestext" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Images: Rotate, flip, crop, adjust brightness</li>
+<li>Text: Synonym replacement, back-translation</li>
+</ul>
+<hr />
+<h2 id="7-addressing-underfitting">7. Addressing Underfitting<a class="headerlink" href="#7-addressing-underfitting" title="Permanent link">&para;</a></h2>
+<p><strong>What it is:</strong> Model performs poorly on both training and validation data</p>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Both training and validation accuracy are low (e.g., 65% and 63%)</li>
+<li>Loss remains high and plateaus quickly</li>
+<li>Model is too simple to capture patterns</li>
+</ul>
+<h3 id="solutions">Solutions<a class="headerlink" href="#solutions" title="Permanent link">&para;</a></h3>
+<h4 id="1-increase-model-complexity">1. Increase Model Complexity<a class="headerlink" href="#1-increase-model-complexity" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: Logistic regression</li>
+<li>After: Random forest or neural network</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Before: 1 hidden layer, 10 neurons</li>
+<li>After: 3 hidden layers, 100 neurons each</li>
+</ul>
+<h4 id="2-add-more-features">2. Add More Features<a class="headerlink" href="#2-add-more-features" title="Permanent link">&para;</a></h4>
+<p>Create new features or use feature engineering:</p>
+<p><strong>Example:</strong> For house prices</p>
+<ul>
+<li>Original: [bedrooms, bathrooms]</li>
+<li>Enhanced: [bedrooms, bathrooms, bedrooms*bathrooms, total_sqft/bedrooms, age_of_house]</li>
+</ul>
+<h4 id="3-reduce-regularization">3. Reduce Regularization<a class="headerlink" href="#3-reduce-regularization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: alpha=10 (very strong penalty)</li>
+<li>After: alpha=0.1 (weaker penalty)</li>
+</ul>
+<h4 id="4-removereduce-dropout">4. Remove/Reduce Dropout<a class="headerlink" href="#4-removereduce-dropout" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: dropout=0.5</li>
+<li>After: dropout=0.1 or remove dropout</li>
+</ul>
+<h4 id="5-train-longer">5. Train Longer<a class="headerlink" href="#5-train-longer" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: 10 epochs</li>
+<li>After: 100 epochs (if loss is still decreasing)</li>
+</ul>
+<h4 id="6-increase-learning-rate">6. Increase Learning Rate<a class="headerlink" href="#6-increase-learning-rate" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: lr=0.0001 (too slow)</li>
+<li>After: lr=0.001 (faster learning)</li>
+</ul>
+<hr />
+<h2 id="8-improving-recall-sensitivity">8. Improving Recall (Sensitivity)<a class="headerlink" href="#8-improving-recall-sensitivity" title="Permanent link">&para;</a></h2>
+<p><strong>What it is:</strong> Proportion of actual positives correctly identified</p>
+<p><strong>Use when:</strong> Cost of False Negatives is high (missing cancer, failing to detect fraud)</p>
+<h3 id="symptoms-of-low-recall">Symptoms of Low Recall<a class="headerlink" href="#symptoms-of-low-recall" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Model misses too many positive cases</li>
+<li>High precision but low recall</li>
+<li>False negatives are costly</li>
+</ul>
+<h3 id="solutions_1">Solutions<a class="headerlink" href="#solutions_1" title="Permanent link">&para;</a></h3>
+<h4 id="1-lower-classification-threshold">1. Lower Classification Threshold<a class="headerlink" href="#1-lower-classification-threshold" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: Threshold=0.5 → Recall=60%</li>
+<li>After: Threshold=0.3 → Recall=85% (more liberal predictions)</li>
+</ul>
+<h4 id="2-adjust-class-weights">2. Adjust Class Weights<a class="headerlink" href="#2-adjust-class-weights" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">class_weight</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>  <span class="c1"># Penalize missing class 1 more</span>
+</code></pre></div>
+<h4 id="3-upsample-minority-class">3. Upsample Minority Class<a class="headerlink" href="#3-upsample-minority-class" title="Permanent link">&para;</a></h4>
+<p>Balance the training data to see more positive examples</p>
+<h4 id="4-use-recall-oriented-metrics-during-training">4. Use Recall-Oriented Metrics During Training<a class="headerlink" href="#4-use-recall-oriented-metrics-during-training" title="Permanent link">&para;</a></h4>
+<p>Optimize for F2-score (weighs recall higher than precision)</p>
+<h4 id="5-ensemble-methods">5. Ensemble Methods<a class="headerlink" href="#5-ensemble-methods" title="Permanent link">&para;</a></h4>
+<p>Use voting classifier with multiple models to catch more positives</p>
+<p><strong>Example:</strong></p>
+<p>Medical diagnosis scenario:</p>
+<ul>
+<li>Before: Recall=65% → Missing 35% of disease cases</li>
+<li>After lowering threshold: Recall=90% → Missing only 10% of disease cases</li>
+<li>Trade-off: Precision may decrease (more false alarms)</li>
+</ul>
+<hr />
+<h2 id="9-improving-precision">9. Improving Precision<a class="headerlink" href="#9-improving-precision" title="Permanent link">&para;</a></h2>
+<p><strong>What it is:</strong> Proportion of positive predictions that are actually correct</p>
+<p><strong>Use when:</strong> Cost of False Positives is high (spam filters, recommending bad products)</p>
+<h3 id="symptoms-of-low-precision">Symptoms of Low Precision<a class="headerlink" href="#symptoms-of-low-precision" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Too many false alarms</li>
+<li>High recall but low precision</li>
+<li>Users lose trust due to false positives</li>
+</ul>
+<h3 id="solutions_2">Solutions<a class="headerlink" href="#solutions_2" title="Permanent link">&para;</a></h3>
+<h4 id="1-increase-classification-threshold">1. Increase Classification Threshold<a class="headerlink" href="#1-increase-classification-threshold" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before: Threshold=0.5 → Precision=60%</li>
+<li>After: Threshold=0.7 → Precision=85% (more conservative predictions)</li>
+</ul>
+<h4 id="2-add-more-discriminative-features">2. Add More Discriminative Features<a class="headerlink" href="#2-add-more-discriminative-features" title="Permanent link">&para;</a></h4>
+<p>Add features that better separate positive from negative cases</p>
+<h4 id="3-use-ensemble-methods-with-voting">3. Use Ensemble Methods with Voting<a class="headerlink" href="#3-use-ensemble-methods-with-voting" title="Permanent link">&para;</a></h4>
+<p>Only predict positive if multiple models agree</p>
+<h4 id="4-better-feature-engineering">4. Better Feature Engineering<a class="headerlink" href="#4-better-feature-engineering" title="Permanent link">&para;</a></h4>
+<p>Create features that specifically identify true positives</p>
+<h4 id="5-clean-training-data">5. Clean Training Data<a class="headerlink" href="#5-clean-training-data" title="Permanent link">&para;</a></h4>
+<p>Remove mislabeled positive examples</p>
+<p><strong>Example:</strong></p>
+<p>Email spam filter:</p>
+<ul>
+<li>Before: Precision=70% → 30% of emails marked as spam are legitimate</li>
+<li>After raising threshold: Precision=95% → Only 5% false positives</li>
+<li>Trade-off: Recall may decrease (some spam gets through)</li>
+</ul>
+<hr />
+<h2 id="10-quick-decision-flowchart">10. Quick Decision Flowchart<a class="headerlink" href="#10-quick-decision-flowchart" title="Permanent link">&para;</a></h2>
+<h3 id="problem-model-accuracy-is-low">Problem: Model Accuracy is Low<a class="headerlink" href="#problem-model-accuracy-is-low" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Training AND validation low?</strong> → UNDERFITTING (increase complexity, add features, reduce regularization)</li>
+<li><strong>Training high, validation low?</strong> → OVERFITTING (add data, simplify model, add regularization)</li>
+</ul>
+<h3 id="problem-class-imbalance">Problem: Class Imbalance<a class="headerlink" href="#problem-class-imbalance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Majority class &gt;10x minority? → Downsample majority or Upsample minority</li>
+<li>Use class weights in model training</li>
+</ul>
+<h3 id="problem-too-many-features">Problem: Too Many Features<a class="headerlink" href="#problem-too-many-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Need interpretability? → Feature selection (RFE, Lasso)</li>
+<li>Don't need interpretability? → PCA</li>
+<li>Just visualizing? → t-SNE/UMAP</li>
+</ul>
+<h3 id="problem-missing-data">Problem: Missing Data<a class="headerlink" href="#problem-missing-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>&lt;5% missing, numerical? → Mean/median imputation</li>
+<li>Time-series? → Forward/backward fill</li>
+<li>
+<blockquote>
+<p>10% missing? → Predictive imputation</p>
+</blockquote>
+</li>
+<li>Missingness is informative? → Add missing indicator</li>
+</ul>
+<h3 id="problem-training-is-unstable">Problem: Training is Unstable<a class="headerlink" href="#problem-training-is-unstable" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Loss oscillating? → Decrease learning rate</li>
+<li>Loss barely moving? → Increase learning rate</li>
+</ul>
+<h3 id="problem-need-higher-recall">Problem: Need Higher Recall<a class="headerlink" href="#problem-need-higher-recall" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lower classification threshold</li>
+<li>Increase class weights for positive class</li>
+<li>Upsample minority class</li>
+</ul>
+<h3 id="problem-need-higher-precision">Problem: Need Higher Precision<a class="headerlink" href="#problem-need-higher-precision" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Raise classification threshold</li>
+<li>Improve feature engineering</li>
+<li>Use ensemble voting (require agreement)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
