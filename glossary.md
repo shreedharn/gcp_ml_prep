@@ -30,6 +30,34 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## B
 
+### Backward Fill
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Time-series imputation that fills missing values with the next observed value |
+| **Use Case** | Sequential data where missing values should inherit from future observations |
+| **Example** | Stock prices: [100, NaN, NaN, 108] → [100, 108, 108, 108] |
+
+---
+
+## C
+
+### Class Imbalance
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | When one class has significantly more examples than another in classification problems |
+| **Use Case** | Fraud detection (99% legitimate, 1% fraud), disease diagnosis |
+| **Solutions** | Downsampling, upsampling, SMOTE, class weights |
+
+### Class Weights
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Penalties applied during training to make misclassifying certain classes more costly |
+| **Use Case** | Handling imbalanced datasets without changing data distribution |
+| **Example** | class_weight={0: 1, 1: 5} penalizes misclassifying class 1 five times more |
+
 ### BigQuery ML
 
 | Attribute | Details |
@@ -92,6 +120,22 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **AWS Equivalent** | AWS Glue (batch), Kinesis Analytics (stream) |
 | **Key Features** | Unified programming model, auto-scaling, windowing |
 
+### Dimensionality Reduction
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Reducing the number of features while preserving information |
+| **Techniques** | PCA, feature selection, t-SNE, UMAP |
+| **Use Case** | Handling high-dimensional data, visualization, reducing training time |
+
+### Downsampling
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Reducing the number of majority class samples to balance dataset |
+| **Use Case** | Class imbalance when majority class has sufficient samples (>10,000) |
+| **Trade-off** | Loses majority class information but balances classes quickly |
+
 ### DNN (Deep Neural Network)
 
 | Attribute | Details |
@@ -114,6 +158,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## F
 
+### F2-Score
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Weighted F-score that emphasizes recall over precision |
+| **Formula** | (1 + 2²) × (Precision × Recall) / (2² × Precision + Recall) |
+| **Use Case** | When false negatives are more costly than false positives (e.g., medical diagnosis) |
+
 ### False Negative (FN)
 
 | Attribute | Details |
@@ -135,6 +187,22 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | An individual measurable property or characteristic used as input to a model |
 | **Use Case** | Building predictive models from structured data |
 
+### Feature Engineering
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Creating new features from existing ones to improve model performance |
+| **Techniques** | Polynomial features, interaction terms, binning, encoding |
+| **Use Case** | Improving model accuracy, capturing domain knowledge |
+
+### Feature Selection
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Choosing a subset of relevant features for modeling |
+| **Methods** | Filter (correlation, chi-square), Wrapper (RFE), Embedded (Lasso) |
+| **Use Case** | Reducing dimensionality while maintaining interpretability |
+
 ### Feature Store
 
 | Attribute | Details |
@@ -142,6 +210,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Centralized repository for storing, serving, and managing ML features |
 | **AWS Equivalent** | SageMaker Feature Store |
 | **Components** | Online store (real-time), Offline store (training) |
+
+### Forward Fill
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Time-series imputation that fills missing values with the previous observed value |
+| **Use Case** | Sequential data where missing values should inherit from past observations |
+| **Example** | Stock prices: [100, 102, NaN, NaN, 108] → [100, 102, 102, 102, 108] |
 
 ---
 
@@ -175,6 +251,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 ---
 
 ## I
+
+### Imputation
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Filling in missing values in a dataset |
+| **Techniques** | Mean/median/mode, forward/backward fill, KNN, predictive imputation |
+| **Use Case** | Handling missing data before model training |
 
 ### IAM (Identity and Access Management)
 
@@ -232,6 +316,30 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 ---
 
 ## M
+
+### MAR (Missing at Random)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Missingness related to observed data but not unobserved data |
+| **Use Case** | Understanding missing data patterns for imputation strategy |
+| **Example** | Income missing for certain age groups (missingness depends on age, which is observed) |
+
+### MCAR (Missing Completely at Random)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Missingness has no relationship to any variables |
+| **Use Case** | Simplest missing data scenario, allows simple imputation |
+| **Example** | Survey responses randomly skipped due to technical glitch |
+
+### MNAR (Missing Not at Random)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Missingness related to the missing value itself |
+| **Use Case** | Most complex missing data scenario, requires careful handling |
+| **Example** | High earners leaving income field blank (missingness depends on income itself) |
 
 ### MAE (Mean Absolute Error)
 
@@ -346,6 +454,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## T
 
+### t-SNE
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Non-linear dimensionality reduction for visualization |
+| **Use Case** | Visualizing high-dimensional data in 2D/3D, exploring clusters |
+| **Limitation** | Only for visualization, not for model training |
+
 ### Tabular Workflows
 
 | Attribute | Details |
@@ -376,6 +492,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | End-to-end platform for deploying production ML pipelines |
 | **Components** | Data validation, transform, training, serving |
 
+### Threshold
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Decision boundary for converting probabilities to class predictions (default: 0.5) |
+| **Use Case** | Tuning precision/recall trade-off in classification |
+| **Example** | Lower threshold (0.3) increases recall, higher threshold (0.7) increases precision |
+
 ### TPU (Tensor Processing Unit)
 
 | Attribute | Details |
@@ -402,6 +526,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## U
 
+### UMAP
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Non-linear dimensionality reduction, faster than t-SNE |
+| **Use Case** | Visualizing high-dimensional data, preserving global structure |
+| **Advantage** | Faster and better at preserving global structure than t-SNE |
+
 ### Underfitting
 
 | Attribute | Details |
@@ -409,9 +541,25 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Model is too simple to capture data patterns, performing poorly on all data |
 | **Use Case** | Identifying when model complexity needs to be increased |
 
+### Upsampling
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Increasing the number of minority class samples (replication or synthesis) |
+| **Techniques** | Random oversampling, SMOTE (synthetic generation) |
+| **Use Case** | Class imbalance when minority class has very few samples (<1,000) |
+
 ---
 
 ## V
+
+### Validation Loss
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Model's loss calculated on validation set (unseen during training) |
+| **Use Case** | Monitoring overfitting, early stopping, model selection |
+| **Indicator** | Increasing validation loss while training loss decreases indicates overfitting |
 
 ### Vertex AI
 

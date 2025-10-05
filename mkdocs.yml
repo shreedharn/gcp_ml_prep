@@ -1,4 +1,5 @@
-site_name: GCP ML Engineer Certification Preparation Notes
+site_name: GCP ML Engineer Certification Preparation Guide
+site_description: A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning
 theme:
   name: material
   features:
@@ -62,6 +63,7 @@ nav:
     - "Quick Reference": reference.md
     - "Common Scenarios": scenarios.md
     - "Hands-On Labs": labs.md
+    - "Data Science Techniques": ds_techniques.md
     - "Glossary": glossary.md
   - License: LICENSE.md
 
