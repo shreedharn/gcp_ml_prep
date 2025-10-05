@@ -13,13 +13,21 @@ This guide leverages your AWS Machine Learning expertise to accelerate GCP learn
 
 ## Study Guide Contents
 
-- **GCP & AWS Comparison** - Core ML services and their AWS equivalents
-- **Technical Aspects** - Deep dive into training, deployment, and monitoring
-- **Architectural Patterns** - Common ML architecture patterns for both platforms
-- **ML Concepts** - ML/DS concepts in GCP context with AWS comparisons
-- **Quick Reference** - Service mapping tables for rapid review
-- **Common Scenarios** - Real-world scenarios with detailed solutions
+### Core Study Materials
+
+- **ML Concepts** - Fundamental machine learning and data science concepts with practical examples
+- **GCP & AWS Comparison** - Comprehensive service-to-service mapping and feature comparisons
+- **Technical Aspects** - Deep dive into Vertex AI, training, deployment, and monitoring
+- **Architectural Patterns** - Common ML architecture patterns with GCP/AWS implementations
+- **MLFlow vs Kubeflow** - Detailed comparison of ML orchestration frameworks in both clouds
+
+### Reference Materials
+
+- **Common Scenarios** - Real-world exam scenarios with detailed solutions
+- **Data Science Techniques** - Quick decision guide for data science challenges
 - **Hands-On Labs** - Practical exercises and preparation checklist
+- **Quick Reference** - Service mapping tables and decision matrices for rapid review
+- **Glossary** - Comprehensive terminology reference with AWS equivalents
 
 ---
 ## License  

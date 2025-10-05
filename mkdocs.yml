@@ -54,16 +54,16 @@ docs_dir: docs
 nav:
   - Home: README.md
   - Study Guide:
+    - "ML Concepts": concepts.md
     - "GCP & AWS Comparison": gcp-aws-compare.md
     - "Technical Aspects": technical.md
     - "Architectural Patterns": patterns.md
-    - "ML Concepts": concepts.md
     - "MLFlow vs Kubeflow": kube_ml_flow.md
   - Reference:
-    - "Quick Reference": reference.md
     - "Common Scenarios": scenarios.md
-    - "Hands-On Labs": labs.md
     - "Data Science Techniques": ds_techniques.md
+    - "Hands-On Labs": labs.md
+    - "Quick Reference": reference.md
     - "Glossary": glossary.md
   - License: LICENSE.md
 
