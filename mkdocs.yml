@@ -13,7 +13,7 @@ theme:
       primary: indigo
       accent: indigo
   font:
-    text: Inter
+    text: Roboto
     code: JetBrains Mono
 plugins:
   - search
@@ -57,6 +57,7 @@ nav:
     - "Technical Aspects": technical.md
     - "Architectural Patterns": patterns.md
     - "ML Concepts": concepts.md
+    - "MLFlow vs Kubeflow": kube_ml_flow.md
   - Reference:
     - "Quick Reference": reference.md
     - "Common Scenarios": scenarios.md

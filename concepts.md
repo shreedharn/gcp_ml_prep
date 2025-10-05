@@ -10,10 +10,6 @@ This page provides concise explanations of fundamental machine learning concepts
 
 *Fundamental principles underlying machine learning.*
 
-### Bias-Variance Tradeoff
-
-Bias is error from wrong assumptions (underfitting); variance is error from sensitivity to training data fluctuations (overfitting). Models with high bias are too simple; high variance models are too complex. Optimal model minimizes total error = bias² + variance + irreducible error. Core challenge in model selection.
-
 ### Supervised Learning
 
 Learning paradigm where model trains on labeled data (input-output pairs) to learn mapping from inputs to outputs. Includes classification (discrete outputs) and regression (continuous outputs). Requires labeled training data. Examples: predicting house prices, image classification, spam detection.
@@ -22,11 +18,19 @@ Learning paradigm where model trains on labeled data (input-output pairs) to lea
 
 Learning paradigm where model finds patterns in unlabeled data without explicit target variables. Includes clustering, dimensionality reduction, and anomaly detection. No right or wrong answers, discovers hidden structure. Examples: customer segmentation, topic modeling, compression.
 
+### Reinforcement Learning
+
+Learning paradigm where an agent learns to make decisions by taking actions in an environment to maximize cumulative reward. The agent learns through trial and error, receiving feedback as rewards or penalties. No labeled training data; instead learns optimal behavior through interaction. Applications include game playing, robotics, and autonomous systems.
+
 ---
 
 ## 2. Model Performance Issues
 
 *Understanding when your model learns too much, too little, or just right.*
+
+### Bias-Variance Tradeoff
+
+Bias is error from wrong assumptions (underfitting); variance is error from sensitivity to training data fluctuations (overfitting). Models with high bias are too simple; high variance models are too complex. Optimal model minimizes total error = bias² + variance + irreducible error. Core challenge in model selection.
 
 ### Overfitting
 
@@ -162,13 +166,9 @@ Loss function that measures difference between predicted probability distributio
 
 ---
 
-## 9. Learning Paradigms
+## 9. Advanced ML Techniques
 
-*Different approaches to how models learn and make predictions.*
-
-### Reinforcement Learning
-
-Learning paradigm where an agent learns to make decisions by taking actions in an environment to maximize cumulative reward. The agent learns through trial and error, receiving feedback as rewards or penalties. No labeled training data; instead learns optimal behavior through interaction. Applications include game playing, robotics, and autonomous systems.
+*Specialized machine learning approaches for specific use cases.*
 
 ### Collaborative Filtering
 
