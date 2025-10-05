@@ -12,7 +12,7 @@
         <link rel="prev" href="../patterns/">
       
       
-        <link rel="next" href="../reference/">
+        <link rel="next" href="../kube_ml_flow/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -41,8 +41,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -423,15 +423,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bias-variance-tradeoff" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bias-Variance Tradeoff
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#supervised-learning" class="md-nav__link">
     <span class="md-ellipsis">
       Supervised Learning
@@ -444,6 +435,15 @@
   <a href="#unsupervised-learning" class="md-nav__link">
     <span class="md-ellipsis">
       Unsupervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reinforcement Learning
     </span>
   </a>
   
@@ -463,6 +463,15 @@
   
     <nav class="md-nav" aria-label="2. Model Performance Issues">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-variance-tradeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias-Variance Tradeoff
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#overfitting" class="md-nav__link">
@@ -776,23 +785,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-learning-paradigms" class="md-nav__link">
+  <a href="#9-advanced-ml-techniques" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Learning Paradigms
+      9. Advanced ML Techniques
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="9. Learning Paradigms">
+    <nav class="md-nav" aria-label="9. Advanced ML Techniques">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reinforcement-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reinforcement Learning
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#collaborative-filtering" class="md-nav__link">
@@ -1090,6 +1090,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube_ml_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MLFlow vs Kubeflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1307,15 +1330,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bias-variance-tradeoff" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bias-Variance Tradeoff
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#supervised-learning" class="md-nav__link">
     <span class="md-ellipsis">
       Supervised Learning
@@ -1328,6 +1342,15 @@
   <a href="#unsupervised-learning" class="md-nav__link">
     <span class="md-ellipsis">
       Unsupervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reinforcement Learning
     </span>
   </a>
   
@@ -1347,6 +1370,15 @@
   
     <nav class="md-nav" aria-label="2. Model Performance Issues">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-variance-tradeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias-Variance Tradeoff
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#overfitting" class="md-nav__link">
@@ -1660,23 +1692,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-learning-paradigms" class="md-nav__link">
+  <a href="#9-advanced-ml-techniques" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Learning Paradigms
+      9. Advanced ML Techniques
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="9. Learning Paradigms">
+    <nav class="md-nav" aria-label="9. Advanced ML Techniques">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reinforcement-learning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reinforcement Learning
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#collaborative-filtering" class="md-nav__link">
@@ -1987,15 +2010,17 @@
 <hr />
 <h2 id="1-core-ml-concepts">1. Core ML Concepts<a class="headerlink" href="#1-core-ml-concepts" title="Permanent link">&para;</a></h2>
 <p><em>Fundamental principles underlying machine learning.</em></p>
-<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff<a class="headerlink" href="#bias-variance-tradeoff" title="Permanent link">&para;</a></h3>
-<p>Bias is error from wrong assumptions (underfitting); variance is error from sensitivity to training data fluctuations (overfitting). Models with high bias are too simple; high variance models are too complex. Optimal model minimizes total error = bias² + variance + irreducible error. Core challenge in model selection.</p>
 <h3 id="supervised-learning">Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permanent link">&para;</a></h3>
 <p>Learning paradigm where model trains on labeled data (input-output pairs) to learn mapping from inputs to outputs. Includes classification (discrete outputs) and regression (continuous outputs). Requires labeled training data. Examples: predicting house prices, image classification, spam detection.</p>
 <h3 id="unsupervised-learning">Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permanent link">&para;</a></h3>
 <p>Learning paradigm where model finds patterns in unlabeled data without explicit target variables. Includes clustering, dimensionality reduction, and anomaly detection. No right or wrong answers, discovers hidden structure. Examples: customer segmentation, topic modeling, compression.</p>
+<h3 id="reinforcement-learning">Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permanent link">&para;</a></h3>
+<p>Learning paradigm where an agent learns to make decisions by taking actions in an environment to maximize cumulative reward. The agent learns through trial and error, receiving feedback as rewards or penalties. No labeled training data; instead learns optimal behavior through interaction. Applications include game playing, robotics, and autonomous systems.</p>
 <hr />
 <h2 id="2-model-performance-issues">2. Model Performance Issues<a class="headerlink" href="#2-model-performance-issues" title="Permanent link">&para;</a></h2>
 <p><em>Understanding when your model learns too much, too little, or just right.</em></p>
+<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff<a class="headerlink" href="#bias-variance-tradeoff" title="Permanent link">&para;</a></h3>
+<p>Bias is error from wrong assumptions (underfitting); variance is error from sensitivity to training data fluctuations (overfitting). Models with high bias are too simple; high variance models are too complex. Optimal model minimizes total error = bias² + variance + irreducible error. Core challenge in model selection.</p>
 <h3 id="overfitting">Overfitting<a class="headerlink" href="#overfitting" title="Permanent link">&para;</a></h3>
 <p>When a model learns training data too well, including its noise and peculiarities, causing poor performance on new data. The model memorizes rather than generalizes. Signs include high training accuracy but low validation accuracy. Solution: Use regularization, more data, or simpler models.</p>
 <h3 id="underfitting">Underfitting<a class="headerlink" href="#underfitting" title="Permanent link">&para;</a></h3>
@@ -2063,10 +2088,8 @@
 <h3 id="cross-entropy">Cross Entropy<a class="headerlink" href="#cross-entropy" title="Permanent link">&para;</a></h3>
 <p>Loss function that measures difference between predicted probability distribution and actual distribution, commonly used for classification. For binary classification: -[y log(p) + (1-y) log(1-p)], where y is true label and p is predicted probability. Lower values indicate better predictions; penalizes confident wrong predictions heavily. Also called log loss; widely used in neural networks.</p>
 <hr />
-<h2 id="9-learning-paradigms">9. Learning Paradigms<a class="headerlink" href="#9-learning-paradigms" title="Permanent link">&para;</a></h2>
-<p><em>Different approaches to how models learn and make predictions.</em></p>
-<h3 id="reinforcement-learning">Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permanent link">&para;</a></h3>
-<p>Learning paradigm where an agent learns to make decisions by taking actions in an environment to maximize cumulative reward. The agent learns through trial and error, receiving feedback as rewards or penalties. No labeled training data; instead learns optimal behavior through interaction. Applications include game playing, robotics, and autonomous systems.</p>
+<h2 id="9-advanced-ml-techniques">9. Advanced ML Techniques<a class="headerlink" href="#9-advanced-ml-techniques" title="Permanent link">&para;</a></h2>
+<p><em>Specialized machine learning approaches for specific use cases.</em></p>
 <h3 id="collaborative-filtering">Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permanent link">&para;</a></h3>
 <p>Recommendation technique that makes predictions based on preferences of similar users or items. User-based finds users with similar tastes; item-based finds similar items. Doesn't require explicit feature engineering, works from interaction patterns (ratings, purchases, clicks). Used by Netflix, Amazon, and Spotify for recommendations.</p>
 <hr />
