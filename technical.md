@@ -9,6 +9,139 @@
 - Learn MLOps best practices on GCP
 - Recognize optimal service choices for different scenarios
 
+---
+
+## 1. Platform Overview: Vertex AI (GCP's ML Platform)
+
+### 1.1 Introduction to Vertex AI
+
+**Vertex AI** is Google Cloud's unified ML platform that brings together all GCP ML services under a single interface. Launched in May 2021, it consolidates AI Platform, AutoML, and other ML tools into an integrated environment for the entire ML lifecycle.
+
+**Core Philosophy:**
+
+- Unified platform reducing service fragmentation
+- Managed infrastructure with minimal operational overhead
+- Native integration with GCP data services (BigQuery, Cloud Storage, Dataflow)
+- Focus on production ML workflows and MLOps
+
+**Key Components:**
+
+| Component | Purpose | Key Features |
+|-----------|---------|--------------|
+| **Vertex AI Workbench** | Managed Jupyter notebooks | JupyterLab, pre-installed ML libraries, Git integration, executor for scheduled notebooks |
+| **Vertex AI Training** | Custom model training | Pre-built containers, custom containers, distributed training, hyperparameter tuning |
+| **Vertex AI Pipelines** | ML workflow orchestration | Kubeflow Pipelines, TFX integration, DAG visualization, artifact tracking |
+| **Vertex AI Prediction** | Model serving | Online prediction (real-time), batch prediction, autoscaling, traffic splitting |
+| **Vertex AI Feature Store** | Feature management | Online serving, offline training, feature versioning, point-in-time lookup |
+| **Vertex AI Model Registry** | Model versioning | Model lineage, version control, deployment tracking, A/B testing |
+| **Vertex AI Monitoring** | Model observability | Training-serving skew, prediction drift, feature attribution, explanation |
+| **AutoML** | No-code ML | Tables, Vision, NLP, Video, structured data |
+| **Vertex AI Experiments** | Experiment tracking | Metrics, parameters, artifacts, comparison across runs |
+| **Vertex AI Metadata** | Lineage tracking | End-to-end tracking from data to deployed model |
+
+**Architecture Overview:**
+
+```
+Data Sources (BigQuery, GCS, Databases)
+           ↓
+    Vertex AI Workbench (Development)
+           ↓
+    Vertex AI Training (Custom/AutoML)
+           ↓
+    Vertex AI Model Registry (Versioning)
+           ↓
+    Vertex AI Endpoints (Serving)
+           ↓
+    Vertex AI Monitoring (Observability)
+```
+
+### 1.2 SageMaker Reference (For Comparison)
+
+**Amazon SageMaker** component reference for mapping to Vertex AI equivalents.
+
+**Key Components:**
+
+| Component | Purpose | Key Features |
+|-----------|---------|--------------|
+| **SageMaker Studio** | Integrated ML IDE | Notebooks, visual workflow, Git integration, debugger, profiler |
+| **SageMaker Training** | Model training | Built-in algorithms, custom containers, distributed training, spot instances |
+| **SageMaker Pipelines** | ML workflow orchestration | Python SDK, step caching, conditional execution, parameterized pipelines |
+| **SageMaker Endpoints** | Model serving | Real-time inference, serverless inference, multi-model endpoints, async inference |
+| **SageMaker Feature Store** | Feature management | Online/offline stores, feature groups, time-travel queries |
+| **SageMaker Model Registry** | Model versioning | Model packages, approval workflows, cross-account deployment |
+| **SageMaker Model Monitor** | Model observability | Data quality, model quality, bias drift, feature attribution |
+| **SageMaker Autopilot** | AutoML | Automatic model selection, feature engineering, hyperparameter tuning |
+| **SageMaker Experiments** | Experiment tracking | Run tracking, metric visualization, comparison |
+| **SageMaker Clarify** | Bias detection | Pre/post training bias, explainability, feature importance |
+
+### 1.3 Vertex AI vs SageMaker: Key Differences
+
+#### High-Level Comparison
+
+| Aspect | Vertex AI | SageMaker | Notes |
+|--------|-----------|------------------|--------|
+| **Platform Maturity** | Newer (2021), consolidation of existing services | More mature (2017), battle-tested | Built on proven GCP services |
+| **Ease of Use** | Simpler, more unified interface | More features but steeper learning curve | Streamlined experience |
+| **Integration** | Seamless with GCP (BigQuery, Dataflow) | Deep AWS ecosystem integration | Focus on BigQuery integration patterns |
+| **AutoML Capabilities** | Strong, built-in AutoML Tables, Vision, NLP | Autopilot for structured data | Broader AutoML coverage |
+| **Notebook Experience** | Workbench with managed notebooks | SageMaker Studio with more features | Less feature-rich but simpler |
+| **Pipeline Orchestration** | Kubeflow Pipelines (industry standard) | SageMaker Pipelines (AWS-native) | Portable across clouds |
+| **Feature Store** | Newer, simpler setup | More mature, advanced features | Simpler but fewer advanced capabilities |
+| **Model Monitoring** | Built-in, automated drift detection | Comprehensive monitoring suite | More automated, less configuration |
+| **Explainability** | Vertex Explainable AI | SageMaker Clarify | Similar capabilities, different APIs |
+
+#### Detailed Feature Mapping
+
+| Feature | Vertex AI | SageMaker |
+|---------|-----------|------------------|
+| **Training** | ✓ Pre-built containers<br>✓ Custom containers<br>✓ Distributed training<br>✓ Reduction server for dist. training | ✓ Built-in algorithms (18+)<br>✓ Custom containers<br>✓ Distributed training<br>✓ Spot training<br>✓ Managed warm pools |
+| **Hyperparameter Tuning** | ✓ Bayesian, Grid, Random<br>✓ Parallel trials<br>✓ Early stopping | ✓ Bayesian, Grid, Random, Hyperband<br>✓ Parallel jobs<br>✓ Warm start |
+| **Deployment Options** | ✓ Online prediction<br>✓ Batch prediction<br>✓ Private endpoints | ✓ Real-time endpoints<br>✓ Serverless inference<br>✓ Batch transform<br>✓ Async inference<br>✓ Multi-model endpoints |
+| **Autoscaling** | ✓ CPU/GPU-based<br>✓ Min/max instances | ✓ Target tracking<br>✓ Scheduled scaling<br>✓ Application autoscaling |
+| **Data Processing** | ✓ Dataflow integration<br>✓ BigQuery ML | ✓ SageMaker Processing<br>✓ Glue integration |
+| **MLOps** | ✓ Vertex Pipelines<br>✓ Model Registry<br>✓ Metadata tracking | ✓ SageMaker Pipelines<br>✓ Model Registry<br>✓ Experiments<br>✓ Projects |
+
+### 1.4 Key Advantages of Vertex AI
+
+**Vertex AI Strengths:**
+
+- **Unified Interface**: Less service fragmentation compared to SageMaker's many specialized tools
+- **BigQuery Integration**: Direct ML on data warehouse without data movement (similar to Redshift ML but more mature)
+- **AutoML Coverage**: Broader AutoML support across Tables, Vision, NLP, and Video
+- **Kubeflow Pipelines**: Industry-standard orchestration (portable across clouds)
+- **Simpler Pricing**: Easier cost estimation with fewer pricing dimensions
+
+**What You'll Miss from SageMaker:**
+
+- Serverless inference and async endpoints (Vertex AI has online/batch only)
+- Multi-model endpoints (serve multiple models from single endpoint)
+- Spot training for cost optimization
+- More mature Feature Store with advanced capabilities
+- SageMaker Studio's richer IDE experience
+
+### 1.5 Service Name Mapping
+
+| Functionality | Vertex AI | SageMaker |
+|---------------|-----------|------------------|
+| Development Environment | Vertex AI Workbench | SageMaker Studio |
+| Managed Notebooks | Workbench Instances | SageMaker Notebook Instances |
+| Model Training | Vertex AI Training | SageMaker Training Jobs |
+| AutoML | Vertex AI AutoML | SageMaker Autopilot |
+| Model Serving | Vertex AI Endpoints | SageMaker Endpoints |
+| Batch Inference | Vertex AI Batch Prediction | SageMaker Batch Transform |
+| Pipeline Orchestration | Vertex AI Pipelines | SageMaker Pipelines |
+| Experiment Tracking | Vertex AI Experiments | SageMaker Experiments |
+| Model Versioning | Vertex AI Model Registry | SageMaker Model Registry |
+| Feature Management | Vertex AI Feature Store | SageMaker Feature Store |
+| Model Monitoring | Vertex AI Model Monitoring | SageMaker Model Monitor |
+| Explainability | Vertex Explainable AI | SageMaker Clarify |
+| Bias Detection | Vertex AI (within monitoring) | SageMaker Clarify |
+| Data Labeling | Vertex AI Data Labeling | SageMaker Ground Truth |
+
+---
+
+## 2. Deep Dive: Technical Implementation
+
 ## 2.1 Model Training
 
 ### Custom Training on Vertex AI
