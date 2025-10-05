@@ -75,6 +75,15 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Graph structure representing ML pipeline dependencies |
 | **Use Case** | Workflow orchestration in Vertex AI Pipelines, Kubeflow |
 
+### Cloud Data Fusion
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Fully managed, cloud-native data integration service with visual ETL/ELT pipeline builder |
+| **AWS Equivalent** | AWS Glue Studio, AWS Glue DataBrew |
+| **Key Features** | Visual drag-and-drop, 150+ connectors, data quality checks, pipeline templates |
+| **Use Case** | Data preparation for ML, consolidating multiple sources, business-user friendly ETL |
+
 ### Dataflow
 
 | Attribute | Details |

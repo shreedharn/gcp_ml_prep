@@ -629,6 +629,69 @@ with beam.Pipeline(options=options) as pipeline:
      ))
 ```
 
+### Cloud Data Fusion
+
+**AWS Equivalent**: AWS Glue Studio, AWS Glue DataBrew
+
+**Service Overview**: Cloud Data Fusion is a fully managed, cloud-native data integration service based on the open-source CDAP project. It provides a visual, code-free environment for building ETL/ELT pipelines, making it ideal for business users and data engineers who prefer GUI-based workflows.
+
+**Key Capabilities:**
+
+Data Fusion provides these features:
+
+- Visual pipeline builder: Drag-and-drop interface for data transformations
+- Pre-built connectors: 150+ connectors for databases, SaaS apps, file systems
+- Data quality checks: Built-in validation and profiling
+- Pipeline templates: Reusable pipeline patterns
+- Hybrid/multi-cloud: Can connect on-prem and multi-cloud sources
+
+**Data Fusion vs Dataflow:**
+
+| Aspect | Cloud Data Fusion | Dataflow |
+|--------|-------------------|----------|
+| **Interface** | Visual, no-code GUI | Code-based (Apache Beam) |
+| **User Persona** | Data analysts, business users | Data engineers, developers |
+| **Complexity** | Simple to moderate ETL | Complex streaming/batch processing |
+| **Customization** | Limited to available plugins | Full programmatic control |
+| **ML Use Case** | Data preparation, cleansing | Feature engineering, real-time ML |
+| **Best For** | Structured data integration | Custom ML preprocessing pipelines |
+
+**Common ML Use Cases:**
+
+Data Fusion is ideal for these ML scenarios:
+
+- Consolidating data from multiple sources for ML training datasets
+- Data cleansing and quality checks before model training
+- Scheduled batch data ingestion from databases to BigQuery
+- Simple feature engineering (aggregations, joins, filtering)
+- Data preparation for AutoML or BigQuery ML
+
+**Architectural Pattern - ML Data Preparation:**
+```
+Multiple Sources (DB, SaaS, Files)
+           ↓
+    Cloud Data Fusion (ETL)
+           ↓
+      BigQuery (ML Training Data)
+           ↓
+    Vertex AI / BigQuery ML
+```
+
+**Practical Example - Customer Data Integration Pipeline:**
+
+Via UI (visual pipeline):
+1. **Source**: MySQL database connector → customer_transactions table
+2. **Transform**:
+   - Joiner → Join with customer_profiles (BigQuery)
+   - Group By → Aggregate purchases by customer_id
+   - Wrangler → Clean null values, format dates
+3. **Sink**: BigQuery → ml_datasets.customer_features
+
+**When to Choose:**
+
+- **Use Data Fusion when**: Simple ETL, visual interface preferred, multiple source connectors needed, business users involved
+- **Use Dataflow when**: Complex transformations, streaming data, TensorFlow Transform integration, full code control needed
+
 ## 1.4 Compute Services
 
 ### Compute Engine
