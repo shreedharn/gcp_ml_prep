@@ -728,6 +728,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#collaborative-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       Collaborative Filtering
@@ -1201,6 +1210,29 @@
   
   <span class="md-ellipsis">
     Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
     
   </span>
   
@@ -1727,6 +1759,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#collaborative-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       Collaborative Filtering
@@ -2115,6 +2156,33 @@
 <hr />
 <h2 id="9-advanced-ml-techniques">9. Advanced ML Techniques<a class="headerlink" href="#9-advanced-ml-techniques" title="Permanent link">&para;</a></h2>
 <p><em>Specialized machine learning approaches for specific use cases.</em></p>
+<h3 id="transfer-learning">Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permanent link">&para;</a></h3>
+<p>Technique that leverages knowledge from a pre-trained model (trained on large dataset) and adapts it to a new, related task with limited data. Instead of training from scratch, reuse learned features from the source task. Common approach: freeze early layers (general features like edges, textures) and fine-tune later layers (task-specific features). Dramatically reduces training time, data requirements, and computational costs.</p>
+<p><strong>When to Use:</strong>
+- Limited labeled data for target task
+- Target task is similar to source task (e.g., both are image classification)
+- Want to leverage state-of-the-art pretrained models</p>
+<p><strong>Common Approaches:</strong>
+- <strong>Feature Extraction</strong>: Freeze all pretrained layers, only train new classifier on top
+- <strong>Fine-tuning</strong>: Unfreeze some layers and retrain them with small learning rate
+- <strong>Progressive Unfreezing</strong>: Gradually unfreeze layers from top to bottom during training</p>
+<p><strong>Popular Pretrained Models:</strong>
+- <strong>Vision</strong>: ResNet, VGG, EfficientNet, Vision Transformer (ViT)
+- <strong>NLP</strong>: BERT, GPT, T5, RoBERTa
+- <strong>Multi-modal</strong>: CLIP, Flamingo</p>
+<p><strong>Example Workflow:</strong>
+1. Start with model pretrained on ImageNet (1.4M images, 1000 classes)
+2. Remove final classification layer
+3. Add new layer for your specific classes (e.g., 10 classes)
+4. Freeze pretrained layers, train only new layer
+5. Optionally fine-tune top layers with low learning rate</p>
+<p><strong>Benefits:</strong>
+- Requires 10-100x less data than training from scratch
+- Converges faster (hours vs days/weeks)
+- Often achieves better performance, especially with limited data
+- Reduces computational costs significantly</p>
+<p><strong>GCP Implementation:</strong>
+Vertex AI AutoML uses transfer learning automatically with Google's pretrained models. For custom training, TensorFlow Hub and Hugging Face provide pretrained models.</p>
 <h3 id="collaborative-filtering">Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permanent link">&para;</a></h3>
 <p>Recommendation technique that makes predictions based on preferences of similar users or items. User-based finds users with similar tastes; item-based finds similar items. Doesn't require explicit feature engineering, works from interaction patterns (ratings, purchases, clicks). Used by Netflix, Amazon, and Spotify for recommendations.</p>
 <hr />

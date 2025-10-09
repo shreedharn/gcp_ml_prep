@@ -1,0 +1,1414 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning">
+      
+      
+      
+      
+        <link rel="prev" href="../ds_techniques/">
+      
+      
+        <link rel="next" href="../labs/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Data Splitting Strategies - GCP ML Engineer Certification Preparation Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-splitting-techniques-for-machine-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-header__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GCP ML Engineer Certification Preparation Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Splitting Strategies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-nav__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GCP ML Engineer Certification Preparation Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Study Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Study Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp-aws-compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GCP & AWS Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Aspects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectural Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube_ml_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MLFlow vs Kubeflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ds_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-training-validation-and-test-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Training, Validation, and Test Datasets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Training, Validation, and Test Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-split-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Split Data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconception
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-golden-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Golden Rule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-random-split-simple-holdout" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Random Split (Simple Holdout)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-stratified-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Stratified Split
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-k-fold-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. K-Fold Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-stratified-k-fold-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Stratified K-Fold Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-groupcluster-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Group/Cluster Split
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-time-series-cross-validation-walk-forwardrolling-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Time Series Cross-Validation (Walk-Forward/Rolling Window)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-leave-one-out-cross-validation-loocv" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Leave-One-Out Cross-Validation (LOOCV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-nested-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Nested Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-train-validation-test-split-three-way-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Train-Validation-Test Split (Three-Way Split)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-blockedpurged-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Blocked/Purged Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Selection Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-training-validation-and-test-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Training, Validation, and Test Datasets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Training, Validation, and Test Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-split-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Split Data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-misconception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Misconception
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-golden-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Golden Rule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-random-split-simple-holdout" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Random Split (Simple Holdout)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-stratified-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Stratified Split
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-k-fold-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. K-Fold Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-stratified-k-fold-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Stratified K-Fold Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-groupcluster-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Group/Cluster Split
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-time-series-cross-validation-walk-forwardrolling-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Time Series Cross-Validation (Walk-Forward/Rolling Window)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-leave-one-out-cross-validation-loocv" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Leave-One-Out Cross-Validation (LOOCV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-nested-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Nested Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-train-validation-test-split-three-way-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Train-Validation-Test Split (Three-Way Split)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-blockedpurged-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Blocked/Purged Cross-Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-selection-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Selection Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-splitting-techniques-for-machine-learning">Data Splitting Techniques for Machine Learning<a class="headerlink" href="#data-splitting-techniques-for-machine-learning" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Data splitting is the process of dividing your dataset into separate subsets for training, validating, and testing machine learning models. The splitting strategy you choose significantly impacts how well your model performs in production. This guide covers the most common splitting techniques, when to use them, and practical examples.</p>
+<hr />
+<h2 id="understanding-training-validation-and-test-datasets">Understanding Training, Validation, and Test Datasets<a class="headerlink" href="#understanding-training-validation-and-test-datasets" title="Permanent link">&para;</a></h2>
+<p>Before diving into splitting techniques, it's essential to understand why we split data and what each subset is used for.</p>
+<h3 id="training-dataset">Training Dataset<a class="headerlink" href="#training-dataset" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> The dataset used to train the machine learning model.</p>
+<p><strong>What happens:</strong> The model learns patterns, relationships, and features from this data. During training, the model adjusts its internal parameters (weights and biases) to minimize errors on this dataset.</p>
+<p><strong>Analogy:</strong> Like a student studying from textbooks and practice problems to learn concepts.</p>
+<p><strong>Key Point:</strong> The model sees this data multiple times during training.</p>
+<h3 id="validation-dataset">Validation Dataset<a class="headerlink" href="#validation-dataset" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> The dataset used to tune hyperparameters and make decisions about model architecture.</p>
+<p><strong>What happens:</strong> After training, you evaluate the model on this unseen data to:
+- Choose between different models or algorithms
+- Tune hyperparameters (learning rate, number of layers, regularization strength)
+- Decide when to stop training (early stopping)
+- Make architecture decisions</p>
+<p><strong>Analogy:</strong> Like practice tests a student takes to identify weak areas and adjust study strategies.</p>
+<p><strong>Key Point:</strong> You can look at validation results multiple times and make changes to your model based on them.</p>
+<h3 id="test-dataset">Test Dataset<a class="headerlink" href="#test-dataset" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> The dataset used for final, unbiased evaluation of the model.</p>
+<p><strong>What happens:</strong> After all training and tuning is complete, you evaluate the model on this completely unseen data ONCE to get an honest assessment of how it will perform in production.</p>
+<p><strong>Analogy:</strong> Like the final exam - you only take it once, and it represents real-world performance.</p>
+<p><strong>Key Point:</strong> You should NEVER use test results to make decisions about your model. Touch it only once at the very end.</p>
+<h3 id="why-split-data">Why Split Data?<a class="headerlink" href="#why-split-data" title="Permanent link">&para;</a></h3>
+<p><strong>1. Prevent Overfitting</strong>
+- If you only train and test on the same data, the model might memorize rather than learn
+- It will perform perfectly on training data but fail on new, unseen data</p>
+<p><strong>2. Honest Performance Estimation</strong>
+- Training accuracy is optimistic (model has seen the answers)
+- Test accuracy reflects real-world performance</p>
+<p><strong>3. Model Selection and Tuning</strong>
+- Validation set allows you to compare models without biasing your final evaluation
+- Prevents information leakage from the test set</p>
+<h3 id="common-misconception">Common Misconception<a class="headerlink" href="#common-misconception" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>Wrong:</strong> "I'll use test data to improve my model"
+- This defeats the purpose - you're now training on your test set
+- Your performance estimate becomes biased</p>
+<p>✅ <strong>Right:</strong> "I'll use validation data to improve my model, then use test data ONCE for final evaluation"</p>
+<h3 id="the-golden-rule">The Golden Rule<a class="headerlink" href="#the-golden-rule" title="Permanent link">&para;</a></h3>
+<p><strong>Never touch your test set until you're completely done with model development.</strong> It's your only source of truth for how the model will perform in the real world.</p>
+<hr />
+<h2 id="1-random-split-simple-holdout">1. Random Split (Simple Holdout)<a class="headerlink" href="#1-random-split-simple-holdout" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Randomly divide data into training and test sets, typically 70-30 or 80-20.</p>
+<p><strong>Intuition:</strong> Every data point has an equal chance of ending up in either set, like shuffling a deck of cards and dealing them into piles.</p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Large datasets with independent observations</li>
+<li>No temporal dependencies</li>
+<li>Classes are roughly balanced</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Dataset: 1000 samples
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Random shuffle → [847, 23, 991, 445, ...]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Train: First 800 samples (80%)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Test: Last 200 samples (20%)
+</code></pre></div>
+<p><strong>Pros:</strong> Simple, fast, works well for large datasets</p>
+<p><strong>Cons:</strong> Variance in results, may not represent class distribution, wastes data (only trains once)</p>
+<hr />
+<h2 id="2-stratified-split">2. Stratified Split<a class="headerlink" href="#2-stratified-split" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Random split that preserves the proportion of classes in both train and test sets.</p>
+<p><strong>Intuition:</strong> If 30% of your data is Class A, both your train and test sets will have 30% Class A. Like ensuring each hand in a card game has the same ratio of suits.</p>
+<p><strong>Step-by-Step Example:</strong></p>
+<p>Original Dataset (100 samples):
+- Class A: 70 samples (70%)
+- Class B: 30 samples (30%)</p>
+<p>After 80-20 Stratified Split:</p>
+<p>Training Set (80 samples):
+- Class A: 56 samples (70%)
+- Class B: 24 samples (30%)</p>
+<p>Test Set (20 samples):
+- Class A: 14 samples (70%)
+- Class B: 6 samples (30%)</p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Imbalanced datasets</li>
+<li>Classification problems</li>
+<li>Small datasets where class distribution matters</li>
+</ul>
+<p><strong>Pros:</strong> Reduces variance, ensures representative test set</p>
+<p><strong>Cons:</strong> Only works for classification, slightly more complex</p>
+<hr />
+<h2 id="3-k-fold-cross-validation">3. K-Fold Cross-Validation<a class="headerlink" href="#3-k-fold-cross-validation" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Split data into K equal parts (folds). Train on K-1 folds, test on 1 fold, and repeat K times so each fold serves as the test set once.</p>
+<p><strong>Intuition:</strong> Everyone gets a turn being the test set. Like rotating team members through different roles.</p>
+<p><strong>Step-by-Step Example (5-Fold CV):</strong></p>
+<p>Dataset: 100 samples divided into 5 folds of 20 samples each</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Iteration 1: Train on [Fold2,3,4,5], Test on [Fold1]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Iteration 2: Train on [Fold1,3,4,5], Test on [Fold2]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Iteration 3: Train on [Fold1,2,4,5], Test on [Fold3]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Iteration 4: Train on [Fold1,2,3,5], Test on [Fold4]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Iteration 5: Train on [Fold1,2,3,4], Test on [Fold5]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Final Score: Average of all 5 test scores
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Small to medium datasets</li>
+<li>Need robust performance estimate</li>
+<li>Comparing multiple models</li>
+</ul>
+<p><strong>Pros:</strong> Uses all data for training and testing, reduces variance, robust estimate</p>
+<p><strong>Cons:</strong> K times slower, still random (not for time series)</p>
+<p><strong>Common K values:</strong> 5 or 10</p>
+<hr />
+<h2 id="4-stratified-k-fold-cross-validation">4. Stratified K-Fold Cross-Validation<a class="headerlink" href="#4-stratified-k-fold-cross-validation" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> K-Fold CV where each fold maintains the original class distribution.</p>
+<p><strong>Intuition:</strong> Combines the benefits of stratification with cross-validation.</p>
+<p><strong>Example:</strong></p>
+<p>Dataset: 100 samples (70% Class A, 30% Class B)
+5-Fold Stratified CV</p>
+<p>Each fold has 20 samples:
+- Fold 1: 14 Class A, 6 Class B
+- Fold 2: 14 Class A, 6 Class B
+- Fold 3: 14 Class A, 6 Class B
+- Fold 4: 14 Class A, 6 Class B
+- Fold 5: 14 Class A, 6 Class B</p>
+<p>Same rotation as K-Fold CV</p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Small, imbalanced classification datasets</li>
+<li>Gold standard for model evaluation on static data</li>
+</ul>
+<hr />
+<h2 id="5-groupcluster-split">5. Group/Cluster Split<a class="headerlink" href="#5-groupcluster-split" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Split data ensuring all samples from the same group stay together in either train or test.</p>
+<p><strong>Intuition:</strong> If you have multiple photos of the same person, all photos of Person A go into either train OR test, never both. Prevents the model from memorizing individuals.</p>
+<p><strong>Step-by-Step Example:</strong></p>
+<p>Medical Dataset: Patient X-rays</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Patient 1: [scan_a, scan_b, scan_c]
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Patient 2: [scan_d, scan_e]
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Patient 3: [scan_f, scan_g, scan_h]
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Patient 4: [scan_i]
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Group Split (by patient):
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Train: Patient 1, Patient 3 → [scan_a,b,c,f,g,h]
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Test:  Patient 2, Patient 4 → [scan_d,e,i]
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>❌ WRONG (random): Training on scan_a,b from Patient1, testing on scan_c from Patient1
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Multiple samples from same entity (patients, users, locations)</li>
+<li>Hierarchical data structures</li>
+<li>Prevent data leakage from correlated samples</li>
+</ul>
+<p><strong>Pros:</strong> Prevents overfitting to specific groups, realistic evaluation</p>
+<p><strong>Cons:</strong> May need larger datasets, unequal split sizes</p>
+<hr />
+<h2 id="6-time-series-cross-validation-walk-forwardrolling-window">6. Time Series Cross-Validation (Walk-Forward/Rolling Window)<a class="headerlink" href="#6-time-series-cross-validation-walk-forwardrolling-window" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> For time series, progressively train on expanding (or fixed) windows and test on the next period.</p>
+<p><strong>Intuition:</strong> Simulate real-world deployment where you retrain periodically. Like using last month's data to predict next month, then updating.</p>
+<p><strong>Step-by-Step Example (Expanding Window):</strong></p>
+<p>Time Series: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug]</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Fold 1: Train [Jan,Feb,Mar] → Test [Apr]
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Fold 2: Train [Jan,Feb,Mar,Apr] → Test [May]
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Fold 3: Train [Jan,Feb,Mar,Apr,May] → Test [Jun]
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Fold 4: Train [Jan,Feb,Mar,Apr,May,Jun] → Test [Jul]
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Fold 5: Train [Jan,Feb,Mar,Apr,May,Jun,Jul] → Test [Aug]
+</code></pre></div>
+<p><strong>Rolling Window Variant (Fixed Size):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Fold 1: Train [Jan,Feb,Mar] → Test [Apr]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Fold 2: Train [Feb,Mar,Apr] → Test [May]
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Fold 3: Train [Mar,Apr,May] → Test [Jun]
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Fold 4: Train [Apr,May,Jun] → Test [Jul]
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Time series forecasting</li>
+<li>Models need retraining over time</li>
+<li>Evaluating model degradation</li>
+</ul>
+<hr />
+<h2 id="7-leave-one-out-cross-validation-loocv">7. Leave-One-Out Cross-Validation (LOOCV)<a class="headerlink" href="#7-leave-one-out-cross-validation-loocv" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Extreme case of K-Fold where K = number of samples. Train on N-1 samples, test on 1.</p>
+<p><strong>Intuition:</strong> Each individual data point gets to be the test set.</p>
+<p><strong>Example:</strong></p>
+<p>Dataset: 50 samples</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Iteration 1: Train on samples [2-50], Test on [1]
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Iteration 2: Train on samples [1,3-50], Test on [2]
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>...
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Iteration 50: Train on samples [1-49], Test on [50]
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Very small datasets (&lt; 100 samples)</li>
+<li>Every data point is precious</li>
+</ul>
+<p><strong>Pros:</strong> Maximum use of data</p>
+<p><strong>Cons:</strong> Very computationally expensive, high variance</p>
+<hr />
+<h2 id="8-nested-cross-validation">8. Nested Cross-Validation<a class="headerlink" href="#8-nested-cross-validation" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Two-level CV: outer loop for model evaluation, inner loop for hyperparameter tuning.</p>
+<p><strong>Intuition:</strong> Prevents hyperparameter tuning from leaking information into the test set. The outer loop never sees the hyperparameter selection process.</p>
+<p><strong>Step-by-Step Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Outer Loop (5-Fold for evaluation):
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  For each outer fold:
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    Inner Loop (3-Fold for tuning):
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>      - Try different hyperparameters
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>      - Select best hyperparameter
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    - Train final model with best params
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    - Evaluate on outer test fold
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>Result: Unbiased performance estimate
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Need both hyperparameter tuning AND unbiased evaluation</li>
+<li>Comparing models fairly</li>
+<li>Publication-quality results</li>
+</ul>
+<p><strong>Pros:</strong> No information leakage, proper estimate</p>
+<p><strong>Cons:</strong> Very computationally expensive</p>
+<hr />
+<h2 id="9-train-validation-test-split-three-way-split">9. Train-Validation-Test Split (Three-Way Split)<a class="headerlink" href="#9-train-validation-test-split-three-way-split" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> Divide data into three sets: train (60%), validation (20%), test (20%).</p>
+<p><strong>Intuition:</strong> Training builds the model, validation tunes it, test evaluates it honestly. Like practice games, scrimmages, and championship matches.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Dataset: 1000 samples
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Train: 600 samples (build models)
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Validation: 200 samples (tune hyperparameters, select model)
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Test: 200 samples (final evaluation, touch ONCE)
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Large datasets</li>
+<li>Deep learning (need validation for early stopping)</li>
+<li>When you need to tune hyperparameters</li>
+</ul>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>Train multiple models on training set</li>
+<li>Evaluate on validation set, tune hyperparameters</li>
+<li>Select best model</li>
+<li>Final evaluation on test set (ONCE only)</li>
+</ol>
+<hr />
+<h2 id="10-blockedpurged-cross-validation">10. Blocked/Purged Cross-Validation<a class="headerlink" href="#10-blockedpurged-cross-validation" title="Permanent link">&para;</a></h2>
+<p><strong>Brief Description:</strong> For time series, add gaps between train and test to prevent temporal leakage.</p>
+<p><strong>Intuition:</strong> Real-world predictions need time to materialize. If predicting stock prices, you can't use same-day information.</p>
+<p><strong>Example:</strong></p>
+<p>Time Series with 2-day purge:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Fold 1: Train [Day1-30] | PURGE [Day31-32] | Test [Day33-35]
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Fold 2: Train [Day1-35] | PURGE [Day36-37] | Test [Day38-40]
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>The purge period ensures no overlap between training features and test outcomes.
+</code></pre></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Financial time series</li>
+<li>Data where features take time to compute</li>
+<li>Preventing look-ahead bias</li>
+</ul>
+<hr />
+<h2 id="quick-selection-guide">Quick Selection Guide<a class="headerlink" href="#quick-selection-guide" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommended Technique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large dataset, independent samples</td>
+<td>Random Split</td>
+</tr>
+<tr>
+<td>Imbalanced classes</td>
+<td>Stratified Split or Stratified K-Fold</td>
+</tr>
+<tr>
+<td>Small dataset</td>
+<td>Stratified K-Fold CV</td>
+</tr>
+<tr>
+<td>Time series data</td>
+<td>Temporal Split or Walk-Forward CV</td>
+</tr>
+<tr>
+<td>Multiple samples per entity</td>
+<td>Group Split</td>
+</tr>
+<tr>
+<td>Need hyperparameter tuning</td>
+<td>Train-Validation-Test or Nested CV</td>
+</tr>
+<tr>
+<td>Financial/trading data</td>
+<td>Blocked/Purged CV</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

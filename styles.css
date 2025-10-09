@@ -3,6 +3,17 @@
   --md-typeset-line-height: 1.50;
 }
 
+/* ===== Text Justification ===== */
+.md-typeset p,
+.md-typeset li{
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
 /* ===== Headings: calmer sizes ===== */
 /* ===== Headings scaled down ===== */
 .md-content__title,
