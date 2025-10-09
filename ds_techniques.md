@@ -2,31 +2,31 @@
 
 ## Overview
 
-This document helps you quickly decide which technique to apply when facing common data science challenges. Each section includes the problem symptoms, when to use the technique, intuition behind it, and practical examples.
+This document provides quick guidance on which technique to apply when facing common data science challenges. Each section includes the problem symptoms, when to use the technique, intuition behind it, and practical examples.
 
 ---
 
 ## 1. Downsampling / Upsampling
 
-**What it addresses:** Class imbalance in classification problems
+What it addresses: Class imbalance in classification problems
 
 ### When to Downsample
 
-**Symptoms:**
+Symptoms:
 
-- You have 95% class A, 5% class B
+- 95% class A, 5% class B distribution
 - Model predicts majority class for everything
 - High accuracy but poor performance on minority class
 
-**Use when:**
+Use when:
 
 - Majority class has sufficient samples even after reduction (>10,000 samples)
 - Training time is a constraint
-- You want to balance class representation quickly
+- Need to balance class representation quickly
 
-**Intuition:** Remove excess majority class samples so the model sees balanced examples during training.
+Intuition: Remove excess majority class samples so the model sees balanced examples during training.
 
-**Example:**
+Example:
 
 - Original: 95,000 negative reviews, 5,000 positive reviews
 - Action: Randomly sample 5,000 negative reviews
@@ -34,15 +34,15 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ### When to Upsample
 
-**Use when:**
+Use when:
 
 - Minority class has very few samples (<1,000)
-- You can't afford to lose majority class information
+- Cannot afford to lose majority class information
 - Combined with techniques like SMOTE for synthetic samples
 
-**Intuition:** Create copies or synthetic versions of minority class to match majority class size.
+Intuition: Create copies or synthetic versions of minority class to match majority class size.
 
-**Example:**
+Example:
 
 - Original: 10,000 fraud cases, 990,000 legitimate transactions
 - Action: Use SMOTE to create synthetic fraud cases
@@ -52,25 +52,25 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ## 2. Learning Rate Adjustments
 
-**What it addresses:** Model convergence speed and training stability
+What it addresses: Model convergence speed and training stability
 
 ### When to Decrease Learning Rate
 
-**Symptoms:**
+Symptoms:
 
 - Loss oscillates wildly and doesn't decrease
 - Training loss jumps around or diverges
 - Model parameters become NaN
 
-**Use when:**
+Use when:
 
 - Near the end of training (use learning rate schedulers)
 - Training is unstable
-- You've found a good region but need fine-tuning
+- Found a good region but need fine-tuning
 
-**Intuition:** Smaller steps help you settle into a minimum without overshooting.
+Intuition: Smaller steps help settle into a minimum without overshooting.
 
-**Example:**
+Example:
 
 - Starting LR: 0.01 → Loss jumps between 0.5 and 2.0
 - Reduced LR: 0.001 → Loss smoothly decreases from 0.5 to 0.3
@@ -78,21 +78,21 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ### When to Increase Learning Rate
 
-**Symptoms:**
+Symptoms:
 
 - Training progresses extremely slowly
 - Loss decreases by tiny amounts each epoch
 - Stuck in a plateau
 
-**Use when:**
+Use when:
 
 - Early in training with a large dataset
 - Model is underfitting
 - Using learning rate warmup
 
-**Intuition:** Bigger steps help you move faster through the parameter space.
+Intuition: Bigger steps help move faster through the parameter space.
 
-**Example:**
+Example:
 
 - Starting LR: 0.00001 → 1000 epochs to reach decent performance
 - Increased LR: 0.001 → 50 epochs to reach same performance
@@ -101,25 +101,25 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ## 3. Dropout Adjustments
 
-**What it addresses:** Overfitting by randomly disabling neurons during training
+What it addresses: Overfitting by randomly disabling neurons during training
 
 ### When to Add/Increase Dropout
 
-**Symptoms:**
+Symptoms:
 
 - Training accuracy 99%, validation accuracy 75%
 - Large gap between training and validation loss
 - Model memorizes training data
 
-**Use when:**
+Use when:
 
-- You have limited training data
+- Limited training data available
 - Model is overfitting
 - Network has many parameters
 
-**Intuition:** Randomly "dropping" neurons forces the network to learn redundant representations and not rely on specific neurons.
+Intuition: Randomly "dropping" neurons forces the network to learn redundant representations and not rely on specific neurons.
 
-**Example:**
+Example:
 
 - Before: No dropout → Train acc: 98%, Val acc: 72%
 - After: Add dropout=0.3 → Train acc: 90%, Val acc: 85%
@@ -127,19 +127,19 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ### When to Decrease/Remove Dropout
 
-**Symptoms:**
+Symptoms:
 
 - Both training and validation accuracy are low
 - Model is underfitting
 - Training is very slow to converge
 
-**Use when:**
+Use when:
 
-- You have abundant training data
+- Abundant training data available
 - Model capacity is already limited
 - Underfitting is the problem
 
-**Example:**
+Example:
 
 - Before: dropout=0.5 → Train acc: 65%, Val acc: 63%
 - After: dropout=0.2 → Train acc: 82%, Val acc: 80%
@@ -148,20 +148,20 @@ This document helps you quickly decide which technique to apply when facing comm
 
 ## 4. Data Imputation
 
-**What it addresses:** Missing values in your dataset
+What it addresses: Missing values in the dataset
 
 ### When to Use Mean/Median Imputation
 
-**Use when:**
+Use when:
 
 - Data is Missing Completely at Random (MCAR)
 - <5% of values are missing
 - Feature is numerical and roughly normally distributed
-- You need a quick, simple solution
+- Quick, simple solution needed
 
-**Intuition:** Replace missing values with the "typical" value for that feature.
+Intuition: Replace missing values with the "typical" value for that feature.
 
-**Example:**
+Example:
 
 ```
 Age column: [25, 30, NaN, 35, NaN, 28]
@@ -171,13 +171,13 @@ Median imputation: [25, 30, 29, 35, 29, 28]
 
 ### When to Use Forward/Backward Fill
 
-**Use when:**
+Use when:
 
 - Data is time-series or sequential
 - Missing values should inherit from nearby values
 - Data has temporal dependencies
 
-**Example:**
+Example:
 
 ```
 Stock prices: [100, 102, NaN, NaN, 108]
@@ -186,28 +186,28 @@ Forward fill: [100, 102, 102, 102, 108]
 
 ### When to Use Predictive Imputation
 
-**Use when:**
+Use when:
 
 - >10% of data is missing
 - Missing data has patterns (Missing at Random - MAR)
-- You have computational resources
-- Feature is important for your model
+- Computational resources available
+- Feature is important for the model
 
-**Intuition:** Use other features to predict what the missing value should be.
+Intuition: Use other features to predict what the missing value should be.
 
-**Example:**
+Example:
 
 - Predict missing Age using: Gender, Income, Occupation
 - Train a model on complete cases, predict missing cases
 
 ### When to Create Missing Indicator
 
-**Use when:**
+Use when:
 
 - Missingness itself is informative
 - Missing Not at Random (MNAR)
 
-**Example:**
+Example:
 
 ```
 Income column: Many high earners leave it blank
@@ -218,27 +218,27 @@ Create: income_missing = [0, 0, 1, 0, 1]
 
 ## 5. Dimensionality Reduction
 
-**What it addresses:** Too many features causing computational or statistical problems
+What it addresses: Too many features causing computational or statistical problems
 
 ### When to Use PCA (Principal Component Analysis)
 
-**Symptoms:**
+Symptoms:
 
 - Hundreds or thousands of features
 - Features are highly correlated
 - Training is extremely slow
 - Multicollinearity in linear models
 
-**Use when:**
+Use when:
 
 - Features are numerical and continuous
-- You want to reduce features while preserving variance
+- Need to reduce features while preserving variance
 - Interpretability is not critical
-- You want to visualize high-dimensional data
+- Visualizing high-dimensional data
 
-**Intuition:** Find new axes that capture the most variance in your data, discard axes with little variance.
+Intuition: Find new axes that capture the most variance in the data, discard axes with little variance.
 
-**Example:**
+Example:
 
 - Original: 100 features → Model trains in 10 minutes
 - After PCA: 20 components (capturing 95% variance) → Trains in 1 minute
@@ -246,20 +246,20 @@ Create: income_missing = [0, 0, 1, 0, 1]
 
 ### When to Use Feature Selection
 
-**Use when:**
+Use when:
 
-- You need interpretable features
+- Need interpretable features
 - Features are a mix of types (categorical, numerical)
 - Domain knowledge is important
-- You want to understand feature importance
+- Understanding feature importance is required
 
-**Methods:**
+Methods:
 
 - Filter methods: Correlation, chi-square (fast, pre-modeling)
 - Wrapper methods: Recursive Feature Elimination (slow, accurate)
 - Embedded methods: L1 regularization/Lasso (automatic)
 
-**Example:**
+Example:
 
 - Original: 50 features
 - After correlation filter: Remove 15 highly correlated features → 35 features
@@ -267,13 +267,13 @@ Create: income_missing = [0, 0, 1, 0, 1]
 
 ### When to Use t-SNE or UMAP
 
-**Use when:**
+Use when:
 
-- You want to visualize high-dimensional data in 2D/3D
+- Visualizing high-dimensional data in 2D/3D
 - Exploring cluster structure
 - NOT for model training (only visualization)
 
-**Example:**
+Example:
 
 - Use case: Visualize 768-dimensional text embeddings in 2D to see topic clusters
 
@@ -281,9 +281,9 @@ Create: income_missing = [0, 0, 1, 0, 1]
 
 ## 6. Addressing Overfitting
 
-**What it is:** Model performs well on training data but poorly on unseen data
+What it is: Model performs well on training data but poorly on unseen data
 
-**Symptoms:**
+Symptoms:
 
 - Training accuracy >> Validation accuracy (e.g., 95% vs 70%)
 - Training loss keeps decreasing, validation loss increases
@@ -311,14 +311,14 @@ or
 
 #### 3. Add Regularization
 
-**L1 (Lasso):** Pushes some weights to exactly zero
+L1 (Lasso): Pushes some weights to exactly zero
 
-- Use when: You want feature selection
+- Use when: Feature selection desired
 - Example: Ridge regression with alpha=0.1
 
-**L2 (Ridge):** Penalizes large weights
+L2 (Ridge): Penalizes large weights
 
-- Use when: You want to keep all features but constrain them
+- Use when: Keep all features but constrain them
 - Example: Linear regression with penalty='l2', C=1.0
 
 #### 4. Increase Dropout
@@ -341,9 +341,9 @@ or
 
 ## 7. Addressing Underfitting
 
-**What it is:** Model performs poorly on both training and validation data
+What it is: Model performs poorly on both training and validation data
 
-**Symptoms:**
+Symptoms:
 
 - Both training and validation accuracy are low (e.g., 65% and 63%)
 - Loss remains high and plateaus quickly
@@ -365,7 +365,7 @@ or
 
 Create new features or use feature engineering:
 
-**Example:** For house prices
+Example: For house prices
 
 - Original: [bedrooms, bathrooms]
 - Enhanced: [bedrooms, bathrooms, bedrooms*bathrooms, total_sqft/bedrooms, age_of_house]
@@ -394,9 +394,9 @@ Create new features or use feature engineering:
 
 ## 8. Improving Recall (Sensitivity)
 
-**What it is:** Proportion of actual positives correctly identified
+What it is: Proportion of actual positives correctly identified
 
-**Use when:** Cost of False Negatives is high (missing cancer, failing to detect fraud)
+Use when: Cost of False Negatives is high (missing cancer, failing to detect fraud)
 
 ### Symptoms of Low Recall
 
@@ -429,7 +429,7 @@ Optimize for F2-score (weighs recall higher than precision)
 
 Use voting classifier with multiple models to catch more positives
 
-**Example:**
+Example:
 
 Medical diagnosis scenario:
 
@@ -441,9 +441,9 @@ Medical diagnosis scenario:
 
 ## 9. Improving Precision
 
-**What it is:** Proportion of positive predictions that are actually correct
+What it is: Proportion of positive predictions that are actually correct
 
-**Use when:** Cost of False Positives is high (spam filters, recommending bad products)
+Use when: Cost of False Positives is high (spam filters, recommending bad products)
 
 ### Symptoms of Low Precision
 
@@ -474,7 +474,7 @@ Create features that specifically identify true positives
 
 Remove mislabeled positive examples
 
-**Example:**
+Example:
 
 Email spam filter:
 
@@ -488,8 +488,8 @@ Email spam filter:
 
 ### Problem: Model Accuracy is Low
 
-- **Training AND validation low?** → UNDERFITTING (increase complexity, add features, reduce regularization)
-- **Training high, validation low?** → OVERFITTING (add data, simplify model, add regularization)
+- Training AND validation low? → UNDERFITTING (increase complexity, add features, reduce regularization)
+- Training high, validation low? → OVERFITTING (add data, simplify model, add regularization)
 
 ### Problem: Class Imbalance
 

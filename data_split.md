@@ -2,83 +2,74 @@
 
 ## Overview
 
-Data splitting is the process of dividing your dataset into separate subsets for training, validating, and testing machine learning models. The splitting strategy you choose significantly impacts how well your model performs in production. This guide covers the most common splitting techniques, when to use them, and practical examples.
+Data splitting is the process of dividing a dataset into separate subsets for training, validating, and testing machine learning models. The splitting strategy chosen significantly impacts how well a model performs in production. This guide covers the most common splitting techniques, when to use them, and practical examples.
 
 ---
 
 ## Understanding Training, Validation, and Test Datasets
 
-Before diving into splitting techniques, it's essential to understand why we split data and what each subset is used for.
+Before diving into splitting techniques, it's essential to understand why data is split in the first place and what each subset is used for.
 
-### Training Dataset
+When building machine learning models, all data is not used for the same purpose. Instead, data is divided into three distinct datasets, each serving a specific role in the model development lifecycle:
 
-**Purpose:** The dataset used to train the machine learning model.
+- **Training dataset**: Where the model learns patterns and relationships
+- **Validation dataset**: Where the model is evaluated and tuned during development
+- **Test dataset**: Where an honest, final assessment of model performance is obtained
 
-**What happens:** The model learns patterns, relationships, and features from this data. During training, the model adjusts its internal parameters (weights and biases) to minimize errors on this dataset.
+Think of it like learning a new skill: practice (training), receive feedback and adjust the approach (validation), then take a final test to assess true mastery (testing). Each dataset plays a crucial role in ensuring the model performs well on real-world data it has never seen before.
 
-**Analogy:** Like a student studying from textbooks and practice problems to learn concepts.
+The table below provides a detailed comparison of these three datasets:
 
-**Key Point:** The model sees this data multiple times during training.
+| Aspect | Training dataset | Validation dataset | Test dataset |
+|--------|-----------------|-------------------|--------------|
+| **Purpose** | Train the machine learning model | Tune hyperparameters and make model architecture decisions | Final, unbiased evaluation of the model |
+| **What happens** | Model learns patterns, relationships, and features. Adjusts internal parameters (weights and biases) to minimize errors | Evaluate model performance to:<br>• Choose between models/algorithms<br>• Tune hyperparameters<br>• Implement early stopping<br>• Make architecture decisions | Evaluate completely unseen data once for honest assessment of production performance |
+| **Student analogy** | Studying from textbooks and practice problems to learn concepts | Taking practice tests to identify weak areas and adjust study strategies | Taking the final exam once - represents real-world performance |
+| **Frequency of use** | Model sees this data multiple times during training | Can be evaluated multiple times; make model changes based on results | Touch only once at the very end |
+| **Model interaction** | Model learns from this data | Model is evaluated (not trained) on this data | Model is evaluated (never trained or tuned) on this data |
+| **Typical size** | 60-80% of total data | 10-20% of total data | 10-20% of total data |
+| **Key principle** | Used to fit model parameters | Used to select and tune the model | Used only for final performance measurement |
+| **Critical rule** | Must be representative of the problem | Must never be used for training | Never use results to improve the model - prevents bias |
 
-### Validation Dataset
+### Why split data?
 
-**Purpose:** The dataset used to tune hyperparameters and make decisions about model architecture.
+**1. Prevent overfitting**
 
-**What happens:** After training, you evaluate the model on this unseen data to:
-- Choose between different models or algorithms
-- Tune hyperparameters (learning rate, number of layers, regularization strength)
-- Decide when to stop training (early stopping)
-- Make architecture decisions
+- Training and testing on the same data causes the model to memorize rather than learn
+- The model will perform perfectly on training data but fail on new, unseen data
 
-**Analogy:** Like practice tests a student takes to identify weak areas and adjust study strategies.
+**2. Honest performance estimation**
 
-**Key Point:** You can look at validation results multiple times and make changes to your model based on them.
-
-### Test Dataset
-
-**Purpose:** The dataset used for final, unbiased evaluation of the model.
-
-**What happens:** After all training and tuning is complete, you evaluate the model on this completely unseen data ONCE to get an honest assessment of how it will perform in production.
-
-**Analogy:** Like the final exam - you only take it once, and it represents real-world performance.
-
-**Key Point:** You should NEVER use test results to make decisions about your model. Touch it only once at the very end.
-
-### Why Split Data?
-
-**1. Prevent Overfitting**
-- If you only train and test on the same data, the model might memorize rather than learn
-- It will perform perfectly on training data but fail on new, unseen data
-
-**2. Honest Performance Estimation**
 - Training accuracy is optimistic (model has seen the answers)
 - Test accuracy reflects real-world performance
 
-**3. Model Selection and Tuning**
-- Validation set allows you to compare models without biasing your final evaluation
+**3. Model selection and tuning**
+
+- Validation set allows comparison between models without biasing the final evaluation
 - Prevents information leakage from the test set
 
-### Common Misconception
+### Common misconception
 
-❌ **Wrong:** "I'll use test data to improve my model"
-- This defeats the purpose - you're now training on your test set
-- Your performance estimate becomes biased
+❌ **Wrong:** Using test data to improve the model
 
-✅ **Right:** "I'll use validation data to improve my model, then use test data ONCE for final evaluation"
+- This defeats the purpose - training on the test set
+- Performance estimate becomes biased
 
-### The Golden Rule
+✅ **Right:** Using validation data to improve the model, then using test data once for final evaluation
 
-**Never touch your test set until you're completely done with model development.** It's your only source of truth for how the model will perform in the real world.
+### The golden rule
+
+**Never touch the test set until model development is completely done.** It's the only source of truth for how the model will perform in the real world.
 
 ---
 
-## 1. Random Split (Simple Holdout)
+## 1. Random split (simple holdout)
 
-**Brief Description:** Randomly divide data into training and test sets, typically 70-30 or 80-20.
+**Brief description:** Randomly divide data into training and test sets, typically 70-30 or 80-20.
 
 **Intuition:** Every data point has an equal chance of ending up in either set, like shuffling a deck of cards and dealing them into piles.
 
-**When to Use:**
+**When to use:**
 
 - Large datasets with independent observations
 - No temporal dependencies
@@ -99,29 +90,29 @@ Test: Last 200 samples (20%)
 
 ---
 
-## 2. Stratified Split
+## 2. Stratified split
 
-**Brief Description:** Random split that preserves the proportion of classes in both train and test sets.
+**Brief description:** Random split that preserves the proportion of classes in both train and test sets.
 
-**Intuition:** If 30% of your data is Class A, both your train and test sets will have 30% Class A. Like ensuring each hand in a card game has the same ratio of suits.
+**Intuition:** If 30% of the data is class A, both train and test sets will have 30% class A. Like ensuring each hand in a card game has the same ratio of suits.
 
-**Step-by-Step Example:**
+**Step-by-step example:**
 
-Original Dataset (100 samples):
-- Class A: 70 samples (70%)
-- Class B: 30 samples (30%)
+Original dataset (100 samples):
+- class A: 70 samples (70%)
+- class B: 30 samples (30%)
 
-After 80-20 Stratified Split:
+After 80-20 stratified split:
 
-Training Set (80 samples):
-- Class A: 56 samples (70%)
-- Class B: 24 samples (30%)
+Training set (80 samples):
+- class A: 56 samples (70%)
+- class B: 24 samples (30%)
 
-Test Set (20 samples):
-- Class A: 14 samples (70%)
-- Class B: 6 samples (30%)
+Test set (20 samples):
+- class A: 14 samples (70%)
+- class B: 6 samples (30%)
 
-**When to Use:**
+**When to use:**
 
 - Imbalanced datasets
 - Classification problems
@@ -133,27 +124,27 @@ Test Set (20 samples):
 
 ---
 
-## 3. K-Fold Cross-Validation
+## 3. K-fold cross-validation
 
-**Brief Description:** Split data into K equal parts (folds). Train on K-1 folds, test on 1 fold, and repeat K times so each fold serves as the test set once.
+**Brief description:** Split data into K equal parts (folds). Train on K-1 folds, test on 1 fold, and repeat K times so each fold serves as the test set once.
 
 **Intuition:** Everyone gets a turn being the test set. Like rotating team members through different roles.
 
-**Step-by-Step Example (5-Fold CV):**
+**Step-by-step example (5-fold CV):**
 
 Dataset: 100 samples divided into 5 folds of 20 samples each
 
 ```
-Iteration 1: Train on [Fold2,3,4,5], Test on [Fold1]
-Iteration 2: Train on [Fold1,3,4,5], Test on [Fold2]
-Iteration 3: Train on [Fold1,2,4,5], Test on [Fold3]
-Iteration 4: Train on [Fold1,2,3,5], Test on [Fold4]
-Iteration 5: Train on [Fold1,2,3,4], Test on [Fold5]
+Iteration 1: Train on [fold 2,3,4,5], test on [fold 1]
+Iteration 2: Train on [fold 1,3,4,5], test on [fold 2]
+Iteration 3: Train on [fold 1,2,4,5], test on [fold 3]
+Iteration 4: Train on [fold 1,2,3,5], test on [fold 4]
+Iteration 5: Train on [fold 1,2,3,4], test on [fold 5]
 
-Final Score: Average of all 5 test scores
+Final score: Average of all 5 test scores
 ```
 
-**When to Use:**
+**When to use:**
 
 - Small to medium datasets
 - Need robust performance estimate
@@ -167,42 +158,42 @@ Final Score: Average of all 5 test scores
 
 ---
 
-## 4. Stratified K-Fold Cross-Validation
+## 4. Stratified K-fold cross-validation
 
-**Brief Description:** K-Fold CV where each fold maintains the original class distribution.
+**Brief description:** K-fold CV where each fold maintains the original class distribution.
 
 **Intuition:** Combines the benefits of stratification with cross-validation.
 
 **Example:**
 
-Dataset: 100 samples (70% Class A, 30% Class B)
-5-Fold Stratified CV
+Dataset: 100 samples (70% class A, 30% class B)
+5-fold stratified CV
 
 Each fold has 20 samples:
-- Fold 1: 14 Class A, 6 Class B
-- Fold 2: 14 Class A, 6 Class B
-- Fold 3: 14 Class A, 6 Class B
-- Fold 4: 14 Class A, 6 Class B
-- Fold 5: 14 Class A, 6 Class B
+- Fold 1: 14 class A, 6 class B
+- Fold 2: 14 class A, 6 class B
+- Fold 3: 14 class A, 6 class B
+- Fold 4: 14 class A, 6 class B
+- Fold 5: 14 class A, 6 class B
 
-Same rotation as K-Fold CV
+Same rotation as K-fold CV
 
-**When to Use:**
+**When to use:**
 
 - Small, imbalanced classification datasets
 - Gold standard for model evaluation on static data
 
 ---
 
-## 5. Group/Cluster Split
+## 5. Group/cluster split
 
-**Brief Description:** Split data ensuring all samples from the same group stay together in either train or test.
+**Brief description:** Split data ensuring all samples from the same group stay together in either train or test.
 
-**Intuition:** If you have multiple photos of the same person, all photos of Person A go into either train OR test, never both. Prevents the model from memorizing individuals.
+**Intuition:** When multiple photos of the same person exist, all photos of person A go into either train or test, never both. Prevents the model from memorizing individuals.
 
-**Step-by-Step Example:**
+**Step-by-step example:**
 
-Medical Dataset: Patient X-rays
+Medical dataset: patient X-rays
 
 ```
 Patient 1: [scan_a, scan_b, scan_c]
@@ -210,14 +201,14 @@ Patient 2: [scan_d, scan_e]
 Patient 3: [scan_f, scan_g, scan_h]
 Patient 4: [scan_i]
 
-Group Split (by patient):
-Train: Patient 1, Patient 3 → [scan_a,b,c,f,g,h]
-Test:  Patient 2, Patient 4 → [scan_d,e,i]
+Group split (by patient):
+Train: patient 1, patient 3 → [scan_a,b,c,f,g,h]
+Test:  patient 2, patient 4 → [scan_d,e,i]
 
-❌ WRONG (random): Training on scan_a,b from Patient1, testing on scan_c from Patient1
+❌ WRONG (random): Training on scan_a,b from patient 1, testing on scan_c from patient 1
 ```
 
-**When to Use:**
+**When to use:**
 
 - Multiple samples from same entity (patients, users, locations)
 - Hierarchical data structures
@@ -229,34 +220,34 @@ Test:  Patient 2, Patient 4 → [scan_d,e,i]
 
 ---
 
-## 6. Time Series Cross-Validation (Walk-Forward/Rolling Window)
+## 6. Time series cross-validation (walk-forward/rolling window)
 
-**Brief Description:** For time series, progressively train on expanding (or fixed) windows and test on the next period.
+**Brief description:** For time series, progressively train on expanding (or fixed) windows and test on the next period.
 
-**Intuition:** Simulate real-world deployment where you retrain periodically. Like using last month's data to predict next month, then updating.
+**Intuition:** Simulate real-world deployment where retraining occurs periodically. Like using last month's data to predict next month, then updating.
 
-**Step-by-Step Example (Expanding Window):**
+**Step-by-step example (expanding window):**
 
-Time Series: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug]
-
-```
-Fold 1: Train [Jan,Feb,Mar] → Test [Apr]
-Fold 2: Train [Jan,Feb,Mar,Apr] → Test [May]
-Fold 3: Train [Jan,Feb,Mar,Apr,May] → Test [Jun]
-Fold 4: Train [Jan,Feb,Mar,Apr,May,Jun] → Test [Jul]
-Fold 5: Train [Jan,Feb,Mar,Apr,May,Jun,Jul] → Test [Aug]
-```
-
-**Rolling Window Variant (Fixed Size):**
+Time series: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug]
 
 ```
-Fold 1: Train [Jan,Feb,Mar] → Test [Apr]
-Fold 2: Train [Feb,Mar,Apr] → Test [May]
-Fold 3: Train [Mar,Apr,May] → Test [Jun]
-Fold 4: Train [Apr,May,Jun] → Test [Jul]
+Fold 1: Train [Jan,Feb,Mar] → test [Apr]
+Fold 2: Train [Jan,Feb,Mar,Apr] → test [May]
+Fold 3: Train [Jan,Feb,Mar,Apr,May] → test [Jun]
+Fold 4: Train [Jan,Feb,Mar,Apr,May,Jun] → test [Jul]
+Fold 5: Train [Jan,Feb,Mar,Apr,May,Jun,Jul] → test [Aug]
 ```
 
-**When to Use:**
+**Rolling window variant (fixed size):**
+
+```
+Fold 1: Train [Jan,Feb,Mar] → test [Apr]
+Fold 2: Train [Feb,Mar,Apr] → test [May]
+Fold 3: Train [Mar,Apr,May] → test [Jun]
+Fold 4: Train [Apr,May,Jun] → test [Jul]
+```
+
+**When to use:**
 
 - Time series forecasting
 - Models need retraining over time
@@ -264,9 +255,9 @@ Fold 4: Train [Apr,May,Jun] → Test [Jul]
 
 ---
 
-## 7. Leave-One-Out Cross-Validation (LOOCV)
+## 7. Leave-one-out cross-validation (LOOCV)
 
-**Brief Description:** Extreme case of K-Fold where K = number of samples. Train on N-1 samples, test on 1.
+**Brief description:** Extreme case of K-fold where K = number of samples. Train on N-1 samples, test on 1.
 
 **Intuition:** Each individual data point gets to be the test set.
 
@@ -275,13 +266,13 @@ Fold 4: Train [Apr,May,Jun] → Test [Jul]
 Dataset: 50 samples
 
 ```
-Iteration 1: Train on samples [2-50], Test on [1]
-Iteration 2: Train on samples [1,3-50], Test on [2]
+Iteration 1: Train on samples [2-50], test on [1]
+Iteration 2: Train on samples [1,3-50], test on [2]
 ...
-Iteration 50: Train on samples [1-49], Test on [50]
+Iteration 50: Train on samples [1-49], test on [50]
 ```
 
-**When to Use:**
+**When to use:**
 
 - Very small datasets (< 100 samples)
 - Every data point is precious
@@ -292,18 +283,18 @@ Iteration 50: Train on samples [1-49], Test on [50]
 
 ---
 
-## 8. Nested Cross-Validation
+## 8. Nested cross-validation
 
-**Brief Description:** Two-level CV: outer loop for model evaluation, inner loop for hyperparameter tuning.
+**Brief description:** Two-level CV: outer loop for model evaluation, inner loop for hyperparameter tuning.
 
 **Intuition:** Prevents hyperparameter tuning from leaking information into the test set. The outer loop never sees the hyperparameter selection process.
 
-**Step-by-Step Example:**
+**Step-by-step example:**
 
 ```
-Outer Loop (5-Fold for evaluation):
+Outer loop (5-fold for evaluation):
   For each outer fold:
-    Inner Loop (3-Fold for tuning):
+    Inner loop (3-fold for tuning):
       - Try different hyperparameters
       - Select best hyperparameter
     - Train final model with best params
@@ -312,7 +303,7 @@ Outer Loop (5-Fold for evaluation):
 Result: Unbiased performance estimate
 ```
 
-**When to Use:**
+**When to use:**
 
 - Need both hyperparameter tuning AND unbiased evaluation
 - Comparing models fairly
@@ -324,9 +315,9 @@ Result: Unbiased performance estimate
 
 ---
 
-## 9. Train-Validation-Test Split (Three-Way Split)
+## 9. Train-validation-test split (three-way split)
 
-**Brief Description:** Divide data into three sets: train (60%), validation (20%), test (20%).
+**Brief description:** Divide data into three sets: train (60%), validation (20%), test (20%).
 
 **Intuition:** Training builds the model, validation tunes it, test evaluates it honestly. Like practice games, scrimmages, and championship matches.
 
@@ -340,39 +331,39 @@ Validation: 200 samples (tune hyperparameters, select model)
 Test: 200 samples (final evaluation, touch ONCE)
 ```
 
-**When to Use:**
+**When to use:**
 
 - Large datasets
 - Deep learning (need validation for early stopping)
-- When you need to tune hyperparameters
+- When hyperparameters need tuning
 
 **Workflow:**
 
 1. Train multiple models on training set
 2. Evaluate on validation set, tune hyperparameters
 3. Select best model
-4. Final evaluation on test set (ONCE only)
+4. Final evaluation on test set (once only)
 
 ---
 
-## 10. Blocked/Purged Cross-Validation
+## 10. Blocked/purged cross-validation
 
-**Brief Description:** For time series, add gaps between train and test to prevent temporal leakage.
+**Brief description:** For time series, add gaps between train and test to prevent temporal leakage.
 
-**Intuition:** Real-world predictions need time to materialize. If predicting stock prices, you can't use same-day information.
+**Intuition:** Real-world predictions need time to materialize. When predicting stock prices, same-day information cannot be used.
 
 **Example:**
 
-Time Series with 2-day purge:
+Time series with 2-day purge:
 
 ```
-Fold 1: Train [Day1-30] | PURGE [Day31-32] | Test [Day33-35]
-Fold 2: Train [Day1-35] | PURGE [Day36-37] | Test [Day38-40]
+Fold 1: Train [Day 1-30] | PURGE [Day 31-32] | test [Day 33-35]
+Fold 2: Train [Day 1-35] | PURGE [Day 36-37] | test [Day 38-40]
 
 The purge period ensures no overlap between training features and test outcomes.
 ```
 
-**When to Use:**
+**When to use:**
 
 - Financial time series
 - Data where features take time to compute
@@ -380,14 +371,14 @@ The purge period ensures no overlap between training features and test outcomes.
 
 ---
 
-## Quick Selection Guide
+## Quick selection guide
 
-| Scenario | Recommended Technique |
+| Scenario | Recommended technique |
 |----------|----------------------|
-| Large dataset, independent samples | Random Split |
-| Imbalanced classes | Stratified Split or Stratified K-Fold |
-| Small dataset | Stratified K-Fold CV |
-| Time series data | Temporal Split or Walk-Forward CV |
-| Multiple samples per entity | Group Split |
-| Need hyperparameter tuning | Train-Validation-Test or Nested CV |
-| Financial/trading data | Blocked/Purged CV |
+| Large dataset, independent samples | Random split |
+| Imbalanced classes | Stratified split or stratified K-fold |
+| Small dataset | Stratified K-fold CV |
+| Time series data | Temporal split or walk-forward CV |
+| Multiple samples per entity | Group split |
+| Need hyperparameter tuning | Train-validation-test or nested CV |
+| Financial/trading data | Blocked/purged CV |

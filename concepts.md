@@ -175,21 +175,25 @@ Loss function that measures difference between predicted probability distributio
 Technique that leverages knowledge from a pre-trained model (trained on large dataset) and adapts it to a new, related task with limited data. Instead of training from scratch, reuse learned features from the source task. Common approach: freeze early layers (general features like edges, textures) and fine-tune later layers (task-specific features). Dramatically reduces training time, data requirements, and computational costs.
 
 **When to Use:**
+
 - Limited labeled data for target task
 - Target task is similar to source task (e.g., both are image classification)
 - Want to leverage state-of-the-art pretrained models
 
 **Common Approaches:**
+
 - **Feature Extraction**: Freeze all pretrained layers, only train new classifier on top
 - **Fine-tuning**: Unfreeze some layers and retrain them with small learning rate
 - **Progressive Unfreezing**: Gradually unfreeze layers from top to bottom during training
 
 **Popular Pretrained Models:**
+
 - **Vision**: ResNet, VGG, EfficientNet, Vision Transformer (ViT)
 - **NLP**: BERT, GPT, T5, RoBERTa
 - **Multi-modal**: CLIP, Flamingo
 
 **Example Workflow:**
+
 1. Start with model pretrained on ImageNet (1.4M images, 1000 classes)
 2. Remove final classification layer
 3. Add new layer for your specific classes (e.g., 10 classes)
@@ -197,6 +201,7 @@ Technique that leverages knowledge from a pre-trained model (trained on large da
 5. Optionally fine-tune top layers with low learning rate
 
 **Benefits:**
+
 - Requires 10-100x less data than training from scratch
 - Converges faster (hours vs days/weeks)
 - Often achieves better performance, especially with limited data
