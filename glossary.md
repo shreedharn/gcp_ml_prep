@@ -50,6 +50,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Use Case** | Fraud detection (99% legitimate, 1% fraud), disease diagnosis |
 | **Solutions** | Downsampling, upsampling, SMOTE, class weights |
 
+### Class Distribution
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | The proportion of each class/category in a dataset |
+| **Use Case** | Understanding dataset balance, choosing appropriate splitting strategy |
+| **Example** | 70% spam, 30% not spam OR 95% negative, 5% positive |
+
 ### Class Weights
 
 | Attribute | Details |
@@ -57,6 +65,55 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Penalties applied during training to make misclassifying certain classes more costly |
 | **Use Case** | Handling imbalanced datasets without changing data distribution |
 | **Example** | class_weight={0: 1, 1: 5} penalizes misclassifying class 1 five times more |
+
+### CMEK (Customer-Managed Encryption Keys)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | User-controlled encryption keys for data security |
+| **AWS Equivalent** | Customer managed keys in KMS |
+| **Use Case** | Regulatory compliance, data sovereignty |
+
+### Concept Drift
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | When the statistical properties of the target variable change over time, making old patterns obsolete |
+| **Use Case** | Monitoring model performance, determining retraining schedule |
+| **Example** | Consumer behavior changes, market dynamics shift, seasonal patterns evolve |
+
+### Convergence
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | The point during training where model performance stops improving significantly |
+| **Use Case** | Determining when to stop training to avoid wasted compute resources |
+
+### CT (Continuous Training)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Automated retraining of models based on triggers or schedules |
+| **Components** | Data monitoring, training pipeline, deployment automation |
+
+---
+
+## D
+
+### DAG (Directed Acyclic Graph)
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Graph structure representing ML pipeline dependencies |
+| **Use Case** | Workflow orchestration in Vertex AI Pipelines, Kubeflow |
+
+### Data Leakage
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | When information from outside the training set is used to create the model, leading to overly optimistic performance |
+| **Common Causes** | Using test data in preprocessing, target leakage, temporal leakage |
+| **Prevention** | Proper train/test split, fit transformers only on training data |
 
 ### BigQuery ML
 
@@ -241,6 +298,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 
 ## H
 
+### Holdout Set
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | A portion of data set aside and not used during training |
+| **Use Case** | Final evaluation of model performance, validation during training |
+| **Example** | 20% test set held out from 80% training data |
+
 ### Hyperparameter
 
 | Attribute | Details |
@@ -305,6 +370,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 |-----------|---------|
 | **Description** | Regularization strength parameter; higher values increase penalty on model complexity |
 | **Use Case** | Controlling the tradeoff between fitting training data and model simplicity |
+
+### Look-Ahead Bias
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Using information that would not have been available at prediction time (common error in time series) |
+| **Use Case** | Preventing unrealistic model performance in time series |
+| **Example** | Using future stock prices to predict past prices, using tomorrow's data in today's features |
 
 ### Loss Function
 
@@ -398,6 +471,14 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Internal variable learned by the model from data (e.g., weights, biases) |
 | **Use Case** | Understanding model capacity and complexity |
 
+### Purge Period
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Gap between training and test data in time series to prevent temporal leakage |
+| **Use Case** | Blocked/purged cross-validation for time series |
+| **Example** | 2-day gap between last training day and first test day to allow features to materialize |
+
 ### Pub/Sub
 
 | Attribute | Details |
@@ -450,9 +531,41 @@ A comprehensive reference guide to key terms, services, and acronyms used in Goo
 | **Description** | Having many zero values; L1 regularization creates sparse weight matrices |
 | **Use Case** | Feature selection and model interpretability |
 
+### Stratification
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Ensuring class proportions are maintained across splits |
+| **Use Case** | Train/test splitting, K-fold cross-validation for classification |
+| **Example** | If 70% Class A in original data, maintain 70% Class A in both train and test |
+
 ---
 
 ## T
+
+### Temporal Leakage
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Using future information to predict the past in time series data |
+| **Prevention** | Proper temporal splitting, purge periods, walk-forward validation |
+| **Example** | Using next week's prices as features for this week's prediction |
+
+### Test Set
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Data used for final model evaluation, should only be used once |
+| **Use Case** | Unbiased performance assessment after all training and tuning |
+| **Best Practice** | Never touch until final evaluation, typically 10-20% of data |
+
+### Training Set
+
+| Attribute | Details |
+|-----------|---------|
+| **Description** | Data used to fit/train the model |
+| **Use Case** | Learning model parameters and patterns |
+| **Typical Size** | 60-80% of total dataset |
 
 ### t-SNE
 

@@ -1,6 +1,6 @@
 # GCP ML Engineer Certification Study Guide
 
-A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning Engineer certification.
+A comprehensive study guide for AWS professionals preparing for the Google Cloud Professional Machine Learning Engineer certification.
 
 ## Overview
 
@@ -25,13 +25,21 @@ This guide leverages your AWS Machine Learning expertise to accelerate GCP learn
 
 - **Common Scenarios** - Real-world exam scenarios with detailed solutions
 - **Data Science Techniques** - Quick decision guide for data science challenges
+- **Data Splitting Strategies** - Comprehensive guide to train/test/validation splitting techniques
 - **Hands-On Labs** - Practical exercises and preparation checklist
 - **Quick Reference** - Service mapping tables and decision matrices for rapid review
 - **Glossary** - Comprehensive terminology reference with AWS equivalents
 
 ---
-## License  
-This project is licensed under the [MIT License](./LICENSE.md).
+## ℹ️ About
 
-> ℹ️ **Note:** This Vector Search guide is created with the help of LLMs.
-> Please refer to the license file for full terms of use.
+This study guide is created for educational and informational purposes to help AWS professionals prepare for the Google Cloud Professional Machine Learning Engineer certification
+
+## 🤝 Contributing
+
+If you find errors or have suggestions for improvements, please open an issue at:
+**[https://github.com/shreedharn/gcp_ml_prep](https://github.com/shreedharn/gcp_ml_prep)**
+
+
+## 📄 License
+This project is licensed under the [MIT License](./LICENSE.md).

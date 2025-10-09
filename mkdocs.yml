@@ -62,6 +62,7 @@ nav:
   - Reference:
     - "Common Scenarios": scenarios.md
     - "Data Science Techniques": ds_techniques.md
+    - "Data Splitting Strategies": data_split.md
     - "Hands-On Labs": labs.md
     - "Quick Reference": reference.md
     - "Glossary": glossary.md

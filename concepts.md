@@ -170,6 +170,41 @@ Loss function that measures difference between predicted probability distributio
 
 *Specialized machine learning approaches for specific use cases.*
 
+### Transfer Learning
+
+Technique that leverages knowledge from a pre-trained model (trained on large dataset) and adapts it to a new, related task with limited data. Instead of training from scratch, reuse learned features from the source task. Common approach: freeze early layers (general features like edges, textures) and fine-tune later layers (task-specific features). Dramatically reduces training time, data requirements, and computational costs.
+
+**When to Use:**
+- Limited labeled data for target task
+- Target task is similar to source task (e.g., both are image classification)
+- Want to leverage state-of-the-art pretrained models
+
+**Common Approaches:**
+- **Feature Extraction**: Freeze all pretrained layers, only train new classifier on top
+- **Fine-tuning**: Unfreeze some layers and retrain them with small learning rate
+- **Progressive Unfreezing**: Gradually unfreeze layers from top to bottom during training
+
+**Popular Pretrained Models:**
+- **Vision**: ResNet, VGG, EfficientNet, Vision Transformer (ViT)
+- **NLP**: BERT, GPT, T5, RoBERTa
+- **Multi-modal**: CLIP, Flamingo
+
+**Example Workflow:**
+1. Start with model pretrained on ImageNet (1.4M images, 1000 classes)
+2. Remove final classification layer
+3. Add new layer for your specific classes (e.g., 10 classes)
+4. Freeze pretrained layers, train only new layer
+5. Optionally fine-tune top layers with low learning rate
+
+**Benefits:**
+- Requires 10-100x less data than training from scratch
+- Converges faster (hours vs days/weeks)
+- Often achieves better performance, especially with limited data
+- Reduces computational costs significantly
+
+**GCP Implementation:**
+Vertex AI AutoML uses transfer learning automatically with Google's pretrained models. For custom training, TensorFlow Hub and Hugging Face provide pretrained models.
+
 ### Collaborative Filtering
 
 Recommendation technique that makes predictions based on preferences of similar users or items. User-based finds users with similar tastes; item-based finds similar items. Doesn't require explicit feature engineering, works from interaction patterns (ratings, purchases, clicks). Used by Netflix, Amazon, and Spotify for recommendations.
