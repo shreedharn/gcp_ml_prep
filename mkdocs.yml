@@ -54,7 +54,8 @@ docs_dir: docs
 nav:
   - Home: README.md
   - Study Guide:
-    - "ML Concepts": concepts.md
+    - "ML Concepts": ml_concepts.md
+    - "Data Science Concepts": ds_concepts.md
     - "GCP & AWS Comparison": gcp-aws-compare.md
     - "Technical Aspects": technical.md
     - "Architectural Patterns": patterns.md

@@ -15,7 +15,8 @@ This guide leverages your AWS Machine Learning expertise to accelerate GCP learn
 
 ### Core Study Materials
 
-- **ML Concepts** - Fundamental machine learning and data science concepts with practical examples
+- **ML Concepts** - Fundamental machine learning concepts including algorithms, training, and evaluation
+- **Data Science Concepts** - Data preparation, preprocessing, and transformation techniques
 - **GCP & AWS Comparison** - Comprehensive service-to-service mapping and feature comparisons
 - **Technical Aspects** - Deep dive into Vertex AI, training, deployment, and monitoring
 - **Architectural Patterns** - Common ML architecture patterns with GCP/AWS implementations
