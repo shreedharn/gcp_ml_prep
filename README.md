@@ -38,7 +38,7 @@ This study guide is created for educational and informational purposes to help A
 ## 🤝 Contributing
 
 If you find errors or have suggestions for improvements, please open an issue at:
-**[https://github.com/shreedharn/gcp_ml_prep](https://github.com/shreedharn/gcp_ml_prep)**
+[https://github.com/shreedharn/gcp_ml_prep](https://github.com/shreedharn/gcp_ml_prep)
 
 
 ## 📄 License
