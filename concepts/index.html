@@ -2158,29 +2158,39 @@
 <p><em>Specialized machine learning approaches for specific use cases.</em></p>
 <h3 id="transfer-learning">Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permanent link">&para;</a></h3>
 <p>Technique that leverages knowledge from a pre-trained model (trained on large dataset) and adapts it to a new, related task with limited data. Instead of training from scratch, reuse learned features from the source task. Common approach: freeze early layers (general features like edges, textures) and fine-tune later layers (task-specific features). Dramatically reduces training time, data requirements, and computational costs.</p>
-<p><strong>When to Use:</strong>
-- Limited labeled data for target task
-- Target task is similar to source task (e.g., both are image classification)
-- Want to leverage state-of-the-art pretrained models</p>
-<p><strong>Common Approaches:</strong>
-- <strong>Feature Extraction</strong>: Freeze all pretrained layers, only train new classifier on top
-- <strong>Fine-tuning</strong>: Unfreeze some layers and retrain them with small learning rate
-- <strong>Progressive Unfreezing</strong>: Gradually unfreeze layers from top to bottom during training</p>
-<p><strong>Popular Pretrained Models:</strong>
-- <strong>Vision</strong>: ResNet, VGG, EfficientNet, Vision Transformer (ViT)
-- <strong>NLP</strong>: BERT, GPT, T5, RoBERTa
-- <strong>Multi-modal</strong>: CLIP, Flamingo</p>
-<p><strong>Example Workflow:</strong>
-1. Start with model pretrained on ImageNet (1.4M images, 1000 classes)
-2. Remove final classification layer
-3. Add new layer for your specific classes (e.g., 10 classes)
-4. Freeze pretrained layers, train only new layer
-5. Optionally fine-tune top layers with low learning rate</p>
-<p><strong>Benefits:</strong>
-- Requires 10-100x less data than training from scratch
-- Converges faster (hours vs days/weeks)
-- Often achieves better performance, especially with limited data
-- Reduces computational costs significantly</p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Limited labeled data for target task</li>
+<li>Target task is similar to source task (e.g., both are image classification)</li>
+<li>Want to leverage state-of-the-art pretrained models</li>
+</ul>
+<p><strong>Common Approaches:</strong></p>
+<ul>
+<li><strong>Feature Extraction</strong>: Freeze all pretrained layers, only train new classifier on top</li>
+<li><strong>Fine-tuning</strong>: Unfreeze some layers and retrain them with small learning rate</li>
+<li><strong>Progressive Unfreezing</strong>: Gradually unfreeze layers from top to bottom during training</li>
+</ul>
+<p><strong>Popular Pretrained Models:</strong></p>
+<ul>
+<li><strong>Vision</strong>: ResNet, VGG, EfficientNet, Vision Transformer (ViT)</li>
+<li><strong>NLP</strong>: BERT, GPT, T5, RoBERTa</li>
+<li><strong>Multi-modal</strong>: CLIP, Flamingo</li>
+</ul>
+<p><strong>Example Workflow:</strong></p>
+<ol>
+<li>Start with model pretrained on ImageNet (1.4M images, 1000 classes)</li>
+<li>Remove final classification layer</li>
+<li>Add new layer for your specific classes (e.g., 10 classes)</li>
+<li>Freeze pretrained layers, train only new layer</li>
+<li>Optionally fine-tune top layers with low learning rate</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Requires 10-100x less data than training from scratch</li>
+<li>Converges faster (hours vs days/weeks)</li>
+<li>Often achieves better performance, especially with limited data</li>
+<li>Reduces computational costs significantly</li>
+</ul>
 <p><strong>GCP Implementation:</strong>
 Vertex AI AutoML uses transfer learning automatically with Google's pretrained models. For custom training, TensorFlow Hub and Hugging Face provide pretrained models.</p>
 <h3 id="collaborative-filtering">Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permanent link">&para;</a></h3>

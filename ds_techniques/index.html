@@ -1928,39 +1928,39 @@
 
 <h1 id="data-science-techniques-quick-decision-reference">Data Science Techniques: Quick Decision Reference<a class="headerlink" href="#data-science-techniques-quick-decision-reference" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This document helps you quickly decide which technique to apply when facing common data science challenges. Each section includes the problem symptoms, when to use the technique, intuition behind it, and practical examples.</p>
+<p>This document provides quick guidance on which technique to apply when facing common data science challenges. Each section includes the problem symptoms, when to use the technique, intuition behind it, and practical examples.</p>
 <hr />
 <h2 id="1-downsampling--upsampling">1. Downsampling / Upsampling<a class="headerlink" href="#1-downsampling--upsampling" title="Permanent link">&para;</a></h2>
-<p><strong>What it addresses:</strong> Class imbalance in classification problems</p>
+<p>What it addresses: Class imbalance in classification problems</p>
 <h3 id="when-to-downsample">When to Downsample<a class="headerlink" href="#when-to-downsample" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
-<li>You have 95% class A, 5% class B</li>
+<li>95% class A, 5% class B distribution</li>
 <li>Model predicts majority class for everything</li>
 <li>High accuracy but poor performance on minority class</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Majority class has sufficient samples even after reduction (&gt;10,000 samples)</li>
 <li>Training time is a constraint</li>
-<li>You want to balance class representation quickly</li>
+<li>Need to balance class representation quickly</li>
 </ul>
-<p><strong>Intuition:</strong> Remove excess majority class samples so the model sees balanced examples during training.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Remove excess majority class samples so the model sees balanced examples during training.</p>
+<p>Example:</p>
 <ul>
 <li>Original: 95,000 negative reviews, 5,000 positive reviews</li>
 <li>Action: Randomly sample 5,000 negative reviews</li>
 <li>Result: 5,000 negative, 5,000 positive (balanced dataset)</li>
 </ul>
 <h3 id="when-to-upsample">When to Upsample<a class="headerlink" href="#when-to-upsample" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Minority class has very few samples (&lt;1,000)</li>
-<li>You can't afford to lose majority class information</li>
+<li>Cannot afford to lose majority class information</li>
 <li>Combined with techniques like SMOTE for synthetic samples</li>
 </ul>
-<p><strong>Intuition:</strong> Create copies or synthetic versions of minority class to match majority class size.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Create copies or synthetic versions of minority class to match majority class size.</p>
+<p>Example:</p>
 <ul>
 <li>Original: 10,000 fraud cases, 990,000 legitimate transactions</li>
 <li>Action: Use SMOTE to create synthetic fraud cases</li>
@@ -1968,117 +1968,117 @@
 </ul>
 <hr />
 <h2 id="2-learning-rate-adjustments">2. Learning Rate Adjustments<a class="headerlink" href="#2-learning-rate-adjustments" title="Permanent link">&para;</a></h2>
-<p><strong>What it addresses:</strong> Model convergence speed and training stability</p>
+<p>What it addresses: Model convergence speed and training stability</p>
 <h3 id="when-to-decrease-learning-rate">When to Decrease Learning Rate<a class="headerlink" href="#when-to-decrease-learning-rate" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
 <li>Loss oscillates wildly and doesn't decrease</li>
 <li>Training loss jumps around or diverges</li>
 <li>Model parameters become NaN</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Near the end of training (use learning rate schedulers)</li>
 <li>Training is unstable</li>
-<li>You've found a good region but need fine-tuning</li>
+<li>Found a good region but need fine-tuning</li>
 </ul>
-<p><strong>Intuition:</strong> Smaller steps help you settle into a minimum without overshooting.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Smaller steps help settle into a minimum without overshooting.</p>
+<p>Example:</p>
 <ul>
 <li>Starting LR: 0.01 → Loss jumps between 0.5 and 2.0</li>
 <li>Reduced LR: 0.001 → Loss smoothly decreases from 0.5 to 0.3</li>
 <li>Typical values: 0.1 → 0.01 → 0.001 → 0.0001</li>
 </ul>
 <h3 id="when-to-increase-learning-rate">When to Increase Learning Rate<a class="headerlink" href="#when-to-increase-learning-rate" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
 <li>Training progresses extremely slowly</li>
 <li>Loss decreases by tiny amounts each epoch</li>
 <li>Stuck in a plateau</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Early in training with a large dataset</li>
 <li>Model is underfitting</li>
 <li>Using learning rate warmup</li>
 </ul>
-<p><strong>Intuition:</strong> Bigger steps help you move faster through the parameter space.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Bigger steps help move faster through the parameter space.</p>
+<p>Example:</p>
 <ul>
 <li>Starting LR: 0.00001 → 1000 epochs to reach decent performance</li>
 <li>Increased LR: 0.001 → 50 epochs to reach same performance</li>
 </ul>
 <hr />
 <h2 id="3-dropout-adjustments">3. Dropout Adjustments<a class="headerlink" href="#3-dropout-adjustments" title="Permanent link">&para;</a></h2>
-<p><strong>What it addresses:</strong> Overfitting by randomly disabling neurons during training</p>
+<p>What it addresses: Overfitting by randomly disabling neurons during training</p>
 <h3 id="when-to-addincrease-dropout">When to Add/Increase Dropout<a class="headerlink" href="#when-to-addincrease-dropout" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
 <li>Training accuracy 99%, validation accuracy 75%</li>
 <li>Large gap between training and validation loss</li>
 <li>Model memorizes training data</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
-<li>You have limited training data</li>
+<li>Limited training data available</li>
 <li>Model is overfitting</li>
 <li>Network has many parameters</li>
 </ul>
-<p><strong>Intuition:</strong> Randomly "dropping" neurons forces the network to learn redundant representations and not rely on specific neurons.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Randomly "dropping" neurons forces the network to learn redundant representations and not rely on specific neurons.</p>
+<p>Example:</p>
 <ul>
 <li>Before: No dropout → Train acc: 98%, Val acc: 72%</li>
 <li>After: Add dropout=0.3 → Train acc: 90%, Val acc: 85%</li>
 <li>Typical dropout rates: 0.2 to 0.5</li>
 </ul>
 <h3 id="when-to-decreaseremove-dropout">When to Decrease/Remove Dropout<a class="headerlink" href="#when-to-decreaseremove-dropout" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
 <li>Both training and validation accuracy are low</li>
 <li>Model is underfitting</li>
 <li>Training is very slow to converge</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
-<li>You have abundant training data</li>
+<li>Abundant training data available</li>
 <li>Model capacity is already limited</li>
 <li>Underfitting is the problem</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <ul>
 <li>Before: dropout=0.5 → Train acc: 65%, Val acc: 63%</li>
 <li>After: dropout=0.2 → Train acc: 82%, Val acc: 80%</li>
 </ul>
 <hr />
 <h2 id="4-data-imputation">4. Data Imputation<a class="headerlink" href="#4-data-imputation" title="Permanent link">&para;</a></h2>
-<p><strong>What it addresses:</strong> Missing values in your dataset</p>
+<p>What it addresses: Missing values in the dataset</p>
 <h3 id="when-to-use-meanmedian-imputation">When to Use Mean/Median Imputation<a class="headerlink" href="#when-to-use-meanmedian-imputation" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Data is Missing Completely at Random (MCAR)</li>
 <li>&lt;5% of values are missing</li>
 <li>Feature is numerical and roughly normally distributed</li>
-<li>You need a quick, simple solution</li>
+<li>Quick, simple solution needed</li>
 </ul>
-<p><strong>Intuition:</strong> Replace missing values with the "typical" value for that feature.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Replace missing values with the "typical" value for that feature.</p>
+<p>Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Age column: [25, 30, NaN, 35, NaN, 28]
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mean imputation: [25, 30, 31.5, 35, 31.5, 28]
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Median imputation: [25, 30, 29, 35, 29, 28]
 </code></pre></div>
 <h3 id="when-to-use-forwardbackward-fill">When to Use Forward/Backward Fill<a class="headerlink" href="#when-to-use-forwardbackward-fill" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Data is time-series or sequential</li>
 <li>Missing values should inherit from nearby values</li>
 <li>Data has temporal dependencies</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Stock prices: [100, 102, NaN, NaN, 108]
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Forward fill: [100, 102, 102, 102, 108]
 </code></pre></div>
 <h3 id="when-to-use-predictive-imputation">When to Use Predictive Imputation<a class="headerlink" href="#when-to-use-predictive-imputation" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>
 <blockquote>
@@ -2086,85 +2086,85 @@
 </blockquote>
 </li>
 <li>Missing data has patterns (Missing at Random - MAR)</li>
-<li>You have computational resources</li>
-<li>Feature is important for your model</li>
+<li>Computational resources available</li>
+<li>Feature is important for the model</li>
 </ul>
-<p><strong>Intuition:</strong> Use other features to predict what the missing value should be.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Use other features to predict what the missing value should be.</p>
+<p>Example:</p>
 <ul>
 <li>Predict missing Age using: Gender, Income, Occupation</li>
 <li>Train a model on complete cases, predict missing cases</li>
 </ul>
 <h3 id="when-to-create-missing-indicator">When to Create Missing Indicator<a class="headerlink" href="#when-to-create-missing-indicator" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Missingness itself is informative</li>
 <li>Missing Not at Random (MNAR)</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Income column: Many high earners leave it blank
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Create: income_missing = [0, 0, 1, 0, 1]
 </code></pre></div>
 <hr />
 <h2 id="5-dimensionality-reduction">5. Dimensionality Reduction<a class="headerlink" href="#5-dimensionality-reduction" title="Permanent link">&para;</a></h2>
-<p><strong>What it addresses:</strong> Too many features causing computational or statistical problems</p>
+<p>What it addresses: Too many features causing computational or statistical problems</p>
 <h3 id="when-to-use-pca-principal-component-analysis">When to Use PCA (Principal Component Analysis)<a class="headerlink" href="#when-to-use-pca-principal-component-analysis" title="Permanent link">&para;</a></h3>
-<p><strong>Symptoms:</strong></p>
+<p>Symptoms:</p>
 <ul>
 <li>Hundreds or thousands of features</li>
 <li>Features are highly correlated</li>
 <li>Training is extremely slow</li>
 <li>Multicollinearity in linear models</li>
 </ul>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
 <li>Features are numerical and continuous</li>
-<li>You want to reduce features while preserving variance</li>
+<li>Need to reduce features while preserving variance</li>
 <li>Interpretability is not critical</li>
-<li>You want to visualize high-dimensional data</li>
+<li>Visualizing high-dimensional data</li>
 </ul>
-<p><strong>Intuition:</strong> Find new axes that capture the most variance in your data, discard axes with little variance.</p>
-<p><strong>Example:</strong></p>
+<p>Intuition: Find new axes that capture the most variance in the data, discard axes with little variance.</p>
+<p>Example:</p>
 <ul>
 <li>Original: 100 features → Model trains in 10 minutes</li>
 <li>After PCA: 20 components (capturing 95% variance) → Trains in 1 minute</li>
 <li>Use case: Image data (784 pixels) → 50 principal components</li>
 </ul>
 <h3 id="when-to-use-feature-selection">When to Use Feature Selection<a class="headerlink" href="#when-to-use-feature-selection" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
-<li>You need interpretable features</li>
+<li>Need interpretable features</li>
 <li>Features are a mix of types (categorical, numerical)</li>
 <li>Domain knowledge is important</li>
-<li>You want to understand feature importance</li>
+<li>Understanding feature importance is required</li>
 </ul>
-<p><strong>Methods:</strong></p>
+<p>Methods:</p>
 <ul>
 <li>Filter methods: Correlation, chi-square (fast, pre-modeling)</li>
 <li>Wrapper methods: Recursive Feature Elimination (slow, accurate)</li>
 <li>Embedded methods: L1 regularization/Lasso (automatic)</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <ul>
 <li>Original: 50 features</li>
 <li>After correlation filter: Remove 15 highly correlated features → 35 features</li>
 <li>After RFE: Keep top 20 most predictive features</li>
 </ul>
 <h3 id="when-to-use-t-sne-or-umap">When to Use t-SNE or UMAP<a class="headerlink" href="#when-to-use-t-sne-or-umap" title="Permanent link">&para;</a></h3>
-<p><strong>Use when:</strong></p>
+<p>Use when:</p>
 <ul>
-<li>You want to visualize high-dimensional data in 2D/3D</li>
+<li>Visualizing high-dimensional data in 2D/3D</li>
 <li>Exploring cluster structure</li>
 <li>NOT for model training (only visualization)</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <ul>
 <li>Use case: Visualize 768-dimensional text embeddings in 2D to see topic clusters</li>
 </ul>
 <hr />
 <h2 id="6-addressing-overfitting">6. Addressing Overfitting<a class="headerlink" href="#6-addressing-overfitting" title="Permanent link">&para;</a></h2>
-<p><strong>What it is:</strong> Model performs well on training data but poorly on unseen data</p>
-<p><strong>Symptoms:</strong></p>
+<p>What it is: Model performs well on training data but poorly on unseen data</p>
+<p>Symptoms:</p>
 <ul>
 <li>Training accuracy &gt;&gt; Validation accuracy (e.g., 95% vs 70%)</li>
 <li>Training loss keeps decreasing, validation loss increases</li>
@@ -2189,14 +2189,14 @@
 <li>After: Decision tree depth=5</li>
 </ul>
 <h4 id="3-add-regularization">3. Add Regularization<a class="headerlink" href="#3-add-regularization" title="Permanent link">&para;</a></h4>
-<p><strong>L1 (Lasso):</strong> Pushes some weights to exactly zero</p>
+<p>L1 (Lasso): Pushes some weights to exactly zero</p>
 <ul>
-<li>Use when: You want feature selection</li>
+<li>Use when: Feature selection desired</li>
 <li>Example: Ridge regression with alpha=0.1</li>
 </ul>
-<p><strong>L2 (Ridge):</strong> Penalizes large weights</p>
+<p>L2 (Ridge): Penalizes large weights</p>
 <ul>
-<li>Use when: You want to keep all features but constrain them</li>
+<li>Use when: Keep all features but constrain them</li>
 <li>Example: Linear regression with penalty='l2', C=1.0</li>
 </ul>
 <h4 id="4-increase-dropout">4. Increase Dropout<a class="headerlink" href="#4-increase-dropout" title="Permanent link">&para;</a></h4>
@@ -2217,8 +2217,8 @@
 </ul>
 <hr />
 <h2 id="7-addressing-underfitting">7. Addressing Underfitting<a class="headerlink" href="#7-addressing-underfitting" title="Permanent link">&para;</a></h2>
-<p><strong>What it is:</strong> Model performs poorly on both training and validation data</p>
-<p><strong>Symptoms:</strong></p>
+<p>What it is: Model performs poorly on both training and validation data</p>
+<p>Symptoms:</p>
 <ul>
 <li>Both training and validation accuracy are low (e.g., 65% and 63%)</li>
 <li>Loss remains high and plateaus quickly</li>
@@ -2237,7 +2237,7 @@
 </ul>
 <h4 id="2-add-more-features">2. Add More Features<a class="headerlink" href="#2-add-more-features" title="Permanent link">&para;</a></h4>
 <p>Create new features or use feature engineering:</p>
-<p><strong>Example:</strong> For house prices</p>
+<p>Example: For house prices</p>
 <ul>
 <li>Original: [bedrooms, bathrooms]</li>
 <li>Enhanced: [bedrooms, bathrooms, bedrooms*bathrooms, total_sqft/bedrooms, age_of_house]</li>
@@ -2264,8 +2264,8 @@
 </ul>
 <hr />
 <h2 id="8-improving-recall-sensitivity">8. Improving Recall (Sensitivity)<a class="headerlink" href="#8-improving-recall-sensitivity" title="Permanent link">&para;</a></h2>
-<p><strong>What it is:</strong> Proportion of actual positives correctly identified</p>
-<p><strong>Use when:</strong> Cost of False Negatives is high (missing cancer, failing to detect fraud)</p>
+<p>What it is: Proportion of actual positives correctly identified</p>
+<p>Use when: Cost of False Negatives is high (missing cancer, failing to detect fraud)</p>
 <h3 id="symptoms-of-low-recall">Symptoms of Low Recall<a class="headerlink" href="#symptoms-of-low-recall" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Model misses too many positive cases</li>
@@ -2287,7 +2287,7 @@
 <p>Optimize for F2-score (weighs recall higher than precision)</p>
 <h4 id="5-ensemble-methods">5. Ensemble Methods<a class="headerlink" href="#5-ensemble-methods" title="Permanent link">&para;</a></h4>
 <p>Use voting classifier with multiple models to catch more positives</p>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <p>Medical diagnosis scenario:</p>
 <ul>
 <li>Before: Recall=65% → Missing 35% of disease cases</li>
@@ -2296,8 +2296,8 @@
 </ul>
 <hr />
 <h2 id="9-improving-precision">9. Improving Precision<a class="headerlink" href="#9-improving-precision" title="Permanent link">&para;</a></h2>
-<p><strong>What it is:</strong> Proportion of positive predictions that are actually correct</p>
-<p><strong>Use when:</strong> Cost of False Positives is high (spam filters, recommending bad products)</p>
+<p>What it is: Proportion of positive predictions that are actually correct</p>
+<p>Use when: Cost of False Positives is high (spam filters, recommending bad products)</p>
 <h3 id="symptoms-of-low-precision">Symptoms of Low Precision<a class="headerlink" href="#symptoms-of-low-precision" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Too many false alarms</li>
@@ -2318,7 +2318,7 @@
 <p>Create features that specifically identify true positives</p>
 <h4 id="5-clean-training-data">5. Clean Training Data<a class="headerlink" href="#5-clean-training-data" title="Permanent link">&para;</a></h4>
 <p>Remove mislabeled positive examples</p>
-<p><strong>Example:</strong></p>
+<p>Example:</p>
 <p>Email spam filter:</p>
 <ul>
 <li>Before: Precision=70% → 30% of emails marked as spam are legitimate</li>
@@ -2329,8 +2329,8 @@
 <h2 id="10-quick-decision-flowchart">10. Quick Decision Flowchart<a class="headerlink" href="#10-quick-decision-flowchart" title="Permanent link">&para;</a></h2>
 <h3 id="problem-model-accuracy-is-low">Problem: Model Accuracy is Low<a class="headerlink" href="#problem-model-accuracy-is-low" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Training AND validation low?</strong> → UNDERFITTING (increase complexity, add features, reduce regularization)</li>
-<li><strong>Training high, validation low?</strong> → OVERFITTING (add data, simplify model, add regularization)</li>
+<li>Training AND validation low? → UNDERFITTING (increase complexity, add features, reduce regularization)</li>
+<li>Training high, validation low? → OVERFITTING (add data, simplify model, add regularization)</li>
 </ul>
 <h3 id="problem-class-imbalance">Problem: Class Imbalance<a class="headerlink" href="#problem-class-imbalance" title="Permanent link">&para;</a></h3>
 <ul>
