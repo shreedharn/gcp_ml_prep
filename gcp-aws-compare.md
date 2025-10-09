@@ -427,7 +427,155 @@ Text-to-Speech enables:
 - Custom voice creation (in preview)
 - SSML support
 
-## 1.3 Data Processing & Storage Services
+## 1.3 ML Implementation Patterns & Best Practices
+
+### Model Selection by Problem Type
+
+| Problem Type | Algorithms | GCP Service | AWS Service |
+|--------------|------------|-------------|-------------|
+| Binary Classification | Logistic Regression, Random Forest, XGBoost, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Autopilot |
+| Multi-class Classification | Softmax Regression, Random Forest, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Built-in Algorithms |
+| Regression | Linear Regression, Random Forest, XGBoost, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Autopilot |
+| Time Series | ARIMA, Prophet, LSTM | BigQuery ML ARIMA_PLUS, Vertex AI | Amazon Forecast, SageMaker |
+| Clustering | K-Means, DBSCAN | BigQuery ML K-Means | SageMaker K-Means |
+| Recommendation | Matrix Factorization, Neural CF | BigQuery ML, Retail API | Amazon Personalize |
+
+### BigQuery ML Evaluation Metrics
+
+For classification models in BigQuery ML:
+
+```sql
+SELECT *
+FROM ML.EVALUATE(MODEL `project.dataset.classification_model`)
+
+-- Returns:
+-- - precision: TP / (TP + FP)
+-- - recall: TP / (TP + FN)
+-- - accuracy: (TP + TN) / Total
+-- - f1_score: 2 * (precision * recall) / (precision + recall)
+-- - log_loss: -mean(y * log(p) + (1-y) * log(1-p))
+-- - roc_auc: Area under ROC curve
+```
+
+### Bias and Fairness Detection
+
+Vertex AI provides tools to analyze fairness metrics by demographic groups:
+
+```sql
+-- Check for disparate impact
+SELECT
+  gender,
+  race,
+  COUNT(*) as total,
+  AVG(CAST(prediction AS FLOAT64)) as approval_rate,
+  STDDEV(CAST(prediction AS FLOAT64)) as approval_stddev
+FROM `project.dataset.predictions`
+GROUP BY gender, race
+
+-- Disparate Impact Ratio = (Approval Rate for Protected Group) / (Approval Rate for Reference Group)
+-- Should be > 0.8 to avoid discrimination
+```
+
+Key Metrics:
+
+- Demographic parity
+- Equal opportunity
+- Equalized odds
+
+### Explainability with Vertex AI
+
+Integrated Gradients (default for neural networks):
+
+```python
+from google.cloud import aiplatform
+
+# Configure explanations
+explanation_metadata = {
+    'inputs': {
+        'features': {
+            'input_tensor_name': 'input_1',
+            'encoding': 'IDENTITY',
+            'modality': 'numeric',
+            'index_feature_mapping': ['age', 'income', 'credit_score']
+        }
+    }
+}
+
+# Deploy with explanations
+model.deploy(
+    endpoint=endpoint,
+    explanation_spec={
+        'metadata': explanation_metadata,
+        'parameters': explanation_parameters
+    }
+)
+
+# Get predictions with explanations
+instances = [{'age': 35, 'income': 75000, 'credit_score': 720}]
+response = endpoint.explain(instances=instances)
+```
+
+### BigQuery ML Feature Importance
+
+```sql
+-- Global feature importance
+SELECT *
+FROM ML.FEATURE_IMPORTANCE(MODEL `project.dataset.my_model`)
+ORDER BY importance_weight DESC
+```
+
+### Hyperparameter Tuning Strategies
+
+- Grid Search: Exhaustive search over parameter grid
+- Random Search: Random sampling from parameter space
+- Bayesian Optimization: Uses previous results to inform next trials (most efficient)
+
+Best Practices:
+
+- Use log scale for learning rates
+- Use linear scale for layer counts
+- Enable early stopping to save compute costs
+- Bayesian optimization requires fewer trials than grid search
+
+### Training-Serving Skew Prevention
+
+Use TensorFlow Transform (TFT) to guarantee training-serving consistency:
+
+```python
+import tensorflow_transform as tft
+
+def preprocessing_fn(inputs):
+    """Shared preprocessing function for training and serving"""
+    outputs = {}
+
+    # Normalize (uses full-pass statistics)
+    outputs['normalized_feature'] = tft.scale_to_z_score(inputs['feature'])
+
+    # Vocabulary (computed once on training data)
+    outputs['categorical_encoded'] = tft.compute_and_apply_vocabulary(
+        inputs['category'],
+        top_k=1000
+    )
+
+    return outputs
+```
+
+Common Causes of Skew:
+
+- Different preprocessing in training vs serving
+- Missing features in serving
+- Data drift over time
+- Timezone differences
+- Encoding issues
+
+Key Takeaways:
+
+- TFT guarantees training-serving consistency
+- Prevention is better than detection
+- Monitor for skew using training data baseline
+- Use same preprocessing code for both training and serving
+
+## 1.4 Data Processing & Storage Services
 
 ### BigQuery
 
@@ -692,7 +840,7 @@ Via UI (visual pipeline):
 - **Use Data Fusion when**: Simple ETL, visual interface preferred, multiple source connectors needed, business users involved
 - **Use Dataflow when**: Complex transformations, streaming data, TensorFlow Transform integration, full code control needed
 
-## 1.4 Compute Services
+## 1.5 Compute Services
 
 ### Compute Engine
 **AWS Equivalent**: Amazon EC2
@@ -734,7 +882,7 @@ Cloud Run is ideal for:
 - Batch inference jobs triggered by events
 - Cost-effective for sporadic prediction workloads
 
-## 1.5 MLOps & Development Tools
+## 1.6 MLOps & Development Tools
 
 ### Cloud Build
 **AWS Equivalent**: AWS CodeBuild
@@ -761,7 +909,7 @@ Artifact Registry provides:
 - Version control for containers
 - Vulnerability scanning for security
 
-## 1.6 Monitoring & Management
+## 1.7 Monitoring & Management
 
 ### Cloud Monitoring (formerly Stackdriver)
 **AWS Equivalent**: Amazon CloudWatch
@@ -787,7 +935,7 @@ Follow these logging practices for ML systems:
 - Track data quality issues
 - Monitor feature values for anomalies
 
-## 1.7 Security & Governance
+## 1.8 Security & Governance
 
 ### IAM (Identity and Access Management)
 **AWS Equivalent**: AWS IAM

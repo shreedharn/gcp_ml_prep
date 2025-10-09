@@ -154,15 +154,51 @@ Graph plotting True Positive Rate (Recall) against False Positive Rate at variou
 
 Single number (0 to 1) summarizing ROC curve performance; measures probability that model ranks random positive higher than random negative. AUC of 0.5 means random guessing; 1.0 means perfect classification. Threshold-independent metric, useful for comparing models. Robust to class imbalance.
 
+### AUC-PR (Area Under the Precision-Recall Curve)
+
+Single number (0 to 1) summarizing the precision-recall curve; measures model performance across all classification thresholds by plotting precision against recall. Unlike AUC-ROC, AUC-PR focuses on the positive class performance and is more informative for highly imbalanced datasets where the minority class is of primary interest. Higher AUC-PR indicates better model performance on the positive class. Preferred over AUC-ROC when positive class is rare (fraud detection, rare disease diagnosis, anomaly detection).
+
 ---
 
 ## 8. Loss Functions
 
 *Metrics that quantify how wrong the model's predictions are.*
 
-### Cross Entropy
+### Mean Squared Error (MSE)
 
-Loss function that measures difference between predicted probability distribution and actual distribution, commonly used for classification. For binary classification: -[y log(p) + (1-y) log(1-p)], where y is true label and p is predicted probability. Lower values indicate better predictions; penalizes confident wrong predictions heavily. Also called log loss; widely used in neural networks.
+Measures average squared difference between predicted and actual values: (1/n) Σ(y - ŷ)². Most common loss function for regression problems. Heavily penalizes large errors due to squaring; sensitive to outliers. Differentiable everywhere, making it suitable for gradient-based optimization. Used in linear regression, neural networks for regression tasks. Units are squared (e.g., dollars² for price prediction).
+
+### Mean Absolute Error (MAE)
+
+Measures average absolute difference between predicted and actual values: (1/n) Σ|y - ŷ|. More robust to outliers than MSE since errors are not squared. Gives equal weight to all errors regardless of magnitude. Interpretable in original units (e.g., dollars for price prediction). Less sensitive to extreme values; suitable when outliers shouldn't dominate the loss.
+
+### Huber Loss
+
+Combines benefits of MSE and MAE; acts as MSE for small errors and MAE for large errors. Quadratic for errors below threshold δ, linear for errors above δ. More robust to outliers than MSE while maintaining differentiability. Common δ values: 1.0 or 1.35. Used in robust regression when dataset contains outliers but gradient-based optimization is needed.
+
+### Binary Cross-Entropy (Log Loss)
+
+Loss function for binary classification: -[y log(p) + (1-y) log(1-p)], where y is true label (0 or 1) and p is predicted probability. Heavily penalizes confident wrong predictions; small penalty for correct predictions with high confidence. Outputs range from 0 (perfect) to infinity (worst). Equivalent to negative log-likelihood for Bernoulli distribution. Standard loss for logistic regression and binary classification neural networks.
+
+### Categorical Cross-Entropy
+
+Extension of binary cross-entropy for multi-class classification: -Σ y_i log(p_i) across all classes. Compares one-hot encoded true labels with predicted probability distribution from softmax. Minimizing this loss is equivalent to maximizing log-likelihood. Used with softmax activation in neural networks for multi-class problems. Requires mutually exclusive classes (each sample belongs to exactly one class).
+
+### Sparse Categorical Cross-Entropy
+
+Functionally identical to categorical cross-entropy but accepts integer class labels instead of one-hot encoded vectors. Computationally more efficient for problems with many classes (hundreds or thousands). Example: class label is 5 instead of [0,0,0,0,0,1,0,...]. Commonly used in NLP tasks with large vocabularies and image classification with many categories.
+
+### Hinge Loss
+
+Loss function for maximum-margin classification, primarily used in SVMs: max(0, 1 - y·ŷ) where y ∈ {-1, 1} and ŷ is raw prediction. Encourages correct predictions to be beyond a margin; zero loss if prediction is correct and confident. Creates linear decision boundaries. Not probabilistic like cross-entropy; focuses on margin maximization. Used in SVMs and some neural network applications.
+
+### Focal Loss
+
+Modification of cross-entropy that down-weights easy examples and focuses on hard examples: -α(1-p)^γ log(p) for positive class. Parameter γ (typically 2) controls how much to focus on hard examples; α balances positive/negative classes. Addresses extreme class imbalance by reducing loss contribution from well-classified examples. Developed for object detection where easy negatives vastly outnumber hard positives. Particularly effective when 99%+ samples are easy negatives.
+
+### Kullback-Leibler (KL) Divergence
+
+Measures how one probability distribution differs from another: Σ P(x) log(P(x)/Q(x)). Asymmetric measure (KL(P||Q) ≠ KL(Q||P)); not a true distance metric. Used in variational autoencoders (VAEs) to match learned distribution to prior. Measures information loss when Q approximates P. Common in generative models and distribution matching tasks.
 
 ---
 
@@ -298,154 +334,3 @@ Randomly duplicates examples from minority class until dataset is balanced. Simp
 
 Randomly removes examples from majority class to balance dataset. Risk of losing potentially important information from majority class. Useful when majority class has redundant information or dataset is very large. Often combined with oversampling (hybrid approach).
 
----
-
-## 14. GCP ML Services & Concepts
-
-*Google Cloud Platform specific machine learning implementations.*
-
-### Model Selection by Problem Type
-
-| Problem Type | Algorithms | GCP Service | AWS Service |
-|--------------|------------|-------------|-------------|
-| Binary Classification | Logistic Regression, Random Forest, XGBoost, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Autopilot |
-| Multi-class Classification | Softmax Regression, Random Forest, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Built-in Algorithms |
-| Regression | Linear Regression, Random Forest, XGBoost, Neural Networks | Vertex AI AutoML, BigQuery ML | SageMaker Autopilot |
-| Time Series | ARIMA, Prophet, LSTM | BigQuery ML ARIMA_PLUS, Vertex AI | Amazon Forecast, SageMaker |
-| Clustering | K-Means, DBSCAN | BigQuery ML K-Means | SageMaker K-Means |
-| Recommendation | Matrix Factorization, Neural CF | BigQuery ML, Retail API | Amazon Personalize |
-
-### BigQuery ML Evaluation Metrics
-
-For classification models in BigQuery ML:
-
-```sql
-SELECT *
-FROM ML.EVALUATE(MODEL `project.dataset.classification_model`)
-
--- Returns:
--- - precision: TP / (TP + FP)
--- - recall: TP / (TP + FN)
--- - accuracy: (TP + TN) / Total
--- - f1_score: 2 * (precision * recall) / (precision + recall)
--- - log_loss: -mean(y * log(p) + (1-y) * log(1-p))
--- - roc_auc: Area under ROC curve
-```
-
-### Bias and Fairness Detection
-
-Vertex AI provides tools to analyze fairness metrics by demographic groups:
-
-```sql
--- Check for disparate impact
-SELECT
-  gender,
-  race,
-  COUNT(*) as total,
-  AVG(CAST(prediction AS FLOAT64)) as approval_rate,
-  STDDEV(CAST(prediction AS FLOAT64)) as approval_stddev
-FROM `project.dataset.predictions`
-GROUP BY gender, race
-
--- Disparate Impact Ratio = (Approval Rate for Protected Group) / (Approval Rate for Reference Group)
--- Should be > 0.8 to avoid discrimination
-```
-
-**Key Metrics:**
-
-- Demographic parity
-- Equal opportunity
-- Equalized odds
-
-### Explainability with Vertex AI
-
-Integrated Gradients (default for neural networks):
-
-```python
-from google.cloud import aiplatform
-
-# Configure explanations
-explanation_metadata = {
-    'inputs': {
-        'features': {
-            'input_tensor_name': 'input_1',
-            'encoding': 'IDENTITY',
-            'modality': 'numeric',
-            'index_feature_mapping': ['age', 'income', 'credit_score']
-        }
-    }
-}
-
-# Deploy with explanations
-model.deploy(
-    endpoint=endpoint,
-    explanation_spec={
-        'metadata': explanation_metadata,
-        'parameters': explanation_parameters
-    }
-)
-
-# Get predictions with explanations
-instances = [{'age': 35, 'income': 75000, 'credit_score': 720}]
-response = endpoint.explain(instances=instances)
-```
-
-### BigQuery ML Feature Importance
-
-```sql
--- Global feature importance
-SELECT *
-FROM ML.FEATURE_IMPORTANCE(MODEL `project.dataset.my_model`)
-ORDER BY importance_weight DESC
-```
-
-### Hyperparameter Tuning Strategies
-
-- **Grid Search**: Exhaustive search over parameter grid
-- **Random Search**: Random sampling from parameter space
-- **Bayesian Optimization**: Uses previous results to inform next trials (most efficient)
-
-**Best Practices:**
-
-- Use log scale for learning rates
-- Use linear scale for layer counts
-- Enable early stopping to save compute costs
-- Bayesian optimization requires fewer trials than grid search
-
-### Training-Serving Skew Prevention
-
-Use TensorFlow Transform (TFT) to guarantee training-serving consistency:
-
-```python
-import tensorflow_transform as tft
-
-def preprocessing_fn(inputs):
-    """Shared preprocessing function for training and serving"""
-    outputs = {}
-
-    # Normalize (uses full-pass statistics)
-    outputs['normalized_feature'] = tft.scale_to_z_score(inputs['feature'])
-
-    # Vocabulary (computed once on training data)
-    outputs['categorical_encoded'] = tft.compute_and_apply_vocabulary(
-        inputs['category'],
-        top_k=1000
-    )
-
-    return outputs
-```
-
-**Common Causes of Skew:**
-
-- Different preprocessing in training vs serving
-- Missing features in serving
-- Data drift over time
-- Timezone differences
-- Encoding issues
-
-**Key Takeaways:**
-
-- TFT guarantees training-serving consistency
-- Prevention is better than detection
-- Monitor for skew using training data baseline
-- Use same preprocessing code for both training and serving
