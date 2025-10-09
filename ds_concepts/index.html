@@ -1,0 +1,1241 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning">
+      
+      
+      
+      
+        <link rel="prev" href="../ml_concepts/">
+      
+      
+        <link rel="next" href="../gcp-aws-compare/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Data Science Concepts - GCP ML Engineer Certification Preparation Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-science-concepts---quick-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-header__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GCP ML Engineer Certification Preparation Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Science Concepts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-nav__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GCP ML Engineer Certification Preparation Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Study Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Study Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml_concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Science Concepts
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Concepts
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feature-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Feature Preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Feature Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Scaling (Normalization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardization-z-score-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardization (Z-score Normalization)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-encoding-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Encoding Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data Encoding Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-hot-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Hot Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Label Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordinal-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordinal Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-encoding-mean-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Encoding (Mean Encoding)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Encoding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-missing-data-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Missing Data Imputation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Missing Data Imputation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-imputation-meanmedianmode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Imputation (Mean/Median/Mode)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-fill--backward-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Fill / Backward Fill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knn-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      KNN Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imputation-with-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imputation with Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sampling-techniques-for-imbalanced-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sampling Techniques for Imbalanced Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Sampling Techniques for Imbalanced Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smote-synthetic-minority-over-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMOTE (Synthetic Minority Over-sampling)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-oversampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Oversampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-undersampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Undersampling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp-aws-compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GCP & AWS Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Aspects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectural Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube_ml_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MLFlow vs Kubeflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ds_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feature-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Feature Preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Feature Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Scaling (Normalization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardization-z-score-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardization (Z-score Normalization)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-encoding-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Encoding Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data Encoding Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-hot-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Hot Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Label Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordinal-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordinal Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-encoding-mean-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Encoding (Mean Encoding)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Encoding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-missing-data-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Missing Data Imputation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Missing Data Imputation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-imputation-meanmedianmode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Imputation (Mean/Median/Mode)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward-fill--backward-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forward Fill / Backward Fill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knn-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      KNN Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-imputation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Imputation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imputation-with-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imputation with Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sampling-techniques-for-imbalanced-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sampling Techniques for Imbalanced Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Sampling Techniques for Imbalanced Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smote-synthetic-minority-over-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMOTE (Synthetic Minority Over-sampling)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-oversampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Oversampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-undersampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random Undersampling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-science-concepts---quick-reference">Data Science Concepts - Quick Reference<a class="headerlink" href="#data-science-concepts---quick-reference" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This page provides concise explanations of fundamental data science techniques for data preparation, preprocessing, and transformation. These techniques should be applied before building ML models. Proper data preparation is critical for model performance.</p>
+<p><strong>Related:</strong> See <a href="../ml_concepts/">ML Concepts</a> for machine learning algorithms, training, and evaluation techniques.</p>
+<hr />
+<h2 id="1-feature-preprocessing">1. Feature Preprocessing<a class="headerlink" href="#1-feature-preprocessing" title="Permanent link">&para;</a></h2>
+<p><em>Transformations applied to features before model training.</em></p>
+<h3 id="feature-scaling-normalization">Feature Scaling (Normalization)<a class="headerlink" href="#feature-scaling-normalization" title="Permanent link">&para;</a></h3>
+<p>Scales features to a fixed range, typically [0, 1] using: (x - min) / (max - min). Preserves original distribution shape and relationships. Sensitive to outliers as they determine min/max. Required for distance-based algorithms like KNN, SVM, neural networks. Critical preprocessing step before training models with gradient-based optimization algorithms.</p>
+<h3 id="standardization-z-score-normalization">Standardization (Z-score Normalization)<a class="headerlink" href="#standardization-z-score-normalization" title="Permanent link">&para;</a></h3>
+<p>Transforms features to have mean=0 and standard deviation=1 using: (x - mean) / std. Assumes roughly normal distribution; less sensitive to outliers than min-max scaling. Results in unbounded range (typically -3 to +3 for normal data). Preferred for algorithms assuming normally distributed data.</p>
+<hr />
+<h2 id="2-data-encoding-techniques">2. Data Encoding Techniques<a class="headerlink" href="#2-data-encoding-techniques" title="Permanent link">&para;</a></h2>
+<p><em>Methods to convert categorical data into numerical format for machine learning models.</em></p>
+<h3 id="one-hot-encoding">One Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permanent link">&para;</a></h3>
+<p>Converts categorical variables into binary vectors where only one element is 1 (hot) and others are 0. Each category becomes a separate binary column. For example, colors [Red, Blue, Green] → Red: [1,0,0], Blue: [0,1,0], Green: [0,0,1]. Prevents model from assuming ordinal relationships between categories.</p>
+<h3 id="label-encoding">Label Encoding<a class="headerlink" href="#label-encoding" title="Permanent link">&para;</a></h3>
+<p>Converts categorical labels into integers (0, 1, 2, ...) by assigning each unique category a number. Simple and memory-efficient but implies ordinal relationship between categories. Example: [Red, Blue, Green] → [0, 1, 2]. Best for ordinal data or tree-based models that don't assume ordering.</p>
+<h3 id="ordinal-encoding">Ordinal Encoding<a class="headerlink" href="#ordinal-encoding" title="Permanent link">&para;</a></h3>
+<p>Similar to label encoding but explicitly preserves meaningful order in categorical variables. User assigns specific integers reflecting the inherent ranking (e.g., Low=1, Medium=2, High=3). Appropriate for ordinal features like education level, satisfaction ratings, or size categories. Encodes domain knowledge about category ordering.</p>
+<h3 id="target-encoding-mean-encoding">Target Encoding (Mean Encoding)<a class="headerlink" href="#target-encoding-mean-encoding" title="Permanent link">&para;</a></h3>
+<p>Replaces each category with the mean of the target variable for that category. For example, if "Blue" items have average price $50, all "Blue" becomes 50. Risk of overfitting; use with cross-validation or smoothing techniques. Effective for high-cardinality categorical features.</p>
+<h3 id="binary-encoding">Binary Encoding<a class="headerlink" href="#binary-encoding" title="Permanent link">&para;</a></h3>
+<p>Converts categories to integers then to binary code, using fewer columns than one-hot encoding. Each category gets a binary representation (e.g., 5 categories need only 3 binary columns instead of 5). Reduces dimensionality while preserving uniqueness. Useful for high-cardinality features.</p>
+<hr />
+<h2 id="3-missing-data-imputation">3. Missing Data Imputation<a class="headerlink" href="#3-missing-data-imputation" title="Permanent link">&para;</a></h2>
+<p><em>Techniques to handle missing values in datasets.</em></p>
+<h3 id="simple-imputation-meanmedianmode">Simple Imputation (Mean/Median/Mode)<a class="headerlink" href="#simple-imputation-meanmedianmode" title="Permanent link">&para;</a></h3>
+<p>Replaces missing values with mean (continuous), median (skewed continuous), or mode (categorical) of the column. Fast and simple but ignores relationships between features and reduces variance. Mean is sensitive to outliers; median is robust. Mode for categorical data.</p>
+<h3 id="forward-fill--backward-fill">Forward Fill / Backward Fill<a class="headerlink" href="#forward-fill--backward-fill" title="Permanent link">&para;</a></h3>
+<p>Time-series imputation that fills missing values with the previous (forward) or next (backward) observed value. Assumes temporal continuity and that values don't change drastically between time points. Forward fill: copies last known value; backward fill: copies next known value. Common in stock prices, sensor data.</p>
+<h3 id="knn-imputation">KNN Imputation<a class="headerlink" href="#knn-imputation" title="Permanent link">&para;</a></h3>
+<p>Fills missing values using K-Nearest Neighbors; finds k most similar samples and uses their average. Considers feature relationships unlike simple imputation, but computationally expensive for large datasets. Distance metric (usually Euclidean) determines similarity. Typical k values: 3-10.</p>
+<h3 id="multiple-imputation">Multiple Imputation<a class="headerlink" href="#multiple-imputation" title="Permanent link">&para;</a></h3>
+<p>Statistical technique that creates multiple plausible imputed datasets, analyzes each, then pools results. Accounts for uncertainty in missing values unlike single imputation methods. MICE (Multivariate Imputation by Chained Equations) is popular implementation. Produces more accurate standard errors and confidence intervals.</p>
+<h3 id="imputation-with-supervised-learning">Imputation with Supervised Learning<a class="headerlink" href="#imputation-with-supervised-learning" title="Permanent link">&para;</a></h3>
+<p>Treats missing value prediction as a machine learning problem using other features as predictors. Train regression model (for continuous) or classification model (for categorical) on complete cases. More sophisticated than mean/median but risk of overfitting. Can capture complex feature relationships.</p>
+<hr />
+<h2 id="4-sampling-techniques-for-imbalanced-data">4. Sampling Techniques for Imbalanced Data<a class="headerlink" href="#4-sampling-techniques-for-imbalanced-data" title="Permanent link">&para;</a></h2>
+<p><em>Methods to address class imbalance in classification problems.</em></p>
+<h3 id="smote-synthetic-minority-over-sampling">SMOTE (Synthetic Minority Over-sampling)<a class="headerlink" href="#smote-synthetic-minority-over-sampling" title="Permanent link">&para;</a></h3>
+<p>Creates synthetic samples for minority class by interpolating between existing minority samples and their nearest neighbors. Generates new points along line segments connecting k-nearest minority neighbors. Reduces overfitting compared to simple oversampling by creating diverse examples. Most popular resampling technique for imbalanced classification. Essential when dealing with class imbalance that affects evaluation metrics like precision and recall.</p>
+<h3 id="random-oversampling">Random Oversampling<a class="headerlink" href="#random-oversampling" title="Permanent link">&para;</a></h3>
+<p>Randomly duplicates examples from minority class until dataset is balanced. Simple but can lead to overfitting as model sees exact same examples multiple times. Works well combined with regularization or ensemble methods. Fast and easy to implement.</p>
+<h3 id="random-undersampling">Random Undersampling<a class="headerlink" href="#random-undersampling" title="Permanent link">&para;</a></h3>
+<p>Randomly removes examples from majority class to balance dataset. Risk of losing potentially important information from majority class. Useful when majority class has redundant information or dataset is very large. Often combined with oversampling (hybrid approach).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
