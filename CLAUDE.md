@@ -2,3 +2,4 @@
 - Whenever there is a new markdown file created in the project repo root folder, update the nav section of mkdocs.yml and README.md
 - Always use a more formal, technical tone appropriate for professional reading, avoiding second-person pronouns.
 - Avoid excessive bold in markdown content
+- Always remember the documents in this repo are for GCP ML preparation. AWS information is provided only for comparative details. AWS Services should be phrased only in the comparative context and not for standalone usage.
