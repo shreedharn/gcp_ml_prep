@@ -1,0 +1,2517 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive study guide for AWS ML professionals preparing for the Google Cloud Professional Machine Learning">
+      
+      
+      
+      
+        <link rel="prev" href="../patterns/">
+      
+      
+        <link rel="next" href="../scenarios/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>ML Pipeline & Orchestration Frameworks - GCP ML Engineer Certification Preparation Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ml-pipeline-and-orchestration-frameworks-comprehensive-comparison" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-header__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GCP ML Engineer Certification Preparation Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ML Pipeline & Orchestration Frameworks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-nav__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GCP ML Engineer Certification Preparation Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Study Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Study Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml_concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ds_concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp-aws-compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GCP & AWS Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technical Aspects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectural Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ML Pipeline & Orchestration Frameworks
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Pipeline & Orchestration Frameworks
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-roles-in-ml-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architectural Roles in ML Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-by-feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature-by-Feature Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature-by-Feature Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiment-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiment Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-and-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment and Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hyperparameter Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gcp-implementation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCP Implementation Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GCP Implementation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-on-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow on GCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-on-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow on GCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-recommended-for-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines (Recommended for GCP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-on-gcp-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam on GCP (Dataflow)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-implementation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Implementation Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Implementation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow on AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow on AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam on AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns-and-stack-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns and Stack Combinations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns and Stack Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fully-managed-gcp-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fully Managed GCP Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-cloud-and-hybrid-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Cloud and Hybrid Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-intensive-real-time-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Intensive Real-Time ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-and-experimentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Research and Experimentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-mlflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose MLflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-kubeflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Kubeflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-apache-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Apache Beam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-and-combined-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid and Combined Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-size-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Size Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-dataflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam (Dataflow) Costs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-mlflow-to-kubeflow-or-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      From MLflow to Kubeflow or Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-kubeflow-to-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Kubeflow to Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-vertex-ai-pipelines-to-kubeflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Vertex AI Pipelines to Kubeflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ds_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-roles-in-ml-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architectural Roles in ML Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-by-feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature-by-Feature Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature-by-Feature Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiment-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiment Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-and-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment and Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hyperparameter Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gcp-implementation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCP Implementation Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GCP Implementation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-on-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow on GCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-on-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow on GCP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-recommended-for-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines (Recommended for GCP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-on-gcp-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam on GCP (Dataflow)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-implementation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Implementation Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Implementation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow on AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow on AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-on-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam on AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns-and-stack-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns and Stack Combinations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns and Stack Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fully-managed-gcp-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fully Managed GCP Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-cloud-and-hybrid-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Cloud and Hybrid Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-intensive-real-time-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Intensive Real-Time ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-and-experimentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Research and Experimentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-mlflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose MLflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-kubeflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Kubeflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-choose-apache-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Choose Apache Beam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-and-combined-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid and Combined Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-size-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Size Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-dataflow-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam (Dataflow) Costs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-mlflow-to-kubeflow-or-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      From MLflow to Kubeflow or Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-kubeflow-to-vertex-ai-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Kubeflow to Vertex AI Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-vertex-ai-pipelines-to-kubeflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Vertex AI Pipelines to Kubeflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlflow-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      MLflow Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertex-ai-pipelines-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertex AI Pipelines Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeflow-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeflow Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-beam-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Beam Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ml-pipeline-and-orchestration-frameworks-comprehensive-comparison">ML Pipeline and Orchestration Frameworks: Comprehensive Comparison<a class="headerlink" href="#ml-pipeline-and-orchestration-frameworks-comprehensive-comparison" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Modern machine learning systems require seamless orchestration of data ingestion, feature engineering, model training, evaluation, deployment, and monitoring. Within the Google Cloud ecosystem and broader open-source landscape, four major frameworks have emerged as the foundation for ML operations:</p>
+<ul>
+<li>Vertex AI Pipelines: GCP's native managed ML pipeline service</li>
+<li>Apache Beam (Dataflow): Distributed data processing and feature engineering framework</li>
+<li>Kubeflow Pipelines: Kubernetes-based ML orchestration platform</li>
+<li>MLflow: Framework-agnostic experiment tracking and model lifecycle management</li>
+</ul>
+<p>This document provides an in-depth comparison of these platforms, examining their implementations on both AWS and GCP, and offers guidance on selecting the appropriate tools for different organizational needs.</p>
+<hr />
+<h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
+<p>The ML pipeline ecosystem offers solutions ranging from lightweight experiment tracking to enterprise-scale orchestration platforms. Understanding the primary focus and architectural approach of each tool is essential for building effective ML systems.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>MLflow</th>
+<th>Kubeflow</th>
+<th>Vertex AI Pipelines</th>
+<th>Apache Beam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Focus</td>
+<td>Experiment tracking, model registry, deployment</td>
+<td>End-to-end ML workflow orchestration</td>
+<td>Managed ML pipeline orchestration</td>
+<td>Data processing and feature engineering</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>Lightweight, library-based</td>
+<td>Kubernetes-native platform</td>
+<td>Serverless managed service</td>
+<td>Unified batch and streaming framework</td>
+</tr>
+<tr>
+<td>Learning Curve</td>
+<td>Low - simple Python API</td>
+<td>High - requires Kubernetes knowledge</td>
+<td>Moderate - GCP-specific patterns</td>
+<td>Moderate to high - distributed computing concepts</td>
+</tr>
+<tr>
+<td>Best For</td>
+<td>Small teams, rapid experimentation, model versioning</td>
+<td>Large teams, production pipelines, multi-cloud</td>
+<td>Scalable GCP-native ML workflows</td>
+<td>Data-intensive preprocessing and ETL</td>
+</tr>
+<tr>
+<td>Deployment Model</td>
+<td>Flexible (local, cloud, on-prem)</td>
+<td>Kubernetes clusters</td>
+<td>Fully managed on GCP</td>
+<td>Managed via Dataflow or self-hosted runners</td>
+</tr>
+<tr>
+<td>Management Overhead</td>
+<td>Low</td>
+<td>High (self-managed infrastructure)</td>
+<td>Minimal (serverless)</td>
+<td>Low (managed via Dataflow)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="core-components-comparison">Core Components Comparison<a class="headerlink" href="#core-components-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="mlflow-components">MLflow Components<a class="headerlink" href="#mlflow-components" title="Permanent link">&para;</a></h3>
+<p>MLflow provides four primary modules that work together to support the complete ML lifecycle:</p>
+<p>MLflow Tracking serves as the central system for recording and querying experiments, capturing parameters, metrics, artifacts, and source code versions. This component requires minimal setup and can be deployed locally or on shared infrastructure.</p>
+<p>MLflow Projects packages code in a reusable format with support for Conda and Docker environments, ensuring reproducibility across different execution contexts. Projects define dependencies and entry points, making it simple to share and execute ML code.</p>
+<p>MLflow Models establishes a standard format for packaging models from multiple frameworks, enabling deployment to various platforms including cloud services, edge devices, and batch inference systems.</p>
+<p>MLflow Model Registry provides a centralized model store with versioning capabilities, stage transitions between development, staging, and production environments, and complete lineage tracking from experiments through deployment.</p>
+<h3 id="kubeflow-components">Kubeflow Components<a class="headerlink" href="#kubeflow-components" title="Permanent link">&para;</a></h3>
+<p>Kubeflow offers a comprehensive platform for ML on Kubernetes, consisting of multiple integrated components:</p>
+<p>Kubeflow Pipelines serves as the workflow orchestration engine, supporting DAG-based pipeline definitions with versioning and scheduling capabilities. Pipelines can be composed of reusable components and shared across teams.</p>
+<p>Katib provides hyperparameter tuning and neural architecture search with support for various optimization algorithms including Bayesian optimization, hyperband, and early stopping mechanisms.</p>
+<p>KFServing (now KServe) offers a serverless model serving platform with canary deployments, traffic splitting, autoscaling, and multi-framework support for production inference workloads.</p>
+<p>Notebooks provides a multi-user Jupyter environment with GPU support and integration with version control systems, enabling collaborative development within the Kubeflow ecosystem.</p>
+<p>Training Operators enable distributed training across TensorFlow, PyTorch, and MXNet frameworks, managing the complexity of multi-node training jobs on Kubernetes.</p>
+<p>Metadata Store tracks pipeline executions, artifacts, and model lineage, providing visibility into the complete ML workflow from data to deployed models.</p>
+<h3 id="vertex-ai-pipelines-components">Vertex AI Pipelines Components<a class="headerlink" href="#vertex-ai-pipelines-components" title="Permanent link">&para;</a></h3>
+<p>Vertex AI Pipelines represents Google Cloud's managed implementation of ML orchestration, built on Kubeflow Pipelines technology with significant enhancements:</p>
+<p>The service provides serverless pipeline execution without requiring cluster management, automatically handling resource allocation and scaling based on pipeline requirements.</p>
+<p>Deep integration with GCP services enables seamless connections to BigQuery, Cloud Storage, AutoML, Vertex AI Training, and Vertex AI Prediction without complex configuration.</p>
+<p>The built-in metadata store automatically tracks all pipeline runs, artifacts, and model versions, providing comprehensive lineage tracking and auditability.</p>
+<p>Native support for both Kubeflow Pipelines SDK and TensorFlow Extended (TFX) allows teams to leverage existing pipeline definitions while benefiting from managed infrastructure.</p>
+<h3 id="apache-beam-components">Apache Beam Components<a class="headerlink" href="#apache-beam-components" title="Permanent link">&para;</a></h3>
+<p>Apache Beam provides a unified programming model for batch and streaming data processing:</p>
+<p>PCollections represent distributed datasets that can be processed in parallel across multiple workers, supporting both bounded (batch) and unbounded (streaming) data sources.</p>
+<p>Transforms define data processing operations including element-wise transformations, aggregations, and windowing for time-based computations on streaming data.</p>
+<p>Runners execute Beam pipelines on various distributed processing backends, with Google Cloud Dataflow providing a fully managed execution environment with autoscaling and optimization.</p>
+<p>IO Connectors provide native integration with numerous data sources including BigQuery, Pub/Sub, Cloud Storage, Apache Kafka, and traditional databases.</p>
+<hr />
+<h2 id="architectural-roles-in-ml-systems">Architectural Roles in ML Systems<a class="headerlink" href="#architectural-roles-in-ml-systems" title="Permanent link">&para;</a></h2>
+<p>Understanding how these tools complement each other helps in designing comprehensive ML systems:</p>
+<p>For data ingestion and feature engineering, Apache Beam with Dataflow provides the most scalable solution, handling both batch processing of historical data and real-time feature computation from streaming sources. The unified programming model ensures consistency between training and serving pipelines.</p>
+<p>Workflow orchestration and model training benefit from either Vertex AI Pipelines or Kubeflow Pipelines, depending on infrastructure preferences. Both support DAG-based orchestration of ML steps including preprocessing, training, evaluation, and deployment. Vertex AI Pipelines offers managed execution with minimal operational overhead, while Kubeflow provides greater customization and portability.</p>
+<p>Experiment tracking and model registry are best handled by MLflow, which provides lightweight instrumentation and comprehensive versioning capabilities. MLflow integrates seamlessly into both Kubeflow and Vertex AI pipeline components, capturing metrics and artifacts throughout the ML lifecycle.</p>
+<p>Model serving and deployment can leverage Vertex AI Prediction for managed endpoints with monitoring and autoscaling, Kubeflow Serving for Kubernetes-native deployments, or custom containerized solutions depending on latency, throughput, and infrastructure requirements.</p>
+<p>Monitoring and retraining utilize Vertex AI Model Monitoring for managed drift detection, BigQuery ML for SQL-based monitoring, or custom solutions combining Prometheus with MLflow for specialized requirements.</p>
+<hr />
+<h2 id="feature-by-feature-comparison">Feature-by-Feature Comparison<a class="headerlink" href="#feature-by-feature-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="experiment-tracking">Experiment Tracking<a class="headerlink" href="#experiment-tracking" title="Permanent link">&para;</a></h3>
+<p>Experiment tracking capabilities vary significantly across these platforms. MLflow excels in this domain with its simple Python API requiring only a few lines of code to start logging metrics, parameters, and artifacts. The built-in web UI provides rich comparison features for analyzing experiment results.</p>
+<p>Kubeflow tracks experiments through its metadata store, capturing pipeline-level metrics but requiring more structured pipeline definitions. The approach integrates well with production workflows but adds overhead for rapid experimentation.</p>
+<p>Vertex AI Pipelines captures experiment metadata natively through its managed infrastructure, automatically tracking all pipeline executions, parameters, and outputs. The integration with Vertex AI Experiments provides additional capabilities for comparison and analysis.</p>
+<p>Apache Beam focuses on data processing rather than experiment tracking, though job-level metrics can be captured through Dataflow monitoring for performance analysis.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MLflow</th>
+<th>Kubeflow</th>
+<th>Vertex AI Pipelines</th>
+<th>Apache Beam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metrics Logging</td>
+<td>Simple API: <code>mlflow.log_metric()</code></td>
+<td>Through pipeline metadata</td>
+<td>Native metadata capture</td>
+<td>Job-level metrics only</td>
+</tr>
+<tr>
+<td>Parameter Tracking</td>
+<td>Automatic and manual</td>
+<td>Pipeline parameters</td>
+<td>Automatic for pipeline runs</td>
+<td>Configuration tracking</td>
+</tr>
+<tr>
+<td>Artifact Storage</td>
+<td>S3, GCS, Azure Blob, local</td>
+<td>Kubernetes volumes, cloud storage</td>
+<td>GCS with automatic versioning</td>
+<td>Job outputs to GCS/BigQuery</td>
+</tr>
+<tr>
+<td>UI Dashboard</td>
+<td>Built-in comparison UI</td>
+<td>Kubeflow Central Dashboard</td>
+<td>Cloud Console integration</td>
+<td>Dataflow monitoring UI</td>
+</tr>
+<tr>
+<td>Integration Effort</td>
+<td>Minimal</td>
+<td>Moderate</td>
+<td>Low for GCP services</td>
+<td>Not applicable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="model-management">Model Management<a class="headerlink" href="#model-management" title="Permanent link">&para;</a></h3>
+<p>Model management encompasses versioning, staging, lineage tracking, and serving capabilities. MLflow provides a purpose-built model registry with semantic versioning and stage management (staging, production, archived). Models can be logged with complete lineage back to the originating experiments.</p>
+<p>Kubeflow manages models through KFServing and the metadata store, tracking models as pipeline outputs with version control at the pipeline level. This approach works well for automated retraining workflows but requires more setup than MLflow's dedicated registry.</p>
+<p>Vertex AI Pipelines integrates with Vertex AI Model Registry, providing managed model versioning with automatic lineage tracking from pipeline executions through deployments. The integration enables straightforward promotion of models from development to production.</p>
+<p>Apache Beam itself does not provide model management capabilities, though feature pipelines often feed into model training systems that use one of the other frameworks for model lifecycle management.</p>
+<h3 id="deployment-and-serving">Deployment and Serving<a class="headerlink" href="#deployment-and-serving" title="Permanent link">&para;</a></h3>
+<p>Deployment strategies differ based on infrastructure preferences and operational requirements. MLflow supports flexible deployment to local servers, Docker containers, Kubernetes, SageMaker, Azure ML, and other platforms using a consistent model format. The built-in serving provides simple REST APIs for inference.</p>
+<p>Kubeflow Serving (KServe) offers production-grade serving on Kubernetes with advanced features including canary deployments, traffic splitting, autoscaling, and multi-framework support. Integration with Prometheus and Grafana enables comprehensive monitoring.</p>
+<p>Vertex AI Prediction provides fully managed model serving with automatic scaling, built-in monitoring for drift and skew, and support for batch and online prediction. The service handles infrastructure management while providing consistent SLA guarantees.</p>
+<p>Apache Beam can be used for batch prediction at scale, processing large datasets through the same unified API used for feature engineering, ensuring consistency in data transformation logic.</p>
+<h3 id="pipeline-orchestration">Pipeline Orchestration<a class="headerlink" href="#pipeline-orchestration" title="Permanent link">&para;</a></h3>
+<p>Pipeline orchestration capabilities range from basic to comprehensive across these tools. MLflow Projects provide limited orchestration primarily focused on reproducible execution of individual training runs, relying on external tools for complex multi-step workflows.</p>
+<p>Kubeflow Pipelines delivers comprehensive DAG-based orchestration with full support for conditionals, loops, parallel execution, and complex dependencies. Pipeline components are containerized, promoting reusability and version control. Built-in scheduling enables automated retraining workflows.</p>
+<p>Vertex AI Pipelines provides the same pipeline capabilities as Kubeflow Pipelines through the KFP SDK, with the added benefit of serverless execution and deep GCP integration. Pipeline definitions compile to the same format, enabling portability while benefiting from managed infrastructure.</p>
+<p>Apache Beam orchestrates data processing workflows with support for complex transformations, windowing for streaming data, and triggers for controlling computation timing. While not designed for ML workflow orchestration, Beam pipelines often serve as components within larger ML systems.</p>
+<h3 id="hyperparameter-tuning">Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permanent link">&para;</a></h3>
+<p>Hyperparameter optimization approaches vary in sophistication and integration depth. MLflow does not provide built-in tuning capabilities, requiring integration with external libraries such as Optuna, Hyperopt, or scikit-learn's GridSearchCV. However, MLflow's tracking makes it easy to compare tuning runs.</p>
+<p>Kubeflow's Katib offers comprehensive hyperparameter tuning with support for random search, grid search, Bayesian optimization, and advanced algorithms like Hyperband. Parallel execution of trials leverages Kubernetes for efficient resource utilization, and early stopping reduces wasted computation.</p>
+<p>Vertex AI Pipelines integrates with Vertex AI Training for managed hyperparameter tuning, supporting similar algorithms to Katib with the benefit of automatic resource management and billing integration.</p>
+<p>Apache Beam is not involved in hyperparameter tuning, though feature pipelines support the data preparation necessary for tuning experiments.</p>
+<hr />
+<h2 id="gcp-implementation-patterns">GCP Implementation Patterns<a class="headerlink" href="#gcp-implementation-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="mlflow-on-gcp">MLflow on GCP<a class="headerlink" href="#mlflow-on-gcp" title="Permanent link">&para;</a></h3>
+<p>Deploying MLflow on GCP typically involves several managed services working together. The MLflow tracking server can run on Cloud Run for serverless scaling, on GKE for more control, or on Compute Engine VMs for custom configurations. Cloud SQL (PostgreSQL or MySQL) serves as the backend store for experiment metadata, providing reliability and automated backups.</p>
+<p>Google Cloud Storage handles artifact storage, storing models, plots, and other files generated during experiments. Integration requires configuring appropriate IAM permissions and service accounts to enable secure access across components.</p>
+<p>Cloud IAM provides authentication and authorization, controlling access to the tracking server and stored artifacts. Cloud Monitoring can track server health and performance metrics.</p>
+<p>Implementation options include:</p>
+<p>Cloud Run deployments offer the lowest operational overhead with automatic scaling, making them ideal for teams wanting to minimize infrastructure management. The serverless nature means costs scale with usage.</p>
+<p>GKE deployments provide more control over the runtime environment, supporting custom authentication mechanisms, network policies, and integration with existing Kubernetes workflows. This approach suits organizations already standardized on Kubernetes.</p>
+<p>Vertex AI integration allows teams to use Vertex AI Experiments as an alternative to MLflow tracking, providing a fully managed experience with native GCP integration. Models logged through MLflow can be registered in Vertex AI Model Registry for unified management.</p>
+<p>Example configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Configure MLflow for GCP</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="s2">&quot;https://mlflow.example.com&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Authenticate using service account</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GOOGLE_APPLICATION_CREDENTIALS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/path/to/key.json&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Create experiment and start run</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;gcp-experiment&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="c1"># Log parameters and metrics</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;batch_size&quot;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="c1"># Log model to GCS</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                            <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;gs://bucket/artifacts&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="kubeflow-on-gcp">Kubeflow on GCP<a class="headerlink" href="#kubeflow-on-gcp" title="Permanent link">&para;</a></h3>
+<p>Kubeflow deployments on GCP center around Google Kubernetes Engine (GKE), which provides the Kubernetes infrastructure required by Kubeflow components. Both GKE Autopilot and Standard modes work, with Autopilot reducing operational overhead through managed nodes.</p>
+<p>Storage requirements include Google Cloud Storage for pipeline artifacts and model files, Cloud SQL or Filestore for the metadata database, and persistent disks for Jupyter notebooks and component storage.</p>
+<p>Network configuration typically involves VPC-native clusters for IP address management, Cloud Load Balancing for external access, and IAM with Workload Identity for secure service-to-service authentication within the cluster.</p>
+<p>However, most GCP users should consider Vertex AI Pipelines instead of self-managed Kubeflow, as it provides equivalent pipeline capabilities without infrastructure management overhead.</p>
+<h3 id="vertex-ai-pipelines-recommended-for-gcp">Vertex AI Pipelines (Recommended for GCP)<a class="headerlink" href="#vertex-ai-pipelines-recommended-for-gcp" title="Permanent link">&para;</a></h3>
+<p>Vertex AI Pipelines represents the optimal choice for teams building ML systems primarily on GCP. As Google's managed implementation of Kubeflow Pipelines, it eliminates cluster management while providing enhanced integration with GCP services.</p>
+<p>The serverless execution model means no Kubernetes cluster to manage, provision, or upgrade. Pipeline runs execute on infrastructure automatically allocated by Google, scaling to match workload requirements and terminating when complete.</p>
+<p>Native service integration provides seamless connections to BigQuery for data access, Cloud Storage for artifacts, Vertex AI Training for distributed training jobs, Vertex AI Prediction for model deployment, and AutoML for automated model development.</p>
+<p>Built-in monitoring and logging capture all pipeline execution details in Cloud Logging and Cloud Monitoring, providing observability without additional configuration. Artifact tracking happens automatically, creating lineage graphs that connect data through models to predictions.</p>
+<p>Cost efficiency results from paying only for pipeline execution time rather than maintaining long-running infrastructure. The pricing model aligns costs directly with usage.</p>
+<p>SDK Options and Installation:</p>
+<p>Vertex AI Pipelines supports two primary SDKs for building pipelines, each optimized for different use cases.</p>
+<p>The Kubeflow Pipelines SDK v2.0 or later is recommended for most use cases, providing flexibility, comprehensive features, and a gentle learning curve. This SDK supports custom Python components, prebuilt Google Cloud components, and complex workflow orchestration with conditionals and loops. Installation requires KFP v2:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="s2">&quot;kfp&gt;=2,&lt;3&quot;</span>
+</code></pre></div>
+<p>TensorFlow Extended v0.30.0 or later is specifically designed for production ML pipelines processing terabytes of structured or text data. TFX provides highly optimized, battle-tested components for data validation (using TensorFlow Data Validation), preprocessing (using TensorFlow Transform), model training, analysis, and serving. The opinionated framework enforces best practices for data quality and model validation. TFX works particularly well for organizations already standardized on TensorFlow and requiring industrial-strength data processing pipelines.</p>
+<p>The Vertex AI Python client library (v1.7 or later) handles pipeline submission and monitoring regardless of which SDK is used for pipeline definition.</p>
+<p>Pipeline Development Process:</p>
+<p>Building Vertex AI Pipelines follows a structured five-step workflow. First, design the pipeline architecture as reusable components with single responsibilities. Second, build custom components using either containerized approaches or lightweight Python function-based components. Third, define the pipeline as a Python function decorated with the pipeline decorator. Fourth, compile the pipeline definition to YAML format. Fifth, submit and run the pipeline using the Vertex AI Python client.</p>
+<p>Component Creation Approaches:</p>
+<p>Components serve as factory functions that create pipeline steps with defined inputs, outputs, and implementations. Vertex AI Pipelines supports two primary approaches for building custom components.</p>
+<p>Python function-based components offer lightweight implementation for logic written in Python. These components use the <code>@dsl.component</code> decorator to transform standard Python functions into pipeline components. Dependencies are specified through the <code>packages_to_install</code> parameter, and the SDK handles containerization automatically. This approach works well for straightforward data processing, feature engineering, and model training tasks implemented in Python.</p>
+<p>Container-based components provide language-agnostic implementation by packaging code as Docker images. This approach supports any programming language and offers maximum flexibility for complex dependencies or legacy code integration. Container components specify the image URI and command-line arguments for execution. Teams with existing containerized workflows or requirements beyond Python benefit from this approach.</p>
+<p>Google Cloud Pipeline Components provide prebuilt components for common operations including dataset creation, AutoML training, custom training jobs, model deployment, and batch prediction. These components promote reusability and reduce boilerplate code while ensuring best practices for GCP service integration. Data flows between pipeline steps through component outputs, accessed via <code>component_task.outputs["output_name"]</code> syntax.</p>
+<p>Pipeline development uses the Kubeflow Pipelines SDK v2, ensuring compatibility with existing pipeline definitions and enabling migration from self-hosted Kubeflow if needed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kfp</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span><span class="p">,</span> <span class="n">compiler</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">aiplatform</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Define pipeline root for artifact storage</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">PIPELINE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;gs://my-bucket/pipeline-root&#39;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span><span class="p">(</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">base_image</span><span class="o">=</span><span class="s2">&quot;python:3.9&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">packages_to_install</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="s2">&quot;scikit-learn&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">preprocess_data</span><span class="p">(</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">output_path</span><span class="p">:</span> <span class="n">dsl</span><span class="o">.</span><span class="n">Output</span><span class="p">[</span><span class="n">dsl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p">):</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="c1"># Preprocessing logic</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="c1"># Transform data</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span><span class="p">(</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">base_image</span><span class="o">=</span><span class="s2">&quot;python:3.9&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="n">packages_to_install</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;scikit-learn&quot;</span><span class="p">,</span> <span class="s2">&quot;joblib&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">)</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="n">data_path</span><span class="p">:</span> <span class="n">dsl</span><span class="o">.</span><span class="n">Input</span><span class="p">[</span><span class="n">dsl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">],</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="n">model_path</span><span class="p">:</span> <span class="n">dsl</span><span class="o">.</span><span class="n">Output</span><span class="p">[</span><span class="n">dsl</span><span class="o">.</span><span class="n">Model</span><span class="p">],</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>    <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="p">):</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    <span class="c1"># Load preprocessed data</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="c1"># Train model</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="c1"># Save model</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>    <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_path</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="nd">@kfp</span><span class="o">.</span><span class="n">dsl</span><span class="o">.</span><span class="n">pipeline</span><span class="p">(</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;vertex-ml-pipeline&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;End-to-end ML pipeline on Vertex AI&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>    <span class="n">pipeline_root</span><span class="o">=</span><span class="n">PIPELINE_ROOT</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="p">)</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="k">def</span><span class="w"> </span><span class="nf">ml_pipeline</span><span class="p">(</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>    <span class="n">project_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>    <span class="n">input_data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>    <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="p">):</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>    <span class="c1"># Define pipeline steps</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>    <span class="n">preprocess_task</span> <span class="o">=</span> <span class="n">preprocess_data</span><span class="p">(</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>        <span class="n">input_path</span><span class="o">=</span><span class="n">input_data_path</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>    <span class="p">)</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>    <span class="n">train_task</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>        <span class="n">data_path</span><span class="o">=</span><span class="n">preprocess_task</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;output_path&#39;</span><span class="p">],</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>    <span class="p">)</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="c1"># Compile pipeline to YAML</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="n">compiler</span><span class="o">.</span><span class="n">Compiler</span><span class="p">()</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>    <span class="n">pipeline_func</span><span class="o">=</span><span class="n">ml_pipeline</span><span class="p">,</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>    <span class="n">package_path</span><span class="o">=</span><span class="s1">&#39;pipeline.yaml&#39;</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="p">)</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="c1"># Submit to Vertex AI</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="n">job</span> <span class="o">=</span> <span class="n">aiplatform</span><span class="o">.</span><span class="n">PipelineJob</span><span class="p">(</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>    <span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;ml-training-pipeline&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a>    <span class="n">template_path</span><span class="o">=</span><span class="s1">&#39;pipeline.yaml&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>    <span class="n">parameter_values</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a>        <span class="s1">&#39;project_id&#39;</span><span class="p">:</span> <span class="s1">&#39;my-project&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>        <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="s1">&#39;us-central1&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>        <span class="s1">&#39;input_data_path&#39;</span><span class="p">:</span> <span class="s1">&#39;gs://my-bucket/data/train.csv&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>        <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>    <span class="p">},</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>    <span class="n">project</span><span class="o">=</span><span class="s1">&#39;my-project&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>    <span class="n">location</span><span class="o">=</span><span class="s1">&#39;us-central1&#39;</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="p">)</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="n">job</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">service_account</span><span class="o">=</span><span class="s1">&#39;pipeline-sa@my-project.iam.gserviceaccount.com&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Using Google Cloud Pipeline Components:</p>
+<p>For common ML operations, Google Cloud Pipeline Components eliminate the need to write custom component code. These prebuilt components integrate seamlessly with Vertex AI services:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">kfp</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">google_cloud_pipeline_components.v1.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageDatasetCreateOp</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">google_cloud_pipeline_components.v1.automl.training_job</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoMLImageTrainingJobRunOp</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">google_cloud_pipeline_components.v1.endpoint</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelDeployOp</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nd">@kfp</span><span class="o">.</span><span class="n">dsl</span><span class="o">.</span><span class="n">pipeline</span><span class="p">(</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;automl-image-training-pipeline&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">pipeline_root</span><span class="o">=</span><span class="s1">&#39;gs://my-bucket/pipeline-root&#39;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">automl_image_pipeline</span><span class="p">(</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">project</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">):</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="c1"># Create image dataset using prebuilt component</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="n">dataset_create_op</span> <span class="o">=</span> <span class="n">ImageDatasetCreateOp</span><span class="p">(</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="n">location</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="n">display_name</span><span class="o">=</span><span class="n">dataset_name</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="p">)</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="c1"># Train AutoML image classification model</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="n">training_op</span> <span class="o">=</span> <span class="n">AutoMLImageTrainingJobRunOp</span><span class="p">(</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>        <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        <span class="n">location</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>        <span class="n">display_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_create_op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">],</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="n">prediction_type</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;CLOUD&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>        <span class="n">budget_milli_node_hours</span><span class="o">=</span><span class="mi">8000</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    <span class="p">)</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    <span class="c1"># Deploy model to endpoint</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    <span class="n">deploy_op</span> <span class="o">=</span> <span class="n">ModelDeployOp</span><span class="p">(</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>        <span class="n">model</span><span class="o">=</span><span class="n">training_op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">],</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>        <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>        <span class="n">location</span><span class="o">=</span><span class="n">region</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>    <span class="p">)</span>
+</code></pre></div>
+<p>This approach leverages tested components maintained by Google, ensuring compatibility with service updates and reducing maintenance burden.</p>
+<h3 id="apache-beam-on-gcp-dataflow">Apache Beam on GCP (Dataflow)<a class="headerlink" href="#apache-beam-on-gcp-dataflow" title="Permanent link">&para;</a></h3>
+<p>Apache Beam pipelines execute on Google Cloud Dataflow, which provides fully managed batch and streaming data processing. Dataflow automatically optimizes pipeline execution, handling resource allocation, autoscaling, and fault tolerance.</p>
+<p>Integration with GCP data services includes native connectors for BigQuery, Cloud Storage, Pub/Sub for streaming data, and Bigtable for low-latency reads and writes. These connectors optimize data access patterns for the Dataflow execution environment.</p>
+<p>Typical use cases in ML workflows include feature engineering at scale, data validation and quality checks, real-time feature computation from streaming sources, and batch inference on large datasets.</p>
+<p>Example feature engineering pipeline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">apache_beam</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">beam</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">apache_beam.options.pipeline_options</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineOptions</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Configure for Dataflow</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">options</span> <span class="o">=</span> <span class="n">PipelineOptions</span><span class="p">(</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">project</span><span class="o">=</span><span class="s1">&#39;my-project&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;us-central1&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">runner</span><span class="o">=</span><span class="s1">&#39;DataflowRunner&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">temp_location</span><span class="o">=</span><span class="s1">&#39;gs://my-bucket/temp&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">staging_location</span><span class="o">=</span><span class="s1">&#39;gs://my-bucket/staging&#39;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_features</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform raw data into features&quot;&quot;&quot;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="s1">&#39;feature_1&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="s1">&#39;feature_2&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="p">}</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1"># Define and run pipeline</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="k">with</span> <span class="n">beam</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="p">(</span><span class="n">p</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>     <span class="o">|</span> <span class="s1">&#39;Read from BigQuery&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">beam</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">ReadFromBigQuery</span><span class="p">(</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>         <span class="n">query</span><span class="o">=</span><span class="s1">&#39;SELECT * FROM `project.dataset.raw_data`&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>         <span class="n">use_standard_sql</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>     <span class="o">|</span> <span class="s1">&#39;Compute Features&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">beam</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">compute_features</span><span class="p">)</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>     <span class="o">|</span> <span class="s1">&#39;Write to BigQuery&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">beam</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">WriteToBigQuery</span><span class="p">(</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>         <span class="s1">&#39;project.dataset.features&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>         <span class="n">write_disposition</span><span class="o">=</span><span class="n">beam</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">BigQueryDisposition</span><span class="o">.</span><span class="n">WRITE_TRUNCATE</span><span class="p">)</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>    <span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="aws-implementation-patterns">AWS Implementation Patterns<a class="headerlink" href="#aws-implementation-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="mlflow-on-aws">MLflow on AWS<a class="headerlink" href="#mlflow-on-aws" title="Permanent link">&para;</a></h3>
+<p>AWS deployments of MLflow typically use EC2 or ECS for the tracking server, RDS for metadata storage, and S3 for artifacts. Application Load Balancers provide high availability and distribute traffic across multiple server instances.</p>
+<p>Implementation options include:</p>
+<p>Self-managed EC2 deployments offer maximum control and customization, suitable for organizations with specific security or compliance requirements. This approach requires managing server updates, scaling, and monitoring.</p>
+<p>ECS or Fargate deployments provide containerized execution with reduced management overhead compared to EC2. Fargate offers serverless container execution, automatically handling capacity planning.</p>
+<p>SageMaker integration allows using SageMaker Experiments as an alternative to MLflow tracking, with tight integration into the SageMaker ecosystem for training and deployment.</p>
+<p>AWS Managed MLflow (in preview) provides a fully managed service reducing operational burden, though with less flexibility than self-hosted options.</p>
+<p>Example configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Configure MLflow to use AWS resources</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="s2">&quot;http://mlflow-server.example.com&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># S3 artifact storage is automatic when tracking URI points to AWS</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;aws-experiment&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="c1"># Artifacts automatically go to S3</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="kubeflow-on-aws">Kubeflow on AWS<a class="headerlink" href="#kubeflow-on-aws" title="Permanent link">&para;</a></h3>
+<p>Kubeflow on AWS requires Amazon EKS (Elastic Kubernetes Service) to provide the Kubernetes infrastructure. Worker nodes can run on EC2 instances for full control or Fargate for serverless container execution.</p>
+<p>Storage typically involves Amazon EFS for shared persistent volumes, S3 for pipeline artifacts and model storage, and RDS for the metadata database.</p>
+<p>Network architecture includes VPC configuration with public and private subnets, Application Load Balancers for ingress, and IAM roles for pod-level permissions through IRSA (IAM Roles for Service Accounts).</p>
+<p>Key AWS integrations include SageMaker Operators for Kubernetes, enabling Kubeflow pipelines to launch SageMaker training jobs and deploy models to SageMaker endpoints. This hybrid approach combines Kubeflow orchestration with SageMaker's managed training infrastructure.</p>
+<p>AWS Step Functions can serve as an alternative to Kubeflow Pipelines for teams already standardized on AWS-native services, providing similar workflow orchestration capabilities with tighter AWS integration.</p>
+<p>Most AWS users should consider SageMaker Pipelines as an alternative to self-managed Kubeflow, offering managed orchestration with lower operational overhead.</p>
+<h3 id="apache-beam-on-aws">Apache Beam on AWS<a class="headerlink" href="#apache-beam-on-aws" title="Permanent link">&para;</a></h3>
+<p>Apache Beam pipelines can run on Amazon EMR, AWS's managed Hadoop and Spark platform, though this requires more configuration than using Dataflow on GCP. The Flink Runner on EMR provides efficient stream processing.</p>
+<p>Integration with AWS services includes connectors for S3, Kinesis for streaming data, and DynamoDB for fast key-value access. Custom IO transforms can integrate with other AWS services as needed.</p>
+<hr />
+<h2 id="integration-patterns-and-stack-combinations">Integration Patterns and Stack Combinations<a class="headerlink" href="#integration-patterns-and-stack-combinations" title="Permanent link">&para;</a></h2>
+<p>Successful ML systems often combine multiple tools, leveraging each for its strengths. Understanding common integration patterns helps in architecting comprehensive solutions.</p>
+<h3 id="fully-managed-gcp-stack">Fully Managed GCP Stack<a class="headerlink" href="#fully-managed-gcp-stack" title="Permanent link">&para;</a></h3>
+<p>The recommended approach for GCP-centric organizations combines Vertex AI Pipelines for orchestration, Dataflow for data processing, and MLflow for experiment tracking. This configuration balances managed services with flexibility.</p>
+<p>Raw data flows from BigQuery, Cloud Storage, or Pub/Sub into Dataflow pipelines that perform feature engineering and data validation. Processed features are stored in BigQuery or Cloud Storage.</p>
+<p>Vertex AI Pipelines orchestrates model training, evaluation, and deployment steps. Pipeline components can execute custom code or call managed services like Vertex AI Training for distributed training. MLflow tracking runs within pipeline components, logging metrics and models for comparison.</p>
+<p>Models are registered in Vertex AI Model Registry and deployed to Vertex AI Prediction endpoints. Vertex AI Model Monitoring tracks prediction quality and alerts on drift.</p>
+<p>This architecture provides:
+- Minimal operational overhead through managed services
+- Scalability for data and training workloads
+- Complete lineage from data through predictions
+- Flexibility for custom logic where needed</p>
+<h3 id="multi-cloud-and-hybrid-stack">Multi-Cloud and Hybrid Stack<a class="headerlink" href="#multi-cloud-and-hybrid-stack" title="Permanent link">&para;</a></h3>
+<p>Organizations requiring portability across cloud providers or on-premises infrastructure typically choose Kubeflow Pipelines, Apache Beam, and MLflow. All three are open-source and can run in any environment.</p>
+<p>Kubeflow provides consistent ML orchestration on Kubernetes regardless of the underlying infrastructure. Pipeline definitions remain portable across clouds, though integration points need environment-specific configuration.</p>
+<p>Apache Beam pipelines can run on Dataflow, AWS EMR, or open-source Spark and Flink clusters. The unified programming model ensures data processing logic remains consistent even when execution infrastructure changes.</p>
+<p>MLflow tracks experiments and models without cloud-specific dependencies, enabling teams to maintain consistent workflows across different environments.</p>
+<p>This approach trades increased operational complexity for maximum flexibility and vendor independence.</p>
+<h3 id="data-intensive-real-time-ml">Data-Intensive Real-Time ML<a class="headerlink" href="#data-intensive-real-time-ml" title="Permanent link">&para;</a></h3>
+<p>Real-time ML systems processing streaming data benefit from combining Apache Beam for feature computation, Vertex AI Pipelines for model retraining, and managed prediction services for low-latency serving.</p>
+<p>Beam pipelines consume streaming data from Pub/Sub or Kafka, compute features in real-time, and write to both online feature stores (like Bigtable or Redis) for serving and offline storage (like BigQuery) for training.</p>
+<p>Vertex AI Pipelines schedule periodic model retraining on accumulated data, automatically deploying updated models when performance improves. The same feature engineering logic used in online pipelines is applied to training data, ensuring consistency.</p>
+<p>Vertex AI Prediction or custom serving infrastructure provides low-latency inference using the online feature store for real-time features.</p>
+<h3 id="research-and-experimentation">Research and Experimentation<a class="headerlink" href="#research-and-experimentation" title="Permanent link">&para;</a></h3>
+<p>Research-focused teams often start with MLflow as the primary tool, adding orchestration capabilities as projects mature. The lightweight setup enables rapid iteration without infrastructure overhead.</p>
+<p>Individual data scientists log experiments to a shared MLflow tracking server, comparing approaches and sharing successful models through the model registry. As projects move toward production, pipelines can be formalized using Vertex AI Pipelines or Kubeflow while continuing to use MLflow for tracking.</p>
+<hr />
+<h2 id="decision-framework">Decision Framework<a class="headerlink" href="#decision-framework" title="Permanent link">&para;</a></h2>
+<p>Selecting appropriate tools requires evaluating multiple factors including team size, infrastructure capabilities, cloud strategy, and production requirements.</p>
+<h3 id="when-to-choose-mlflow">When to Choose MLflow<a class="headerlink" href="#when-to-choose-mlflow" title="Permanent link">&para;</a></h3>
+<p>MLflow serves small to medium teams focused primarily on experimentation and model development. The minimal infrastructure requirements and simple API enable rapid adoption without specialized expertise.</p>
+<p>Choose MLflow when:
+- Model tracking and versioning are the primary needs
+- Teams want framework-agnostic tooling supporting scikit-learn, TensorFlow, PyTorch, and others
+- Infrastructure should remain simple and portable
+- Kubernetes is not part of the technology stack
+- Individual data scientists need to collaborate on experiments</p>
+<p>MLflow works well as a component within larger systems, providing experiment tracking regardless of the orchestration platform used for production workflows.</p>
+<h3 id="when-to-choose-kubeflow">When to Choose Kubeflow<a class="headerlink" href="#when-to-choose-kubeflow" title="Permanent link">&para;</a></h3>
+<p>Kubeflow suits large-scale ML operations with complex workflows requiring sophisticated orchestration, especially when Kubernetes is already part of the infrastructure strategy.</p>
+<p>Choose Kubeflow when:
+- Production ML pipelines require complex multi-step workflows with conditional logic
+- The organization has standardized on Kubernetes for application deployment
+- Distributed training across multiple nodes is required
+- Automated hyperparameter tuning at scale is needed
+- Multi-cloud or hybrid cloud portability is important
+- Teams have Kubernetes expertise and DevOps resources</p>
+<p>Kubeflow provides enterprise-grade capabilities at the cost of significant operational complexity. Organizations should ensure they have the necessary expertise before committing to this platform.</p>
+<h3 id="when-to-choose-vertex-ai-pipelines">When to Choose Vertex AI Pipelines<a class="headerlink" href="#when-to-choose-vertex-ai-pipelines" title="Permanent link">&para;</a></h3>
+<p>Vertex AI Pipelines provides the optimal solution for teams building ML systems primarily on GCP who want production-grade orchestration without infrastructure management.</p>
+<p>Choose Vertex AI Pipelines when:
+- Building scalable end-to-end ML pipelines on GCP
+- Minimizing operational overhead is a priority
+- Deep integration with GCP services adds value
+- Serverless execution aligns with organizational preferences
+- Teams want Kubeflow Pipelines capabilities without Kubernetes complexity</p>
+<p>Vertex AI Pipelines delivers most of Kubeflow's functionality while eliminating infrastructure concerns, making it the recommended default for GCP users.</p>
+<h3 id="when-to-choose-apache-beam">When to Choose Apache Beam<a class="headerlink" href="#when-to-choose-apache-beam" title="Permanent link">&para;</a></h3>
+<p>Apache Beam addresses data processing challenges, particularly when working with large-scale batch data or real-time streaming sources.</p>
+<p>Choose Apache Beam (Dataflow) when:
+- Processing terabytes or petabytes of data for ML features
+- Unified batch and streaming processing simplifies architecture
+- Complex data transformations require a powerful programming model
+- Real-time feature engineering feeds production ML systems
+- Integration with BigQuery, Pub/Sub, and other GCP data services is important</p>
+<p>Beam complements rather than replaces ML orchestration tools, typically working alongside Vertex AI Pipelines or Kubeflow for feature engineering.</p>
+<h3 id="hybrid-and-combined-approaches">Hybrid and Combined Approaches<a class="headerlink" href="#hybrid-and-combined-approaches" title="Permanent link">&para;</a></h3>
+<p>Many organizations use multiple tools to leverage each for its strengths. Common combinations include:</p>
+<p>MLflow for experiment tracking with Vertex AI Pipelines for production orchestration provides excellent experiment management while using managed services for production workflows. Pipeline components log to MLflow during training, maintaining continuity from development through production.</p>
+<p>Kubeflow Pipelines with MLflow tracking combines sophisticated orchestration with comprehensive experiment management. This approach works well for organizations with Kubernetes expertise needing multi-cloud portability.</p>
+<p>Apache Beam with Vertex AI Pipelines separates data processing from ML orchestration, allowing each system to optimize for its workload. Feature pipelines run on Dataflow while training and deployment use Vertex AI.</p>
+<p>Integration example showing MLflow within a pipeline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">packages_to_install</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mlflow&quot;</span><span class="p">,</span> <span class="s2">&quot;scikit-learn&quot;</span><span class="p">]</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_with_mlflow</span><span class="p">(</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">mlflow_tracking_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">experiment_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">):</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="c1"># Configure MLflow</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="n">mlflow_tracking_uri</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="n">experiment_name</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="c1"># Log parameters</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">)</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>        <span class="c1"># Train model</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="c1"># ... training code ...</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="c1"># Log metrics and model</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="decision-tree">Decision Tree<a class="headerlink" href="#decision-tree" title="Permanent link">&para;</a></h3>
+<p>A systematic approach to tool selection follows this logic:</p>
+<p>For teams needing complex multi-step pipelines with dependencies, conditionals, or loops:
+- If already using Kubernetes, choose Kubeflow Pipelines
+- If building primarily on GCP, choose Vertex AI Pipelines
+- If requiring multi-cloud portability, choose Kubeflow Pipelines
+- If lacking Kubernetes resources, consider managed alternatives (Vertex AI Pipelines on GCP, SageMaker Pipelines on AWS)</p>
+<p>For teams primarily needing experiment tracking and model registry without complex orchestration:
+- Choose MLflow regardless of cloud provider
+- Consider adding orchestration tools (Airflow, Prefect) for workflow management
+- Integrate with cloud-native services as projects mature</p>
+<p>For data processing and feature engineering at scale:
+- Choose Apache Beam (Dataflow on GCP)
+- Integrate with selected ML orchestration platform</p>
+<h3 id="team-size-recommendations">Team Size Recommendations<a class="headerlink" href="#team-size-recommendations" title="Permanent link">&para;</a></h3>
+<p>Appropriate tooling often correlates with team size and organizational maturity:</p>
+<p>Teams of 1-5 people benefit from MLflow's simplicity, potentially using Vertex AI's free tier for managed execution. Low overhead and fast experimentation accelerate progress without requiring dedicated infrastructure expertise.</p>
+<p>Teams of 5-20 people can adopt MLflow with lightweight orchestration tools like Airflow or Prefect for workflow management. As production needs grow, migration to Vertex AI Pipelines provides scalability without dramatic architectural changes.</p>
+<p>Teams of 20-50 people typically require the standardization and governance provided by Kubeflow or Vertex AI Pipelines. Shared infrastructure and standardized workflows improve collaboration and reproducibility across larger groups.</p>
+<p>Teams of 50+ people benefit from enterprise-grade platforms like Kubeflow with managed Kubernetes or Vertex AI Pipelines with organizational policies. Dedicated MLOps teams can manage platform complexity while enabling data scientists to focus on modeling.</p>
+<hr />
+<h2 id="cost-comparison">Cost Comparison<a class="headerlink" href="#cost-comparison" title="Permanent link">&para;</a></h2>
+<p>Infrastructure and operational costs vary significantly across deployment models, impacting total cost of ownership.</p>
+<h3 id="mlflow-costs">MLflow Costs<a class="headerlink" href="#mlflow-costs" title="Permanent link">&para;</a></h3>
+<p>MLflow deployments on cloud platforms incur costs for compute, storage, and databases:</p>
+<p>On AWS:
+- Compute: EC2 instances ($50-200/month) or ECS/Fargate ($40-180/month)
+- Database: RDS PostgreSQL/MySQL ($30-150/month)
+- Storage: S3 ($0.023/GB)
+- Load balancing: ~$20/month
+- Total for small setup: approximately $100-400/month</p>
+<p>On GCP:
+- Compute: Cloud Run ($20-100/month) or GKE ($50-200/month)
+- Database: Cloud SQL ($25-120/month)
+- Storage: GCS ($0.020/GB)
+- Load balancing: ~$18/month
+- Total for small setup: approximately $70-300/month</p>
+<p>Costs scale primarily with storage (number and size of artifacts) and compute (traffic to tracking server).</p>
+<h3 id="kubeflow-costs">Kubeflow Costs<a class="headerlink" href="#kubeflow-costs" title="Permanent link">&para;</a></h3>
+<p>Self-managed Kubeflow requires Kubernetes clusters with associated infrastructure:</p>
+<p>On AWS:
+- EKS control plane: $73/month
+- Worker nodes: $100-1000+/month depending on size and count
+- Storage: EBS volumes and S3 ($50-200/month)
+- Load balancer: ~$20/month
+- Total for small setup: approximately $250-1500/month</p>
+<p>On GCP:
+- GKE control plane: $73/month
+- Worker nodes: $100-1000+/month
+- Storage: Persistent disks and GCS ($40-180/month)
+- Load balancer: ~$18/month
+- Total for small setup: approximately $230-1400/month</p>
+<p>Significant additional costs come from operational overhead - the personnel time required to manage, upgrade, and troubleshoot Kubernetes infrastructure often exceeds direct infrastructure costs.</p>
+<h3 id="vertex-ai-pipelines-costs">Vertex AI Pipelines Costs<a class="headerlink" href="#vertex-ai-pipelines-costs" title="Permanent link">&para;</a></h3>
+<p>Vertex AI Pipelines uses a serverless pricing model:
+- No cluster management costs
+- Pipeline execution charged per vCPU and memory used
+- Typical cost: ~$0.03 per pipeline run plus compute resources consumed
+- Training and prediction use separate pricing for those services</p>
+<p>For sporadic workloads or moderate pipeline execution frequency, Vertex AI Pipelines typically costs less than maintaining Kubeflow infrastructure. High-frequency execution with long-running pipelines may favor self-managed solutions.</p>
+<h3 id="apache-beam-dataflow-costs">Apache Beam (Dataflow) Costs<a class="headerlink" href="#apache-beam-dataflow-costs" title="Permanent link">&para;</a></h3>
+<p>Dataflow charges based on worker hours, with pricing varying by worker machine type:
+- Batch processing: ~$0.10-0.60 per vCPU hour depending on machine type
+- Streaming: ~$0.12-0.80 per vCPU hour
+- Autoscaling reduces costs by adjusting workers to match demand</p>
+<p>Typical data processing costs range from $50-500+/month depending on data volumes and processing complexity. Batch jobs can use preemptible workers for up to 70% cost reduction.</p>
+<hr />
+<h2 id="migration-considerations">Migration Considerations<a class="headerlink" href="#migration-considerations" title="Permanent link">&para;</a></h2>
+<p>Organizations sometimes need to migrate between platforms as requirements evolve.</p>
+<h3 id="from-mlflow-to-kubeflow-or-vertex-ai-pipelines">From MLflow to Kubeflow or Vertex AI Pipelines<a class="headerlink" href="#from-mlflow-to-kubeflow-or-vertex-ai-pipelines" title="Permanent link">&para;</a></h3>
+<p>Migration from MLflow to Kubeflow or Vertex AI Pipelines typically happens when teams need sophisticated orchestration capabilities beyond MLflow's scope.</p>
+<p>Benefits of migration:
+- Production-grade pipeline orchestration with DAGs
+- Scalable deployments with managed infrastructure (Vertex AI) or Kubernetes (Kubeflow)
+- Advanced features like hyperparameter tuning and distributed training</p>
+<p>Challenges include:
+- Increased infrastructure complexity (especially for Kubeflow)
+- Team learning curve for Kubernetes concepts (Kubeflow) or GCP services (Vertex AI)
+- Migration effort for existing experiments and workflows</p>
+<p>Recommended migration strategy:
+1. Set up Vertex AI Pipelines or Kubeflow cluster
+2. Integrate MLflow tracking within pipeline components to maintain experiment tracking
+3. Gradually migrate workflows to pipelines, starting with production-critical paths
+4. Retain MLflow for model registry and experiment comparison even after pipeline migration
+5. Keep historical experiment data in MLflow for reference</p>
+<p>This approach preserves experiment tracking capabilities while adding orchestration, allowing both systems to coexist during and after migration.</p>
+<h3 id="from-kubeflow-to-vertex-ai-pipelines">From Kubeflow to Vertex AI Pipelines<a class="headerlink" href="#from-kubeflow-to-vertex-ai-pipelines" title="Permanent link">&para;</a></h3>
+<p>Teams running Kubeflow on GKE may migrate to Vertex AI Pipelines to reduce operational overhead while maintaining pipeline capabilities.</p>
+<p>Benefits:
+- Elimination of cluster management and maintenance
+- Lower operational costs through serverless execution
+- Simplified upgrades and security patching</p>
+<p>Challenges:
+- Pipeline components may need modification for GCP-specific features
+- Custom Kubeflow components require containerization for Vertex AI
+- Some Kubeflow features may not have direct Vertex AI equivalents</p>
+<p>Migration approach:
+1. Audit existing pipelines to identify GCP-compatible and custom components
+2. Test pipeline definitions on Vertex AI (often compatible without changes)
+3. Refactor components that depend on Kubeflow-specific features
+4. Run pipelines in parallel on both platforms during validation
+5. Decommission Kubeflow cluster after complete migration</p>
+<p>Pipeline definitions using the Kubeflow Pipelines SDK often run on Vertex AI with minimal changes, as Vertex AI Pipelines is built on the same foundation.</p>
+<h3 id="from-vertex-ai-pipelines-to-kubeflow">From Vertex AI Pipelines to Kubeflow<a class="headerlink" href="#from-vertex-ai-pipelines-to-kubeflow" title="Permanent link">&para;</a></h3>
+<p>Migration from Vertex AI Pipelines to Kubeflow typically occurs when organizations need multi-cloud portability or capabilities not available in the managed service.</p>
+<p>Benefits:
+- Multi-cloud and on-premises deployment options
+- Greater customization and control over execution environment
+- Access to latest Kubeflow features before Vertex AI adoption</p>
+<p>Challenges:
+- Infrastructure management overhead
+- Loss of native GCP service integrations
+- Operational expertise requirements increase</p>
+<p>This migration is less common due to the operational burden introduced by self-managed Kubeflow.</p>
+<hr />
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<p>Effective use of these platforms requires following established patterns for reliability, reproducibility, and maintainability.</p>
+<h3 id="mlflow-best-practices">MLflow Best Practices<a class="headerlink" href="#mlflow-best-practices" title="Permanent link">&para;</a></h3>
+<p>Centralized tracking servers enable team collaboration, allowing multiple data scientists to share experiments and compare results. Deploying on shared infrastructure with authentication prevents siloed work.</p>
+<p>Cloud storage for artifacts (S3, GCS) ensures durability and accessibility. Local storage works for prototyping but fails to scale for team environments.</p>
+<p>Comprehensive tagging with meaningful metadata (model type, dataset version, feature set) enables filtering and search across potentially thousands of experiments. Consistent naming conventions improve organization.</p>
+<p>MLflow Projects capture environment dependencies and entry points, making experiments reproducible months or years later. Version controlling project files in Git provides additional reproducibility guarantees.</p>
+<p>Model staging workflows (development → staging → production) implement governance over model promotion. Automated validation before stage transitions prevents unvetted models from reaching production.</p>
+<p>Authentication and authorization protect sensitive experiments and models. Integration with SSO systems like LDAP or OIDC streamlines access management.</p>
+<p>Regular database backups preserve experiment history against data loss. Automated backup schedules should match the value of experiment data.</p>
+<h3 id="vertex-ai-pipelines-best-practices">Vertex AI Pipelines Best Practices<a class="headerlink" href="#vertex-ai-pipelines-best-practices" title="Permanent link">&para;</a></h3>
+<p>Leverage Google Cloud Pipeline Components for common tasks to promote reusability and reduce boilerplate. These prebuilt components encapsulate best practices for dataset operations, training jobs, model deployment, and batch prediction. Using official components ensures compatibility with Vertex AI services and reduces maintenance burden.</p>
+<p>Create dedicated service accounts with granular IAM permissions rather than using the default Compute Engine service account. Each pipeline should run under a service account with only the minimum permissions required for its operations. This principle of least privilege limits potential security risks and provides clear audit trails for resource access.</p>
+<p>Local testing using the KFP SDK local execution mode validates pipeline logic before submitting to Vertex AI. Initialize local execution with <code>kfp.local.init()</code> and use DockerRunner for testing components. While authentication to Google Cloud services has limitations in local mode, this approach catches logic errors and validates component interfaces early in development.</p>
+<p>Keep pipelines and dependencies updated by monitoring KFP release notes and security advisories. Regular updates ensure access to latest features, performance improvements, and security patches. Version pinning in requirements provides stability while periodic upgrades maintain currency.</p>
+<p>Pipeline parameterization enables reuse across different datasets, model types, and configurations. Avoiding hardcoded values improves flexibility and maintainability. Parameters defined at the pipeline level can be overridden at submission time without recompilation.</p>
+<p>Component containerization with explicit dependencies ensures reproducible execution. Building container images as part of CI/CD pipelines keeps components up to date. Specify exact package versions in <code>packages_to_install</code> to prevent environment drift.</p>
+<p>Git version control for pipeline definitions tracks changes over time and enables collaboration. Treating pipelines as code enables review processes and testing before deployment. Store compiled YAML alongside source code for traceability.</p>
+<p>Resource requests and limits prevent components from consuming excessive resources or failing due to insufficient allocation. Right-sizing based on observed usage optimizes costs. Monitor Cloud Logging for resource warnings and adjust specifications accordingly.</p>
+<p>Pipeline caching reuses outputs from previous runs when inputs haven't changed, reducing execution time and cost. Cache keys automatically depend on component inputs, code, and parameters. Disable caching for components with external dependencies that may change.</p>
+<p>Monitoring and alerting on pipeline execution catches failures and performance degradation. Cloud Monitoring integration provides visibility into execution patterns. Set up alerts for pipeline failures, long-running executions, or resource quota issues.</p>
+<h3 id="kubeflow-best-practices">Kubeflow Best Practices<a class="headerlink" href="#kubeflow-best-practices" title="Permanent link">&para;</a></h3>
+<p>Component reusability through containerization and clear interfaces allows building complex pipelines from tested building blocks. Public component repositories accelerate development.</p>
+<p>Resource management through requests and limits ensures stable cluster operation. Setting appropriate values based on component needs prevents resource exhaustion and performance issues.</p>
+<p>Katib integration for hyperparameter optimization leverages Kubernetes parallelism for efficient search. Defining sensible parameter spaces and early stopping criteria reduces wasted computation.</p>
+<p>Secrets management using Kubernetes secrets or external systems like HashiCorp Vault protects credentials. Never hardcode secrets in pipeline definitions or container images.</p>
+<p>Regular maintenance including Kubernetes upgrades, security patches, and component updates maintains stability and security. Testing upgrades in non-production environments prevents service disruptions.</p>
+<p>Monitoring with Prometheus and Grafana provides visibility into cluster and pipeline health. Setting up dashboards and alerts enables proactive issue detection.</p>
+<p>CI/CD integration automates pipeline deployment and testing. Treating pipelines as code with automated testing improves reliability.</p>
+<h3 id="apache-beam-best-practices">Apache Beam Best Practices<a class="headerlink" href="#apache-beam-best-practices" title="Permanent link">&para;</a></h3>
+<p>Unified transforms for batch and streaming ensure consistency between training and serving pipelines. Using the same code for both modes prevents skew from divergent implementations.</p>
+<p>Appropriate windowing for streaming data determines how events are grouped for computation. Fixed windows, sliding windows, and session windows address different use cases.</p>
+<p>Side inputs provide reference data to transform functions without requiring joins. Using views makes small datasets available to all workers efficiently.</p>
+<p>Pipeline testing validates transform logic before deployment. Direct Runner enables fast local testing while Dataflow Runner tests at scale.</p>
+<p>Monitoring job metrics tracks performance and costs. Setting up alerts for high data backlog or worker failures enables rapid response to issues.</p>
+<p>Schema validation ensures data quality throughout pipelines. Explicitly defined schemas catch type errors and missing fields early.</p>
+<hr />
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The ML pipeline and orchestration ecosystem provides tools spanning the spectrum from lightweight experiment tracking to enterprise-scale production platforms. Understanding the strengths, limitations, and appropriate use cases for each enables building effective ML systems.</p>
+<p>MLflow excels at experiment tracking, model versioning, and simple deployments with minimal infrastructure requirements. Its framework-agnostic design and lightweight architecture make it ideal for data scientists who want to focus on modeling rather than infrastructure. The model registry provides essential governance for teams collaborating on ML projects.</p>
+<p>Kubeflow provides comprehensive MLOps capabilities for organizations standardized on Kubernetes. The platform supports sophisticated workflows with distributed training, hyperparameter optimization, and advanced serving features. However, operational complexity requires dedicated infrastructure expertise and ongoing maintenance.</p>
+<p>Vertex AI Pipelines delivers production-grade ML orchestration as a managed service on GCP, combining the pipeline capabilities of Kubeflow with Google's infrastructure automation. The serverless model eliminates cluster management while providing scalability and reliability. For teams building primarily on GCP, Vertex AI Pipelines represents the optimal balance of capability and operational simplicity.</p>
+<p>Apache Beam addresses the data processing challenges inherent in ML systems, providing a unified programming model for batch and streaming feature engineering. Integration with Dataflow on GCP or other runners enables scalable data transformation pipelines that feed downstream ML workflows.</p>
+<p>Successful ML systems often combine multiple tools, using MLflow for experiment tracking, Vertex AI Pipelines or Kubeflow for orchestration, and Apache Beam for data processing. This complementary approach leverages each tool's strengths while mitigating individual limitations.</p>
+<p>Selection depends on team size, infrastructure capabilities, cloud strategy, and production requirements. Small teams benefit from MLflow's simplicity, medium teams can add managed orchestration through Vertex AI Pipelines, and large enterprises may require Kubeflow's flexibility for multi-cloud or hybrid deployments. Apache Beam complements any of these choices when data processing requirements exceed simple transformations.</p>
+<p>The investment in understanding these tools and their interactions pays dividends through improved reproducibility, faster experimentation, and more reliable production deployments. As ML systems mature from research prototypes to production services, the orchestration and pipeline infrastructure becomes as critical as the models themselves.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

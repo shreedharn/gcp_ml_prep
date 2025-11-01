@@ -11,10 +11,6 @@
       
       
       
-        <link rel="prev" href="../patterns/">
-      
-      
-        <link rel="next" href="../scenarios/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>MLFlow vs Kubeflow - GCP ML Engineer Certification Preparation Guide</title>
+        <title>MLFlow vs Kubeflow: Comprehensive Comparison - GCP ML Engineer Certification Preparation Guide</title>
       
     
     
@@ -112,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MLFlow vs Kubeflow
+              MLFlow vs Kubeflow: Comprehensive Comparison
             
           </span>
         </div>
@@ -239,8 +235,6 @@
       
   
   
-    
-  
   
   
     
@@ -253,11 +247,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -273,7 +267,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Study Guide
@@ -399,446 +393,20 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    MLFlow vs Kubeflow
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../pipelines/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    MLFlow vs Kubeflow
+    ML Pipeline & Orchestration Frameworks
     
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#executive-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      Executive Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-core-components-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Core Components Comparison
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Core Components Comparison">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mlflow-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      MLFlow Components
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubeflow-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubeflow Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feature-by-feature-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Feature-by-Feature Comparison
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Feature-by-Feature Comparison">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#experiment-tracking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Experiment Tracking
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Model Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment--serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deployment &amp; Serving
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipeline-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pipeline Orchestration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hyperparameter-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hyperparameter Tuning
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-aws-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. AWS Implementation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. AWS Implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mlflow-on-aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      MLFlow on AWS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubeflow-on-aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubeflow on AWS
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-gcp-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. GCP Implementation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. GCP Implementation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mlflow-on-gcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      MLFlow on GCP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubeflow-on-gcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubeflow on GCP
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-when-to-choose-mlflow-vs-kubeflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. When to Choose MLFlow vs Kubeflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. When to Choose MLFlow vs Kubeflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#choose-mlflow-when" class="md-nav__link">
-    <span class="md-ellipsis">
-      Choose MLFlow When:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#choose-kubeflow-when" class="md-nav__link">
-    <span class="md-ellipsis">
-      Choose Kubeflow When:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hybrid-approach" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hybrid Approach:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-cost-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Cost Comparison
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Cost Comparison">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mlflow-costs" class="md-nav__link">
-    <span class="md-ellipsis">
-      MLFlow Costs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubeflow-costs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubeflow Costs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-migration-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Migration Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Migration Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#from-mlflow-to-kubeflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      From MLFlow to Kubeflow
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#from-kubeflow-to-mlflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      From Kubeflow to MLFlow
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Best Practices
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mlflow-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      MLFlow Best Practices
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubeflow-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubeflow Best Practices
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-comparison-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Comparison Matrix
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. Comparison Matrix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#overall-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overall Comparison
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-decision-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Decision Framework
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Decision Framework">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#use-this-decision-tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use This Decision Tree:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#team-size-recommendations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Team Size Recommendations:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
