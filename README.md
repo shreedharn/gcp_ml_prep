@@ -20,7 +20,7 @@ This guide leverages your AWS Machine Learning expertise to accelerate GCP learn
 - **GCP & AWS Comparison** - Comprehensive service-to-service mapping and feature comparisons
 - **Technical Aspects** - Deep dive into Vertex AI, training, deployment, and monitoring
 - **Architectural Patterns** - Common ML architecture patterns with GCP/AWS implementations
-- **MLFlow vs Kubeflow** - Detailed comparison of ML orchestration frameworks in both clouds
+- **ML Pipeline & Orchestration Frameworks** - Comprehensive comparison of MLflow, Kubeflow, Vertex AI Pipelines, and Apache Beam
 
 ### Reference Materials
 

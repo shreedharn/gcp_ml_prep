@@ -59,7 +59,7 @@ nav:
     - "GCP & AWS Comparison": gcp-aws-compare.md
     - "Technical Aspects": technical.md
     - "Architectural Patterns": patterns.md
-    - "MLFlow vs Kubeflow": kube_ml_flow.md
+    - "ML Pipeline & Orchestration Frameworks": pipelines.md
   - Reference:
     - "Common Scenarios": scenarios.md
     - "Data Science Techniques": ds_techniques.md
