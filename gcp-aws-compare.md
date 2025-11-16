@@ -129,14 +129,6 @@ Comparing the two implementations reveals important API design differences:
 - GCP has unified init vs AWS requires session and role management
 - GCP integrates model serving container at training time
 
-### AI Platform (Legacy) ⚠️ DEPRECATED
-
-**Status**: Discontinued January 31, 2025. All functionality migrated to Vertex AI.
-
-**Migration Path**: All AI Platform features are now available in Vertex AI. AI Platform is the predecessor to Vertex AI.
-
-**Why This Matters**: You may encounter migration scenarios where knowledge of both AI Platform and Vertex AI is relevant.
-
 ### AutoML (Vertex AI AutoML)
 
 **AWS Equivalent**: SageMaker Autopilot, SageMaker Canvas
