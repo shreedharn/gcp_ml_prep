@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../data_split/">
+        <link rel="prev" href="../pipelines/">
       
       
-        <link rel="next" href="../glossary/">
+        <link rel="next" href="../ds_techniques/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -256,7 +256,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../ds_techniques/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -612,52 +612,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../ds_techniques/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Data Science Techniques
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_split/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Data Splitting Strategies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -753,6 +707,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../ds_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Science Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Splitting Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../glossary/" class="md-nav__link">
         
   
@@ -830,13 +830,13 @@
 <td><strong>Vertex AI Pipelines</strong></td>
 <td>Orchestrates end-to-end ML workflows (built on KFP). Reproducible DAGs from data prep → training → deploy → monitoring.</td>
 <td>Use for any production ML workflow, automated retraining, CI/CD for ML.</td>
-<td>Works with <em>all</em> ops: CustomTrainingJobOp, AutoML ops, DataflowPythonJobOp, ModelDeployOp, ModelUploadOp, BigQuery, TFX, Feature Store, Model Garden.</td>
+<td>Integrates with Custom Training, AutoML, Dataflow, BigQuery, TFX, Feature Store, Model Registry, Endpoints, Model Garden</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Custom Training</strong></td>
 <td>Fully customizable training with custom containers or pre-built frameworks</td>
 <td>Training custom models with TensorFlow, PyTorch, scikit-learn, XGBoost when AutoML insufficient</td>
-<td>Pipelines (CustomTrainingJobOp), Deep Learning Containers, Cloud TPU, Hyperparameter Tuning, Experiments, Model Registry</td>
+<td>Pipelines, Deep Learning Containers, Cloud TPU, GPU, Hyperparameter Tuning, Experiments, Model Registry, TensorBoard</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Batch Prediction</strong></td>
@@ -854,361 +854,361 @@
 <td><strong>Vertex AI Workbench (Managed)</strong></td>
 <td>Enterprise IAM/VPC-secure notebook</td>
 <td>Long-running governed development</td>
-<td>BigQuery, SDK</td>
+<td>BigQuery, Vertex AI SDK, Cloud Storage, Git integration</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Notebook Runner</strong></td>
 <td>Executes notebooks as reproducible jobs</td>
 <td>Convert exploratory notebooks into production jobs</td>
-<td>Vertex Pipelines</td>
+<td>Pipelines, Workbench, Cloud Scheduler</td>
 </tr>
 <tr>
 <td><strong>Vertex AI AutoML</strong></td>
 <td>Automated model training</td>
 <td>Auto feature engineering + HPO when you want fully managed ML</td>
-<td>AutoML Tabular, AutoML NLP, AutoML Vision</td>
+<td>Managed Datasets, Model Registry, Endpoints, Pipelines</td>
 </tr>
 <tr>
 <td><strong>AutoMLTabularTrainingJob</strong></td>
 <td>AutoML Tabular via SDK</td>
 <td>Programmatic training workflows</td>
-<td>TabularDatasetCreateOp</td>
+<td>Managed Datasets, Pipelines, Model Registry</td>
 </tr>
 <tr>
 <td><strong>AutoML Natural Language</strong></td>
 <td>Text classification, sentiment, entity extraction</td>
 <td>No-code or low-code text ML</td>
-<td>Cloud Document AI</td>
+<td>Cloud Document AI, Natural Language AI API, Translation API</td>
 </tr>
 <tr>
 <td><strong>AutoML Vision Edge</strong></td>
 <td>Vision models optimized for edge</td>
 <td>Low-latency, offline, mobile/IoT inference</td>
-<td>AutoML Edge</td>
+<td>AutoML Vision, Edge deployment platforms, TensorFlow Lite</td>
 </tr>
 <tr>
 <td><strong>AutoML Edge</strong></td>
 <td>General edge AutoML export</td>
 <td>On-device inference constraints</td>
-<td>Vision Edge</td>
+<td>AutoML Vision, AutoML NLP, mobile/IoT platforms</td>
 </tr>
 <tr>
 <td><strong>AutoML Table (legacy)</strong></td>
 <td>Older AutoML tabular system</td>
 <td>Legacy workflows / migrations</td>
-<td>BigQuery</td>
+<td>BigQuery, AutoML Tabular</td>
 </tr>
 <tr>
 <td><strong>Tabular Workflow for TabNet</strong></td>
 <td>Deep learning tabular training</td>
 <td>Need interpretable TabNet model</td>
-<td>AutoML Tabular</td>
+<td>AutoML Tabular, Custom Training</td>
 </tr>
 <tr>
 <td><strong>Vertex Vision Occupancy Analytics</strong></td>
 <td>Prebuilt occupancy/people counting</td>
 <td>Retail or physical space occupancy analytics</td>
-<td>AutoML Vision</td>
+<td>Vision AI API, AutoML Vision</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Experiments</strong></td>
 <td>Track runs, metrics, parameters</td>
 <td>Compare training runs</td>
-<td>TensorBoard</td>
+<td>Custom Training, TensorBoard, Hyperparameter Tuning</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Metadata</strong></td>
 <td>Lineage + artifact tracking</td>
 <td>Compliance, auditing, reproducibility</td>
-<td>Model Registry, Pipelines</td>
+<td>Model Registry, Pipelines, Datasets, Artifacts</td>
 </tr>
 <tr>
 <td><strong>Vertex AI TensorBoard</strong></td>
 <td>Training visualization</td>
 <td>DL training diagnostics</td>
-<td>Experiments</td>
+<td>Custom Training, Experiments, Hyperparameter Tuning</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Managed Dataset</strong></td>
 <td>Dataset metadata layer for versioning and lineage</td>
 <td>Create and manage datasets for AutoML and custom training</td>
-<td>TabularDatasetCreateOp, AutoML, Custom Training</td>
+<td>AutoML, Custom Training, Pipelines, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Feature Store</strong></td>
 <td>Online/offline feature serving with point-in-time correctness</td>
 <td>Real-time feature delivery, train/serve consistency, feature sharing across teams</td>
-<td>Endpoints, Batch Prediction, Bigtable, BigQuery</td>
+<td>Endpoints, Batch Prediction, Bigtable, BigQuery, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Model Registry</strong></td>
 <td>Central versioned model store with lineage and metadata</td>
 <td>Manage multiple model versions, track model lineage, promote models across environments</td>
-<td>ModelUploadOp, Custom Training, AutoML, Endpoints</td>
+<td>Custom Training, AutoML, Endpoints, Batch Prediction, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Endpoint</strong></td>
 <td>Real-time prediction serving with autoscaling</td>
 <td>Low-latency online inference with traffic splitting and A/B testing</td>
-<td>ModelDeployOp, Model Registry, Monitoring</td>
+<td>Model Registry, Monitoring, Feature Store, Matching Engine</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Model Monitoring</strong></td>
 <td>Training-serving skew, prediction drift, and feature attribution drift detection</td>
 <td>Production model safety, detect data drift and model degradation</td>
-<td>Feature Store, Endpoints, Explainable AI</td>
+<td>Endpoints, Feature Store, Explainable AI, Cloud Monitoring</td>
 </tr>
 <tr>
 <td><strong>Vertex Explainable AI</strong></td>
 <td>Feature attribution methods (Sampled Shapley, XRAI, Integrated Gradients)</td>
 <td>Model interpretability, fairness audits, regulatory compliance</td>
-<td>Custom Training, AutoML, Endpoints</td>
+<td>Custom Training, AutoML, Endpoints, Model Monitoring</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Hyperparameter Tuning</strong></td>
 <td>Distributed HPO using grid, random, or Bayesian search</td>
 <td>Systematic search for best hyperparameters in custom training jobs</td>
-<td>Custom Training, Experiments, Vizier</td>
+<td>Custom Training, Experiments, Vizier, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Vizier</strong></td>
 <td>Black-box optimization service (HPO as a service)</td>
 <td>Optimize hyperparameters or arbitrary objectives across multiple trials</td>
-<td>Hyperparameter Tuning, Custom Training</td>
+<td>Hyperparameter Tuning, Custom Training, Experiments</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Matching Engine</strong></td>
 <td>High-scale, low-latency vector similarity search</td>
 <td>Semantic search, recommendation systems, similarity matching for embeddings</td>
-<td>Endpoints, Feature Store, Model predictions</td>
+<td>Endpoints, Feature Store, Custom embeddings, Recommendations AI</td>
 </tr>
 <tr>
 <td><strong>Vertex AI Labeling</strong></td>
 <td>Human-in-the-loop data annotation service</td>
 <td>Create labeled training datasets with managed workforce</td>
-<td>Managed Datasets, AutoML, Custom Training</td>
+<td>Managed Datasets, AutoML, Custom Training, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Cloud TPU</strong></td>
 <td>Tensor Processing Units (ML accelerators)</td>
 <td>Accelerate TensorFlow/JAX/PyTorch training, especially large models and matrix operations</td>
-<td>Custom Training, Deep Learning VMs, TensorFlow</td>
+<td>Custom Training, Deep Learning VMs, Deep Learning Containers, TensorFlow, JAX</td>
 </tr>
 <tr>
 <td><strong>Deep Learning VM Images</strong></td>
 <td>Pre-configured VMs with ML frameworks</td>
 <td>Quick setup for custom development environments with GPU/TPU support</td>
-<td>Custom Training, Notebooks</td>
+<td>Custom Training, Notebooks, Cloud TPU, GPU</td>
 </tr>
 <tr>
 <td><strong>Deep Learning Containers</strong></td>
 <td>Pre-built Docker images with ML frameworks</td>
 <td>Containerized training/serving with TensorFlow, PyTorch, scikit-learn</td>
-<td>Custom Training, Pipelines, Artifact Registry</td>
+<td>Custom Training, Pipelines, Artifact Registry, Cloud Build</td>
 </tr>
 <tr>
 <td><strong>BigQuery</strong></td>
 <td>Serverless, petabyte-scale SQL data warehouse</td>
 <td>Store and transform training data, feature engineering, batch predictions at scale</td>
-<td>BigQuery ML, Feature Store, Batch Prediction, Vertex AI</td>
+<td>BigQuery ML, Feature Store, Batch Prediction, Dataflow, Data Fusion</td>
 </tr>
 <tr>
 <td><strong>BigQuery ML</strong></td>
 <td>Train and deploy ML models using SQL (linear regression, DNN, XGBoost, AutoML)</td>
 <td>Warehouse-native ML for data analysts, rapid prototyping without data movement</td>
-<td>ML.PREDICT, ML.EVALUATE, ML.FORECAST, Vertex AI Model Registry</td>
+<td>BigQuery, Vertex AI Model Registry, Endpoints, Batch Prediction</td>
 </tr>
 <tr>
 <td><strong>BigQuery Scheduled Queries</strong></td>
 <td>Scheduled SQL execution with cron-like syntax</td>
 <td>Automated feature refreshes, periodic batch predictions, ETL pipelines</td>
-<td>BigQuery ML, Dataflow</td>
+<td>BigQuery ML, Cloud Scheduler, Dataflow</td>
 </tr>
 <tr>
 <td><strong>Dataflow</strong></td>
 <td>Fully managed Apache Beam service for batch and streaming</td>
 <td>Large-scale feature engineering, data preprocessing, distributed batch inference</td>
-<td>DataflowPythonJobOp, TFX, TensorFlow Transform, Pipelines</td>
+<td>Pipelines, TFX, TensorFlow Transform, BigQuery, Pub/Sub, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>DataflowRunner</strong></td>
 <td>Apache Beam runner for GCP Dataflow</td>
 <td>Execute Beam pipelines on Dataflow for scalable data processing</td>
-<td>TFX, TensorFlow Transform</td>
+<td>Apache Beam, TFX, TensorFlow Transform</td>
 </tr>
 <tr>
 <td><strong>TFRecord</strong></td>
 <td>TensorFlow-optimized binary data format</td>
 <td>Efficient serialization for large-scale training data with reduced I/O overhead</td>
-<td>TFX, Dataflow, Custom Training</td>
+<td>TFX, Dataflow, TensorFlow, Custom Training</td>
 </tr>
 <tr>
 <td><strong>Data Fusion</strong></td>
 <td>Visual ETL with 150+ connectors</td>
 <td>Code-free multi-source data integration and transformation</td>
-<td>BigQuery, Cloud Storage</td>
+<td>BigQuery, Cloud Storage, Dataflow</td>
 </tr>
 <tr>
 <td><strong>DataPrep</strong></td>
 <td>Intelligent data preparation tool</td>
 <td>Interactive no-code data cleaning and wrangling for analysts</td>
-<td>BigQuery, AutoML</td>
+<td>BigQuery, AutoML, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>DataProc</strong></td>
 <td>Managed Apache Spark and Hadoop service</td>
 <td>Spark MLlib training, large-scale PySpark ETL, migrate on-prem Hadoop workloads</td>
-<td>GCS, BigQuery, Vertex AI</td>
+<td>Cloud Storage, BigQuery, Vertex AI, Spark MLlib</td>
 </tr>
 <tr>
 <td><strong>Dataplex</strong></td>
 <td>Unified data lake management and governance</td>
 <td>Centralized metadata, data quality, security policies across data lakes and warehouses</td>
-<td>BigQuery, Feature Store, Cloud Storage</td>
+<td>BigQuery, Feature Store, Cloud Storage, Data Catalog</td>
 </tr>
 <tr>
 <td><strong>Cloud Bigtable</strong></td>
 <td>NoSQL wide-column database</td>
 <td>Low-latency, high-throughput feature storage for online serving</td>
-<td>Feature Store, Endpoints, real-time ML</td>
+<td>Feature Store, Endpoints, Dataflow, HBase API</td>
 </tr>
 <tr>
 <td><strong>Cloud Document AI</strong></td>
 <td>Specialized document processing with OCR and parsing</td>
 <td>Extract structured data from invoices, receipts, contracts, forms</td>
-<td>Vision AI, AutoML NLP, Natural Language AI</td>
+<td>Vision AI API, AutoML NLP, Natural Language AI, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Vision AI API</strong></td>
 <td>Pre-trained vision models (OCR, label/face/object detection, SafeSearch)</td>
 <td>Image analysis without custom training, content moderation</td>
-<td>AutoML Vision, Document AI, Video Intelligence</td>
+<td>AutoML Vision, Document AI, Video Intelligence, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Natural Language AI API</strong></td>
 <td>Pre-trained NLP (entity extraction, sentiment, syntax, content classification)</td>
 <td>Text analysis without custom model training</td>
-<td>AutoML NLP, Translation API</td>
+<td>AutoML NLP, Translation API, Document AI</td>
 </tr>
 <tr>
 <td><strong>Translation API</strong></td>
 <td>Neural machine translation (NMT)</td>
 <td>Translate text and documents between 100+ languages</td>
-<td>Natural Language AI, Document AI</td>
+<td>Natural Language AI, Document AI, AutoML NLP</td>
 </tr>
 <tr>
 <td><strong>Speech-to-Text API</strong></td>
 <td>Automatic speech recognition (ASR)</td>
 <td>Convert audio to text with speaker diarization, support for 125+ languages</td>
-<td>Natural Language AI, Dialogflow, Video Intelligence</td>
+<td>Natural Language AI, Dialogflow, Video Intelligence, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Text-to-Speech API</strong></td>
 <td>Neural voice synthesis with WaveNet</td>
 <td>Generate natural-sounding speech from text in multiple voices and languages</td>
-<td>Dialogflow, Contact Center AI</td>
+<td>Dialogflow, Contact Center AI, Speech-to-Text</td>
 </tr>
 <tr>
 <td><strong>Video Intelligence API</strong></td>
 <td>Pre-trained video analysis (label/shot/object detection, transcription)</td>
 <td>Analyze video content, detect scenes, extract metadata without custom training</td>
-<td>Vision AI, Speech-to-Text</td>
+<td>Vision AI, Speech-to-Text, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Recommendations AI</strong></td>
 <td>Managed ML-powered recommendation engine</td>
 <td>E-commerce product recommendations, media personalization, similar item suggestions</td>
-<td>BigQuery, Retail API, Vertex AI</td>
+<td>BigQuery, Retail API, Matching Engine, Endpoints</td>
 </tr>
 <tr>
 <td><strong>Cloud DLP API</strong></td>
 <td>Sensitive data discovery, classification, and de-identification</td>
 <td>Detect and redact PII before training, ensure data compliance (GDPR, HIPAA)</td>
-<td>BigQuery, Cloud Storage, Vertex AI Training</td>
+<td>BigQuery, Cloud Storage, Dataflow, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Kubeflow Pipelines (KFP)</strong></td>
 <td>Open-source pipeline engine</td>
 <td>Multi-cloud or non-GCP pipelines</td>
-<td>Vertex Pipelines uses KFP</td>
+<td>Vertex Pipelines, Kubernetes, TFX, custom ML workflows</td>
 </tr>
 <tr>
 <td><strong>TensorFlow Extended (TFX)</strong></td>
 <td>Full ML pipeline framework</td>
 <td>TF-heavy production ML</td>
-<td>Dataflow, TFRecord</td>
+<td>Dataflow, TFRecord, Vertex Pipelines, TensorFlow, Beam</td>
 </tr>
 <tr>
 <td><strong>TensorFlow Serving</strong></td>
 <td>TF model server</td>
 <td>Self-hosted TF inference</td>
-<td>Endpoints</td>
+<td>Vertex Endpoints, Kubernetes, Docker, TensorFlow models</td>
 </tr>
 <tr>
 <td><strong>Cloud Build</strong></td>
 <td>Continuous integration/continuous deployment</td>
 <td>Build custom containers, automate ML pipeline deployment, CI/CD for models</td>
-<td>Artifact Registry, Pipelines, Custom Training</td>
+<td>Artifact Registry, Cloud Run, Pipelines, GitHub, GitLab</td>
 </tr>
 <tr>
 <td><strong>Artifact Registry</strong></td>
 <td>Universal package and container registry</td>
 <td>Store Docker images, Python packages, model artifacts</td>
-<td>Custom Training, Cloud Build, Deep Learning Containers</td>
+<td>Custom Training, Cloud Build, Deep Learning Containers, Cloud Run</td>
 </tr>
 <tr>
 <td><strong>Container Registry (legacy)</strong></td>
 <td>Docker container registry</td>
 <td>Store container images (superseded by Artifact Registry)</td>
-<td>Artifact Registry</td>
+<td>Artifact Registry, GKE, Cloud Run</td>
 </tr>
 <tr>
 <td><strong>Cloud Monitoring</strong></td>
 <td>Infrastructure and application monitoring</td>
 <td>Track model performance metrics, training job monitoring, resource utilization</td>
-<td>Model Monitoring, Endpoints, Custom Training</td>
+<td>Model Monitoring, Endpoints, Custom Training, Cloud Logging</td>
 </tr>
 <tr>
 <td><strong>Cloud Logging</strong></td>
 <td>Centralized logging service</td>
 <td>Debug training jobs, track prediction requests, audit trails</td>
-<td>Custom Training, Endpoints, Pipelines</td>
+<td>Custom Training, Endpoints, Pipelines, Cloud Monitoring</td>
 </tr>
 <tr>
 <td><strong>Model Garden</strong></td>
 <td>Pretrained/foundation models</td>
 <td>Using or fine-tuning SOTA models</td>
-<td>Deploy to Vertex Endpoints</td>
+<td>Vertex Endpoints, Custom Training, Pipelines, Hugging Face integration</td>
 </tr>
 <tr>
 <td><strong>Cloud Storage (GCS)</strong></td>
 <td>Scalable object storage with lifecycle management</td>
 <td>Store datasets, trained models, pipeline artifacts, staging data</td>
-<td>Training, Batch Prediction, Dataflow, Pipelines</td>
+<td>All Vertex AI services, BigQuery, Dataflow, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Pub/Sub</strong></td>
 <td>Real-time messaging and event streaming</td>
 <td>Ingest streaming data, trigger ML pipelines, decouple microservices</td>
-<td>Dataflow, Cloud Functions, Cloud Run</td>
+<td>Dataflow, Cloud Functions, Cloud Run, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Cloud Run</strong></td>
 <td>Fully managed serverless containers</td>
 <td>Deploy custom prediction servers, lightweight model serving, event-driven ML pipelines</td>
-<td>Pipelines, Custom inference, Pub/Sub triggers</td>
+<td>Cloud Build, Artifact Registry, Pub/Sub, Cloud Storage</td>
 </tr>
 <tr>
 <td><strong>Cloud Functions</strong></td>
 <td>Event-driven serverless functions</td>
 <td>Trigger preprocessing jobs, lightweight data transformations, pipeline orchestration</td>
-<td>Pipelines, Pub/Sub, Cloud Storage events</td>
+<td>Pub/Sub, Cloud Storage, Cloud Scheduler, Pipelines</td>
 </tr>
 <tr>
 <td><strong>Cloud Composer (Airflow)</strong></td>
 <td>Fully managed Apache Airflow for workflow orchestration</td>
 <td>Complex DAG scheduling, hybrid data/ML workflows, cross-service orchestration</td>
-<td>Triggers Vertex Pipelines, BigQuery, Dataflow, Dataproc</td>
+<td>Vertex Pipelines, BigQuery, Dataflow, Dataproc, Cloud Storage</td>
 </tr>
 </tbody>
 </table>
