@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -88,9 +88,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-header__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
       
@@ -125,7 +123,21 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
     
   
 </form>
@@ -161,6 +173,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -186,6 +200,99 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ml_concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../ds_techniques/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../LICENSE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  License
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -199,8 +306,12 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="GCP ML Engineer Certification Preparation Guide" class="md-nav__button md-logo" aria-label="GCP ML Engineer Certification Preparation Guide" data-md-component="logo">
       
@@ -245,10 +356,27 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
         
+        
+      
+      
         
       
     
@@ -396,15 +524,6 @@
   <a href="#vertex-ai-gcps-unified-ml-platform" class="md-nav__link">
     <span class="md-ellipsis">
       Vertex AI (GCP's Unified ML Platform)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ai-platform-legacy--deprecated" class="md-nav__link">
-    <span class="md-ellipsis">
-      AI Platform (Legacy) ⚠️ DEPRECATED
     </span>
   </a>
   
@@ -865,22 +984,34 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -899,29 +1030,6 @@
             Reference
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../scenarios/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Common Scenarios
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -959,29 +1067,6 @@
   
   <span class="md-ellipsis">
     Data Splitting Strategies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../labs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hands-On Labs
     
   </span>
   
@@ -1073,422 +1158,6 @@
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#11-core-ml-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 Core ML Services
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1 Core ML Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vertex-ai-gcps-unified-ml-platform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vertex AI (GCP's Unified ML Platform)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ai-platform-legacy--deprecated" class="md-nav__link">
-    <span class="md-ellipsis">
-      AI Platform (Legacy) ⚠️ DEPRECATED
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automl-vertex-ai-automl" class="md-nav__link">
-    <span class="md-ellipsis">
-      AutoML (Vertex AI AutoML)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bigquery-ml" class="md-nav__link">
-    <span class="md-ellipsis">
-      BigQuery ML
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-pre-trained-ai-apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 Pre-trained AI APIs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 Pre-trained AI APIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vision-ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vision AI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#natural-language-ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      Natural Language AI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#translation-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Translation API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#speech-to-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      Speech-to-Text
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#text-to-speech" class="md-nav__link">
-    <span class="md-ellipsis">
-      Text-to-Speech
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-ml-implementation-patterns--best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 ML Implementation Patterns &amp; Best Practices
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.3 ML Implementation Patterns &amp; Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#model-selection-by-problem-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      Model Selection by Problem Type
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bigquery-ml-evaluation-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      BigQuery ML Evaluation Metrics
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bias-and-fairness-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bias and Fairness Detection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explainability-with-vertex-ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explainability with Vertex AI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bigquery-ml-feature-importance" class="md-nav__link">
-    <span class="md-ellipsis">
-      BigQuery ML Feature Importance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hyperparameter-tuning-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hyperparameter Tuning Strategies
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#training-serving-skew-prevention" class="md-nav__link">
-    <span class="md-ellipsis">
-      Training-Serving Skew Prevention
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-data-processing--storage-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Data Processing &amp; Storage Services
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.4 Data Processing &amp; Storage Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bigquery" class="md-nav__link">
-    <span class="md-ellipsis">
-      BigQuery
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Storage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dataflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dataflow
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-data-fusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Data Fusion
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-compute-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.5 Compute Services
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.5 Compute Services">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#compute-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compute Engine
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#google-kubernetes-engine-gke" class="md-nav__link">
-    <span class="md-ellipsis">
-      Google Kubernetes Engine (GKE)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Run
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16-mlops--development-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.6 MLOps &amp; Development Tools
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.6 MLOps &amp; Development Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cloud-build" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Build
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#artifact-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Artifact Registry
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#17-monitoring--management" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.7 Monitoring &amp; Management
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.7 Monitoring &amp; Management">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cloud-monitoring-formerly-stackdriver" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Monitoring (formerly Stackdriver)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Logging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#18-security--governance" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.8 Security &amp; Governance
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.8 Security &amp; Governance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iam-identity-and-access-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      IAM (Identity and Access Management)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vpc-service-controls" class="md-nav__link">
-    <span class="md-ellipsis">
-      VPC Service Controls
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-kms-key-management-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud KMS (Key Management Service)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           
@@ -1643,10 +1312,6 @@
 <li>GCP has unified init vs AWS requires session and role management</li>
 <li>GCP integrates model serving container at training time</li>
 </ul>
-<h3 id="ai-platform-legacy--deprecated">AI Platform (Legacy) ⚠️ DEPRECATED<a class="headerlink" href="#ai-platform-legacy--deprecated" title="Permanent link">&para;</a></h3>
-<p><strong>Status</strong>: Discontinued January 31, 2025. All functionality migrated to Vertex AI.</p>
-<p><strong>Migration Path</strong>: All AI Platform features are now available in Vertex AI. AI Platform is the predecessor to Vertex AI.</p>
-<p><strong>Why This Matters</strong>: You may encounter migration scenarios where knowledge of both AI Platform and Vertex AI is relevant.</p>
 <h3 id="automl-vertex-ai-automl">AutoML (Vertex AI AutoML)<a class="headerlink" href="#automl-vertex-ai-automl" title="Permanent link">&para;</a></h3>
 <p><strong>AWS Equivalent</strong>: SageMaker Autopilot, SageMaker Canvas</p>
 <p><strong>Service Overview</strong>: AutoML on Vertex AI provides automated machine learning capabilities for tabular, image, text, and video data. It automates feature engineering, model selection, hyperparameter tuning, and deployment with minimal code.</p>
@@ -2527,7 +2192,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.instant", "navigation.tabs", "navigation.expand", "navigation.indexes", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow", "toc.integrate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
